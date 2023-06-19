@@ -77,39 +77,8 @@
     # Specify outcomes -------------------------------------------------------------
 
     
-    outcomes_runall <- c("out_date_ibs",
-                          "out_date_appendicitis",
-                          "out_date_gallstones_disease",
-                          "out_date_nonalcoholic_steatohepatitis",
-                          "out_date_acute_pancreatitis",
-                          "out_date_gastro_oesophageal_reflux_disease",
-                          "out_date_dyspepsia",
-                          "out_date_peptic_ulcer",
-                          "out_date_upper_gi_bleeding",
-                          "out_date_lower_gi_bleeding",
-                          "out_date_variceal_gi_bleeding",
-                          "out_date_nonvariceal_gi_bleeding")
-    # outcomes_runmain <- c("out_date_ibs",
-                          # "out_date_nausea", 
-                          # "out_date_vomiting",
-                          # "out_date_abdominal_paindiscomfort",
-                          # "out_date_intestinal_obstruction",
-                          # "out_date_bowel_ischaemia",
-                          # "out_date_belching",
-                          # "out_date_abdominal_distension",
-                          # "out_date_bloody_stools",
-                          # "out_date_appendicitis",
-                          # "out_date_gallstones_disease",
-                          # "out_date_nonalcoholic_steatohepatitis",
-                          # "out_date_acute_pancreatitis",
-                          # "out_date_gastro_oesophageal_reflux_disease",
-                          # "out_date_dyspepsia",
-                          # "out_date_peptic_ulcer",
-                          # "out_date_upper_gi_bleeding",
-                          # "out_date_lower_gi_bleeding",
-                          # "out_date_variceal_gi_bleeding",
-                          # "out_date_nonvariceal_gi_bleeding"
-    # )
+    outcomes_runall <- c("out_num_creatinine",
+                          "out_date_aki_hes")
 
 
     # Add active analyses ----------------------------------------------------------

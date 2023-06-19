@@ -494,18 +494,18 @@ def generate_common_variables(index_date_variable,exposure_end_date_variable,out
     #----------------------------------------------------------------------------------------
     
     ## Creatinine measurements to be used for defining AKI and ESRD
-    tmp_out_num_creatinine=patients.mean_recorded_value(
-            creatinine_codes,
-            on_most_recent_day_of_measurement=True,
-            on_or_before = f"{index_date_variable}- 1 day",
-            return_expectations={
-                "float": {"distribution": "normal", "mean": 80, "stddev": 40},
-                "incidence": 0.60,
-            }
-        ),
+    #out_num_creatinine=patients.mean_recorded_value(
+    #        creatinine_codes,
+    #        on_most_recent_day_of_measurement=True,
+    #        on_or_before = f"{index_date_variable}- 1 day",
+    #        return_expectations={
+    #            "float": {"distribution": "normal", "mean": 80, "stddev": 40},
+    #            "incidence": 0.60,
+    #        }
+    #    ),
 
     ## Acute kidney injury hospital admissions
-    tmp_out_date_aki_hes = patients.admitted_to_hospital(
+    out_date_aki_hes = patients.admitted_to_hospital(
         with_these_diagnoses= aki_icd10,
         returning='date_admitted',
         between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],

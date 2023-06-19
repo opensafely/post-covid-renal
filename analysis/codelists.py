@@ -315,6 +315,23 @@ hrt_dmd = codelist_from_csv(
     column="dmd_id",
 )
 
+ # HYpertension
+hypertension_icd10 = codelist_from_csv(
+    "codelists/user-elsie_horne-hypertension_icd10.csv",
+    system="icd10",
+    column="code",
+)
+hypertension_drugs_dmd = codelist_from_csv(
+    "codelists/user-elsie_horne-hypertension_drugs_dmd.csv",
+    system="snomed",
+    column="dmd_id",
+)
+hypertension_snomed_clinical = codelist_from_csv(
+    "codelists/nhsd-primary-care-domain-refsets-hyp_cod.csv",
+    system="snomed",
+    column="code",
+)
+
 # Renal outcomes
 aki_icd10 = codelist_from_csv(
     "codelists/user-viyaasan-acute-kidney-injury",
