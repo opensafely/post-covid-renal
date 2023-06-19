@@ -317,9 +317,17 @@ hrt_dmd = codelist_from_csv(
 
 # Renal outcomes
 aki_icd10 = codelist_from_csv(
-    "codelists/user-viyaasan-acute-kidney-injury"
+    "codelists/user-viyaasan-acute-kidney-injury",
+    system="ctv3",
+    column="CTV3Code",
 )
 
+# Renal covariates
+kidtrans_icd10 = codelist_from_csv(
+    "codelists/opensafely-kidney-transplant",
+    system="ctv3",
+    column="CTV3Code",
+) 
 
 '''
 This script reads in the codelists from codelists.txt file and generate 
