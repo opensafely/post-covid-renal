@@ -334,21 +334,22 @@ hypertension_snomed_clinical = codelist_from_csv(
 
 # Renal outcomes
 aki_icd10 = codelist_from_csv(
-    "codelists/user-viyaasan-acute-kidney-injury",
-    system="ctv3",
-    column="CTV3Code",
+    "codelists/user-viyaasan-acute-kidney-injury.csv",
+    system="icd10",
+    column="code",
 )
 
 # Renal covariates
 kidtrans_icd10 = codelist_from_csv(
-    "codelists/opensafely-kidney-transplant",
+    "codelists/opensafely-kidney-transplant.csv",
     system="ctv3",
-    column="CTV3Code",
+    column="CTV3ID",
 ) 
 
 '''
 This script reads in the codelists from codelists.txt file and generate 
-the python code similar to the code above automatically! '''
+the python code similar to the code above automatically!
+
 
 with open("codelists/codelists.txt") as f: 
     lines = f.readlines()
@@ -383,9 +384,4 @@ for i in range(start_index + 1 , len(lines)):
 
 exec(s)
 
-
-    
-
-
-            
-        
+ '''

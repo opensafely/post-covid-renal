@@ -77,8 +77,8 @@
     # Specify outcomes -------------------------------------------------------------
 
     
-    outcomes_runall <- c("out_num_creatinine",
-                          "out_date_aki_hes")
+    outcomes_runall <- c("out_date_ckd",
+                          "out_date_aki")
 
 
     # Add active analyses ----------------------------------------------------------

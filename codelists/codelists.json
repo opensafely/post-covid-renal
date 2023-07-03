@@ -311,6 +311,12 @@
       "url": "https://codelists.opensafely.org/codelist/user/viyaasan/acute-kidney-injury/27ec1897/",
       "downloaded_at": "2023-06-19 16:12:46.611339Z",
       "sha": "cdaf6733d6361e80755b361e4343e2e3c145f854"
+    },
+    "opensafely-kidney-transplant.csv": {
+      "id": "opensafely/kidney-transplant/2020-07-15",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/kidney-transplant/2020-07-15/",
+      "downloaded_at": "2023-07-02 20:16:41.486471Z",
+      "sha": "db6b47d17273b563cb428e4a97a7ba8b6d62afa9"
     }
   }
 }
