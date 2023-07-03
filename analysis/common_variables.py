@@ -27,27 +27,6 @@ import study_definition_helper_functions as helpers
 # Define pandemic_start
 pandemic_start = study_dates["pandemic_start"]
 
-#Define all gi bleedings, combined codelists
-#all_gi_bleeding_snomed = combine_codelists(
-#lower_gi_bleeding_snomed,
-#upper_gi_bleeding_snomed
-#)
-#all_gi_bleeding_hes = combine_codelists(
-#lower_gi_bleeding_icd10,
-#upper_gi_bleeding_icd10
-#)
-
-#Define all gi symptoms, combined codelists
-#all_gi_symptoms_snomed =  combine_codelists(
-#ibs_snomed, diarrhoea_snomed, nausea_snomed, vomiting_snomed, abdominal_paindiscomfort_snomed,
-#bowel_ischaemia_snomed, intestinal_obstruction_snomed, belching_snomed, abdominal_distension_snomed, bloody_stools_snomed
-#)
-#all_gi_symptoms_icd10 =  combine_codelists(
-#ibs_icd10, diarrhoea_icd10, nausea_icd10, vomiting_icd10, abdominal_paindiscomfort_icd10,
-#bowel_ischaemia_icd10, intestinal_obstruction_icd10, belching_icd10, abdominal_distension_icd10, bloody_stools_icd10
-#)
-
-
 # Define common variables function
 
 def generate_common_variables(index_date_variable,exposure_end_date_variable,outcome_end_date_variable):
@@ -506,7 +485,7 @@ def generate_common_variables(index_date_variable,exposure_end_date_variable,out
 
     ## Acute kidney injury hospital admissions
     tmp_out_date_aki_hes = patients.admitted_to_hospital(
-        with_these_diagnoses= aki_icd10,
+        with_these_diagnoses=aki_icd10,
         returning="date_admitted",
         between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
         date_format="YYYY-MM-DD",
@@ -532,10 +511,10 @@ def generate_common_variables(index_date_variable,exposure_end_date_variable,out
 
     out_date_aki = patients.minimum_of(
         "tmp_out_date_aki_hes","tmp_out_date_aki_death"
-        ), 
+    ), 
 
     out_date_ckd = patients.admitted_to_hospital(
-        with_these_diagnoses= aki_icd10,
+        with_these_diagnoses=aki_icd10,
         returning='date_admitted',
         between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
         date_format="YYYY-MM-DD",
@@ -594,17 +573,17 @@ def generate_common_variables(index_date_variable,exposure_end_date_variable,out
 #-----------
 
     ##History of kidney transplant
-    cov_bin_kidtrans = patients.admitted_to_hospital(
-        with_these_diagnoses= kidtrans_icd10,
-        returning='date_admitted',
+    cov_bin_kidtrans = patients.with_these_clinical_events(
+        kidtrans_ctv,
+        returning="date",
         between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
         date_format="YYYY-MM-DD",
         return_expectations={
             "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"},
             "rate": "uniform",
             "incidence": 0.1,
-            },   
-        ),
+        }, 
+    ),
 
 
     )

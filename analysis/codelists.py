@@ -340,7 +340,7 @@ aki_icd10 = codelist_from_csv(
 )
 
 # Renal covariates
-kidtrans_icd10 = codelist_from_csv(
+kidtrans_ctv = codelist_from_csv(
     "codelists/opensafely-kidney-transplant.csv",
     system="ctv3",
     column="CTV3ID",
