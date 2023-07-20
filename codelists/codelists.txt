@@ -65,6 +65,8 @@ user/elsie_horne/hypertension_drugs_dmd/0009f464
 nhsd-primary-care-domain-refsets/hyp_cod/20210127
 
 #Renal
-user/viyaasan/acute-kidney-injury/27ec1897/
+user/viyaasan/acute-kidney-injury/27ec1897
 opensafely/kidney-transplant/2020-07-15
+opensafely/dialysis/3ce108ac
+user/bangzheng/creatinine-value/7d319079
 

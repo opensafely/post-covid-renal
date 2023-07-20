@@ -513,9 +513,9 @@ def generate_common_variables(index_date_variable,exposure_end_date_variable,out
         "tmp_out_date_aki_hes","tmp_out_date_aki_death"
     ), 
 
-    out_date_ckd = patients.admitted_to_hospital(
-        with_these_diagnoses=aki_icd10,
-        returning='date_admitted',
+    tmp_out_date_ckd_snomed = patients.with_these_clinical_events(
+        ckd3to5_snomed,
+        returning='date',
         between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
         date_format="YYYY-MM-DD",
         return_expectations={

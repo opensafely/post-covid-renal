@@ -332,19 +332,36 @@ hypertension_snomed_clinical = codelist_from_csv(
     column="code",
 )
 
-# Renal outcomes
+# Renal 
 aki_icd10 = codelist_from_csv(
     "codelists/user-viyaasan-acute-kidney-injury.csv",
     system="icd10",
     column="code",
 )
 
-# Renal covariates
+ckd3to5_snomed = codelist_from_csv(
+    "primis-covid19-vacc-uptake-ckd35.csv",
+    system="snomed",
+    column="code",
+)
+
+dialysis_ctv = codelist_from_csv(
+    "codelist/opensafely-dialysis.csv",
+    system="ctv3",
+    column="CTV3ID",
+)
+
 kidtrans_ctv = codelist_from_csv(
     "codelists/opensafely-kidney-transplant.csv",
     system="ctv3",
     column="CTV3ID",
-) 
+)
+
+creatinine_snomed = codelist_from_csv(
+    "codelist/user-bangzheng-creatinine-value.csv"
+    system="snomed",
+    column="code",
+)
 
 '''
 This script reads in the codelists from codelists.txt file and generate 
