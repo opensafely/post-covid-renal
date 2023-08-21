@@ -24,9 +24,6 @@ from datetime import date
 ## Study definition helper
 import study_definition_helper_functions as helpers
 
-## Function to calculate eGFR from serum creatinine
-import generate_egfr as egfr
-
 # Define pandemic_start
 pandemic_start = study_dates["pandemic_start"]
 
@@ -690,35 +687,80 @@ def generate_common_variables(index_date_variable,exposure_end_date_variable,out
 # Define populations
 #-----------
 
-    cov_cat_ckd_history = patients.categorised_as(
+    #Patients with a history of end stage renal disease
+    cov_cat_esrd_history = patients.categorised_as(
         {
-            "ESRD": "cov_bin_esrd=1 AND cov_bin_ckd34=0", 
-            "CKDstage3to4": "cov_bin_ckd34=1 AND cov_bin_esrd=0", 
-            "NoCKD": "DEFAULT", 
+            "1": "esrd_snomed OR esrd_icd10 OR dialysis_snomed OR dialysis_icd10 OR kidtrans_snomed OR kidtrans_icd10",  
+            "0": "DEFAULT", 
         }, 
-        return_expectations = {
-            "rate": "universal", 
-            "category": {
-                "ratios": {
-                    "ESRD": 0.05, 
-                    "CKDstage3to4": 0.2, 
-                    "NoCKD": 0.75, 
-                }
-            },
-        },
-        cov_num_bmi = patients.most_recent_bmi(
-        on_or_before=f"{index_date_variable} - 1 day",
-        minimum_age_at_measurement=18,
-        include_measurement_date=True,
-        date_format="YYYY-MM",
+        esrd_snomed=patients.with_these_clinical_events(
+            esrd_snomed,
+            on_or_before = f"{index_date_variable} - 1 day",
+            returning = "binary_flag",
+            return_expectations={"incidence": 0.05}
+        ),
+        dialysis_snomed=patients.with_these_clinical_events(
+            dialysis_snomed,
+            on_or_before = f"{index_date_variable} - 1 day",
+            returning = "binary_flag",
+            return_expectations={"incidence": 0.05}
+        ),
+        kidtrans_snomed=patients.with_these_clinical_events(
+            kidtrans_snomed,
+            on_or_before = f"{index_date_variable} - 1 day",
+            returning = "binary_flag",
+            return_expectations={"incidence": 0.05}
+        ),
+        esrd_icd10=patients.admitted_to_hospital(
+            with_these_diagnoses=esrd_icd10,
+            on_or_before = f"{index_date_variable} - 1 day",
+            date_format = "YYYY-MM-DD",
+            returning = "binary_flag",
+            return_expectations={"incidence": 0.05}
+        ),
+        dialysis_icd10=patients.admitted_to_hospital(
+            with_these_diagnoses=dialysis_icd10,
+            on_or_before = f"{index_date_variable} - 1 day",
+            date_format = "YYYY-MM-DD",
+            returning = "binary_flag",
+            return_expectations={"incidence": 0.05}
+        ),
+        kidtrans_icd10=patients.admitted_to_hospital(
+            with_these_diagnoses=kidtrans_icd10,
+            on_or_before = f"{index_date_variable} - 1 day",
+            date_format = "YYYY-MM-DD",
+            returning = "binary_flag",
+            return_expectations={"incidence": 0.05}
+        ),
         return_expectations={
-            "date": {"earliest": "2010-02-01", "latest": "2022-02-01"}, ##How do we obtain these dates ? 
-            "float": {"distribution": "normal", "mean": 28, "stddev": 8},
-            "incidence": 0.7,
+            "category":{"ratios": {"0": 0.9, "1": 0.1}}
         },
     ),
 
-    
-    )
+    cov_cat_ckd_history = patients.categorised_as(
+        {
+            "1": "ckd34_snomed OR ckd34_icd10 OR cov_cat_esrd_history=1",  
+            "0": "DEFAULT", 
+        }, 
+        ckd34_snomed=patients.with_these_clinical_events(
+            ckd34_snomed,
+            on_or_before = f"{index_date_variable} - 1 day",
+            returning = "binary_flag",
+            return_expectations={"incidence": 0.05}
+        ),
+        ckd34_icd10=patients.admitted_to_hospital(
+            with_these_diagnoses=ckd34_icd10,
+            on_or_before = f"{index_date_variable} - 1 day",
+            date_format = "YYYY-MM-DD",
+            returning = "binary_flag",
+            return_expectations={"incidence": 0.05}
+        ),
+        return_expectations={
+            "category":{"ratios": {"0": 0.8, "1": 0.2}}
+        },
+    ),
+
+
+        )
 
     return dynamic_variables

@@ -78,7 +78,8 @@
 
     
     outcomes_runall <- c("out_date_ckd",
-                          "out_date_aki")
+                          "out_date_aki",
+                           "out_date_esrd")
 
 
     # Add active analyses ----------------------------------------------------------

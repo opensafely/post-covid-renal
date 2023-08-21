@@ -334,7 +334,7 @@ hypertension_snomed_clinical = codelist_from_csv(
 
 # Renal 
 aki_snomed = codelist_from_csv(
-    "codelist/bristol-acute-kidney-injury-snomed.csv",
+    "codelists/bristol-acute-kidney-injury-snomed.csv",
     system="snomed",
     column="code",
 )
@@ -346,7 +346,7 @@ aki_icd10 = codelist_from_csv(
 )
 
 esrd_snomed = codelist_from_csv(
-    "codelist/user-S_Walter-end-stage-renal-disease.csv",
+    "codelists/user-S_Walter-end-stage-renal-disease.csv",
     system="snomed",
     column="code",
 )
@@ -358,7 +358,7 @@ esrd_icd10 = codelist_from_csv(
 )
 
 dialysis_snomed = codelist_from_csv(
-    "codelist/user-S_Walter-renal-dialysis.csv",
+    "codelists/user-S_Walter-renal-dialysis.csv",
     system="snomed",
     column="code",
 )
@@ -394,7 +394,7 @@ ckd34_icd10 = codelist_from_csv(
 )
 
 creatinine_snomed = codelist_from_csv(
-    "codelist/user-bangzheng-creatinine-value.csv"
+    "codelists/user-bangzheng-creatinine-value.csv",
     system="snomed",
     column="code",
 )
