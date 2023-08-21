@@ -306,17 +306,71 @@
       "downloaded_at": "2023-06-19 16:12:46.435291Z",
       "sha": "2c1fb493d94ce1610482d575ef14c35bd09e47c1"
     },
+    "bristol-acute-kidney-injury-snomed.csv": {
+      "id": "bristol/acute-kidney-injury-snomed/6593d4d2",
+      "url": "https://codelists.opensafely.org/codelist/bristol/acute-kidney-injury-snomed/6593d4d2/",
+      "downloaded_at": "2023-08-17 07:18:18.464329Z",
+      "sha": "b2426c9697ff0fe3ba5f680dba008bf5a2d82d33"
+    },
     "user-viyaasan-acute-kidney-injury.csv": {
       "id": "user/viyaasan/acute-kidney-injury/27ec1897",
       "url": "https://codelists.opensafely.org/codelist/user/viyaasan/acute-kidney-injury/27ec1897/",
       "downloaded_at": "2023-06-19 16:12:46.611339Z",
       "sha": "cdaf6733d6361e80755b361e4343e2e3c145f854"
     },
-    "opensafely-kidney-transplant.csv": {
-      "id": "opensafely/kidney-transplant/2020-07-15",
-      "url": "https://codelists.opensafely.org/codelist/opensafely/kidney-transplant/2020-07-15/",
-      "downloaded_at": "2023-07-02 20:16:41.486471Z",
-      "sha": "db6b47d17273b563cb428e4a97a7ba8b6d62afa9"
+    "user-S_Walter-end-stage-renal-disease.csv": {
+      "id": "user/S_Walter/end-stage-renal-disease/2af4a040",
+      "url": "https://codelists.opensafely.org/codelist/user/S_Walter/end-stage-renal-disease/2af4a040/",
+      "downloaded_at": "2023-08-17 07:11:09.612335Z",
+      "sha": "36123cc8bbb443b914d3849ee4ffef00a440ff2c"
+    },
+    "user-S_Walter-end-stage-renal-disease-icd10.csv": {
+      "id": "user/S_Walter/end-stage-renal-disease-icd10/1f62ecd9",
+      "url": "https://codelists.opensafely.org/codelist/user/S_Walter/end-stage-renal-disease-icd10/1f62ecd9/",
+      "downloaded_at": "2023-08-17 07:18:20.105904Z",
+      "sha": "242f2707db9159f86616ae31397ee63deb396bb5"
+    },
+    "user-S_Walter-renal-transplant.csv": {
+      "id": "user/S_Walter/renal-transplant/44041375",
+      "url": "https://codelists.opensafely.org/codelist/user/S_Walter/renal-transplant/44041375/",
+      "downloaded_at": "2023-08-17 07:11:10.788733Z",
+      "sha": "3b3e648dc67765b80cfde84de2aef5039ab2efdd"
+    },
+    "user-S_Walter-renal-transplant-icd10.csv": {
+      "id": "user/S_Walter/renal-transplant-icd10/5181d343",
+      "url": "https://codelists.opensafely.org/codelist/user/S_Walter/renal-transplant-icd10/5181d343/",
+      "downloaded_at": "2023-08-17 07:37:55.442466Z",
+      "sha": "d6f7523ddbbcd0609f1520137aa2ae8573c5eab4"
+    },
+    "user-S_Walter-renal-dialysis.csv": {
+      "id": "user/S_Walter/renal-dialysis/5d1386aa",
+      "url": "https://codelists.opensafely.org/codelist/user/S_Walter/renal-dialysis/5d1386aa/",
+      "downloaded_at": "2023-08-17 07:11:11.658669Z",
+      "sha": "67ee9bb5a48cddd95e6104683ec17fb6c1637a61"
+    },
+    "user-viyaasan-dialysis.csv": {
+      "id": "user/viyaasan/dialysis/4c8d3f33",
+      "url": "https://codelists.opensafely.org/codelist/user/viyaasan/dialysis/4c8d3f33/",
+      "downloaded_at": "2023-08-17 07:37:56.667789Z",
+      "sha": "830e3f45718417a1d19c57d40976056581ff75ab"
+    },
+    "user-bangzheng-creatinine-value.csv": {
+      "id": "user/bangzheng/creatinine-value/7d319079",
+      "url": "https://codelists.opensafely.org/codelist/user/bangzheng/creatinine-value/7d319079/",
+      "downloaded_at": "2023-08-17 07:11:12.790875Z",
+      "sha": "4628fc44b49144576a578c1d2e13435aa6296af3"
+    },
+    "bristol-chronic-kidney-disease-stages3to4.csv": {
+      "id": "bristol/chronic-kidney-disease-stages3to4/11e52d0b",
+      "url": "https://codelists.opensafely.org/codelist/bristol/chronic-kidney-disease-stages3to4/11e52d0b/",
+      "downloaded_at": "2023-08-21 07:28:03.047840Z",
+      "sha": "16c61438a479bdd939e785c0fd50e08c92482a98"
+    },
+    "user-S_Walter-chronic-kidney-disease-stages3to4-icd10.csv": {
+      "id": "user/S_Walter/chronic-kidney-disease-stages3to4-icd10/065379a4",
+      "url": "https://codelists.opensafely.org/codelist/user/S_Walter/chronic-kidney-disease-stages3to4-icd10/065379a4/",
+      "downloaded_at": "2023-08-21 07:28:03.225925Z",
+      "sha": "23a66cde8a94c82b1ca3b7d68ded913ac2f5ed9b"
     }
   }
 }

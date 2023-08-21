@@ -65,8 +65,15 @@ user/elsie_horne/hypertension_drugs_dmd/0009f464
 nhsd-primary-care-domain-refsets/hyp_cod/20210127
 
 #Renal
+bristol/acute-kidney-injury-snomed/6593d4d2
 user/viyaasan/acute-kidney-injury/27ec1897
-opensafely/kidney-transplant/2020-07-15
-opensafely/dialysis/3ce108ac
+user/S_Walter/end-stage-renal-disease/2af4a040
+user/S_Walter/end-stage-renal-disease-icd10/1f62ecd9
+user/S_Walter/renal-transplant/44041375
+user/S_Walter/renal-transplant-icd10/5181d343
+user/S_Walter/renal-dialysis/5d1386aa
+user/viyaasan/dialysis/4c8d3f33
 user/bangzheng/creatinine-value/7d319079
+bristol/chronic-kidney-disease-stages3to4/11e52d0b
+user/S_Walter/chronic-kidney-disease-stages3to4-icd10/065379a4
 

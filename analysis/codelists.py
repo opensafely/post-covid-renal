@@ -333,28 +333,64 @@ hypertension_snomed_clinical = codelist_from_csv(
 )
 
 # Renal 
+aki_snomed = codelist_from_csv(
+    "codelist/bristol-acute-kidney-injury-snomed.csv",
+    system="snomed",
+    column="code",
+)
+
 aki_icd10 = codelist_from_csv(
     "codelists/user-viyaasan-acute-kidney-injury.csv",
     system="icd10",
     column="code",
 )
 
-ckd3to5_snomed = codelist_from_csv(
-    "primis-covid19-vacc-uptake-ckd35.csv",
+esrd_snomed = codelist_from_csv(
+    "codelist/user-S_Walter-end-stage-renal-disease.csv",
     system="snomed",
     column="code",
 )
 
-dialysis_ctv = codelist_from_csv(
-    "codelist/opensafely-dialysis.csv",
-    system="ctv3",
-    column="CTV3ID",
+esrd_icd10 = codelist_from_csv(
+    "codelists/user-S_Walter-end-stage-renal-disease-icd10.csv",
+    system="icd10",
+    column="code",
 )
 
-kidtrans_ctv = codelist_from_csv(
-    "codelists/opensafely-kidney-transplant.csv",
-    system="ctv3",
-    column="CTV3ID",
+dialysis_snomed = codelist_from_csv(
+    "codelist/user-S_Walter-renal-dialysis.csv",
+    system="snomed",
+    column="code",
+)
+
+dialysis_icd10 = codelist_from_csv(
+    "codelists/user-viyaasan-dialysis.csv",
+    system="icd10",
+    column="code",
+)
+
+kidtrans_snomed = codelist_from_csv(
+    "codelists/user-S_Walter-renal-transplant.csv",
+    system="snomed",
+    column="code",
+)
+
+kidtrans_icd10 = codelist_from_csv(
+    "codelists/user-S_Walter-renal-transplant.csv",
+    system="icd10",
+    column="code",
+)
+
+ckd34_snomed = codelist_from_csv(
+    "codelists/bristol-chronic-kidney-disease-stages3to4.csv",
+    system="snomed",
+    column="code",
+)
+
+ckd34_icd10 = codelist_from_csv(
+    "codelists/user-S_Walter-chronic-kidney-disease-stages3to4-icd10.csv",
+    system="icd10",
+    column="code",
 )
 
 creatinine_snomed = codelist_from_csv(

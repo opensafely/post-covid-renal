@@ -24,6 +24,9 @@ from datetime import date
 ## Study definition helper
 import study_definition_helper_functions as helpers
 
+## Function to calculate eGFR from serum creatinine
+import generate_egfr as egfr
+
 # Define pandemic_start
 pandemic_start = study_dates["pandemic_start"]
 
@@ -483,7 +486,19 @@ def generate_common_variables(index_date_variable,exposure_end_date_variable,out
     #        }
     #    ),
 
-    ## Acute kidney injury hospital admissions
+    ## Acute kidney injury
+    tmp_out_date_aki_snomed = patients.with_these_clinical_events(
+        aki_snomed,
+        returning='date',
+        between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
+        date_format="YYYY-MM-DD",
+        return_expectations={
+            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"},
+            "rate": "uniform",
+            "incidence": 0.1,
+        },
+    ),
+
     tmp_out_date_aki_hes = patients.admitted_to_hospital(
         with_these_diagnoses=aki_icd10,
         returning="date_admitted",
@@ -510,11 +525,11 @@ def generate_common_variables(index_date_variable,exposure_end_date_variable,out
     ), 
 
     out_date_aki = patients.minimum_of(
-        "tmp_out_date_aki_hes","tmp_out_date_aki_death"
+        "tmp_out_date_aki_snomed","tmp_out_date_aki_hes","tmp_out_date_aki_death"
     ), 
 
-    tmp_out_date_ckd_snomed = patients.with_these_clinical_events(
-        ckd3to5_snomed,
+    tmp_out_date_esrd_snomed = patients.with_these_clinical_events(
+        esrd_snomed,
         returning='date',
         between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
         date_format="YYYY-MM-DD",
@@ -525,67 +540,185 @@ def generate_common_variables(index_date_variable,exposure_end_date_variable,out
         },
     ),
 
-#    ## IBS as an example of constructing an outcome
-#    tmp_out_date_ibs_snomed = patients.with_these_clinical_events(
-#        ibs_snomed,
-#        returning='date',
-#        between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
-#        date_format="YYYY-MM-DD",
-#        return_expectations={
-#            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"},
-#            "rate": "uniform",
-#            "incidence": 0.1,
-#        },
-#    
-#    ),
-#    tmp_out_date_ibs_hes = patients.admitted_to_hospital(
-#        with_these_diagnoses= ibs_icd10,
-#        returning='date_admitted',
-#        between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
-#        date_format="YYYY-MM-DD",
-#        return_expectations={
-#            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"},
-#            "rate": "uniform",
-#            "incidence": 0.1,
-#        },
-#    
-#    ),
-#    tmp_out_date_ibs_death=patients.with_these_codes_on_death_certificate(
-#        ibs_icd10,
-#        returning="date_of_death",
-#        between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
-#        match_only_underlying_cause=True,
-#        date_format="YYYY-MM-DD",
-#        return_expectations={
-#            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"},
-#            "rate": "uniform",
-#            "incidence": 0.1,
-#        },
-#    ), 
-#    out_date_ibs = patients.minimum_of(
-#        "tmp_out_date_ibs_snomed","tmp_out_date_ibs_hes","tmp_out_date_ibs_death"
-#        ), 
-
-
-
-#-----------
-# Renal Covars
-#-----------
-
-    ##History of kidney transplant
-    cov_bin_kidtrans = patients.with_these_clinical_events(
-        kidtrans_ctv,
-        returning="date",
+    tmp_out_date_esrd_hes = patients.admitted_to_hospital(
+        with_these_diagnoses=esrd_icd10,
+        returning="date_admitted",
         between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
         date_format="YYYY-MM-DD",
         return_expectations={
             "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"},
             "rate": "uniform",
             "incidence": 0.1,
-        }, 
+        },
     ),
 
+    tmp_out_date_esrd_death=patients.with_these_codes_on_death_certificate(
+        esrd_icd10,
+        returning="date_of_death",
+        between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
+        match_only_underlying_cause=True,
+        date_format="YYYY-MM-DD",
+        return_expectations={
+            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"},
+            "rate": "uniform",
+            "incidence": 0.1,
+        },
+    ), 
 
+    tmp_out_date_dialysis_snomed = patients.with_these_clinical_events(
+        dialysis_snomed,
+        returning='date',
+        between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
+        date_format="YYYY-MM-DD",
+        return_expectations={
+            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"},
+            "rate": "uniform",
+            "incidence": 0.1,
+        },
+    ),
+
+    tmp_out_date_dialysis_hes = patients.admitted_to_hospital(
+        with_these_diagnoses=dialysis_icd10,
+        returning="date_admitted",
+        between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
+        date_format="YYYY-MM-DD",
+        return_expectations={
+            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"},
+            "rate": "uniform",
+            "incidence": 0.1,
+        },
+    ),
+
+    tmp_out_date_dialysis_death=patients.with_these_codes_on_death_certificate(
+        dialysis_icd10,
+        returning="date_of_death",
+        between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
+        match_only_underlying_cause=True,
+        date_format="YYYY-MM-DD",
+        return_expectations={
+            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"},
+            "rate": "uniform",
+            "incidence": 0.1,
+        },
+    ), 
+
+    tmp_out_date_kidtrans_snomed = patients.with_these_clinical_events(
+        kidtrans_snomed,
+        returning='date',
+        between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
+        date_format="YYYY-MM-DD",
+        return_expectations={
+            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"},
+            "rate": "uniform",
+            "incidence": 0.1,
+        },
+    ),
+
+    tmp_out_date_kidtrans_hes = patients.admitted_to_hospital(
+        with_these_diagnoses=kidtrans_icd10,
+        returning="date_admitted",
+        between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
+        date_format="YYYY-MM-DD",
+        return_expectations={
+            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"},
+            "rate": "uniform",
+            "incidence": 0.1,
+        },
+    ),
+
+    tmp_out_date_kidtrans_death=patients.with_these_codes_on_death_certificate(
+        kidtrans_icd10,
+        returning="date_of_death",
+        between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
+        match_only_underlying_cause=True,
+        date_format="YYYY-MM-DD",
+        return_expectations={
+            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"},
+            "rate": "uniform",
+            "incidence": 0.1,
+        },
+    ), 
+
+    out_date_esrd = patients.minimum_of(
+        "tmp_out_date_esrd_snomed","tmp_out_date_esrd_hes","tmp_out_date_esrd_death",
+        "tmp_out_date_dialysis_snomed","tmp_out_date_dialysis_hes","tmp_out_date_dialysis_death",
+        "tmp_out_date_kidtrans_snomed","tmp_out_date_kidtrans_hes","tmp_out_date_kidtrans_death",
+    ), 
+
+    tmp_out_date_ckd34_snomed = patients.with_these_clinical_events(
+        ckd34_snomed,
+        returning='date',
+        between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
+        date_format="YYYY-MM-DD",
+        return_expectations={
+            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"},
+            "rate": "uniform",
+            "incidence": 0.1,
+        },
+    ),
+
+    tmp_out_date_ckd34_hes = patients.admitted_to_hospital(
+        with_these_diagnoses=ckd34_icd10,
+        returning="date_admitted",
+        between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
+        date_format="YYYY-MM-DD",
+        return_expectations={
+            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"},
+            "rate": "uniform",
+            "incidence": 0.1,
+        },
+    ),
+
+    tmp_out_date_ckd34_death=patients.with_these_codes_on_death_certificate(
+        ckd34_icd10,
+        returning="date_of_death",
+        between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
+        match_only_underlying_cause=True,
+        date_format="YYYY-MM-DD",
+        return_expectations={
+            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"},
+            "rate": "uniform",
+            "incidence": 0.1,
+        },
+    ), 
+
+    out_date_ckd = patients.minimum_of(
+        "tmp_out_date_ckd34_snomed","tmp_out_date_ckd34_hes","tmp_out_date_ckd34_death","out_date_esrd",
+    ), 
+
+#-----------
+# Define populations
+#-----------
+
+    cov_cat_ckd_history = patients.categorised_as(
+        {
+            "ESRD": "cov_bin_esrd=1 AND cov_bin_ckd34=0", 
+            "CKDstage3to4": "cov_bin_ckd34=1 AND cov_bin_esrd=0", 
+            "NoCKD": "DEFAULT", 
+        }, 
+        return_expectations = {
+            "rate": "universal", 
+            "category": {
+                "ratios": {
+                    "ESRD": 0.05, 
+                    "CKDstage3to4": 0.2, 
+                    "NoCKD": 0.75, 
+                }
+            },
+        },
+        cov_num_bmi = patients.most_recent_bmi(
+        on_or_before=f"{index_date_variable} - 1 day",
+        minimum_age_at_measurement=18,
+        include_measurement_date=True,
+        date_format="YYYY-MM",
+        return_expectations={
+            "date": {"earliest": "2010-02-01", "latest": "2022-02-01"}, ##How do we obtain these dates ? 
+            "float": {"distribution": "normal", "mean": 28, "stddev": 8},
+            "incidence": 0.7,
+        },
+    ),
+
+    
     )
 
     return dynamic_variables
