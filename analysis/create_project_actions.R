@@ -324,7 +324,6 @@ actions_list <- splice(
       vax_summary = glue("output/describe_prepro_vax.txt"),
       prevax_summary = glue("output/describe_prepro_prevax.txt"),
       unvax_summary = glue("output/describe_prepro_unvax.txt")
-
   )
   ),
   ## Stage 1 - data cleaning -----------------------------------------------------------
