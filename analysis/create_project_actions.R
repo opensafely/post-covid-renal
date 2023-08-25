@@ -33,16 +33,6 @@ success <- tidyr::pivot_longer(success,
 
 success$name <- paste0("cohort_",success$cohort, "-",success$analysis, "-",success$outcome)
 
-# add cov_bin_overall_gi_and_symptoms to priorhistory and prioroperations analysis
-#success <- success %>%
-#  mutate(suffix = case_when(
-#    grepl("priorhistory", analysis) ~ "-cov_bin_overall_gi_and_symptoms",
-#    grepl("prioroperations", analysis) ~ "-cov_bin_gi_operations",
-#    TRUE ~ ""
-#  )) %>%
-#  unite(name, cohort, analysis, outcome, sep = "-") %>%
-#  mutate(name = paste0("cohort_", name, suffix))
-
 success <- success[grepl("success",success$value, ignore.case = TRUE),]
 
 
@@ -248,6 +238,11 @@ venn <- function(cohort){
 
 # Define and combine all actions into a list of actions ------------------------
 
+## combine everything ----
+project_list <- splice(
+  defaults_list,
+  list(actions = actions_list)
+)
 actions_list <- splice(
   
   ## Post YAML disclaimer ------------------------------------------------------
@@ -344,40 +339,40 @@ actions_list <- splice(
     )
   ),
   ## Run models ----------------------------------------------------------------
-  comment("Run models"),
-  
-  splice(
-    unlist(lapply(1:nrow(active_analyses), 
-                  function(x) apply_model_function(name = active_analyses$name[x],
-                                                   cohort = active_analyses$cohort[x],
-                                                   analysis = active_analyses$analysis[x],
-                                                   ipw = active_analyses$ipw[x],
-                                                   strata = active_analyses$strata[x],
-                                                   covariate_sex = active_analyses$covariate_sex[x],
-                                                   covariate_age = active_analyses$covariate_age[x],
-                                                   covariate_other = active_analyses$covariate_other[x],
-                                                   cox_start = active_analyses$cox_start[x],
-                                                   cox_stop = active_analyses$cox_stop[x],
-                                                   study_start = active_analyses$study_start[x],
-                                                   study_stop = active_analyses$study_stop[x],
-                                                   cut_points = active_analyses$cut_points[x],
-                                                   controls_per_case = active_analyses$controls_per_case[x],
-                                                   total_event_threshold = active_analyses$total_event_threshold[x],
-                                                   episode_event_threshold = active_analyses$episode_event_threshold[x],
-                                                   covariate_threshold = active_analyses$covariate_threshold[x],
-                                                   age_spline = active_analyses$age_spline[x])), recursive = FALSE
-    )
-  ),
-  
-  ## Table 2 -------------------------------------------------------------------
-  
-  splice(
-    unlist(lapply(unique(active_analyses$cohort), 
-                  function(x) table2(cohort = x)), 
-           recursive = FALSE
-    )
-  ),
-  
+  # comment("Run models"),
+  # 
+  # splice(
+  #   unlist(lapply(1:nrow(active_analyses), 
+  #                 function(x) apply_model_function(name = active_analyses$name[x],
+  #                                                  cohort = active_analyses$cohort[x],
+  #                                                  analysis = active_analyses$analysis[x],
+  #                                                  ipw = active_analyses$ipw[x],
+  #                                                  strata = active_analyses$strata[x],
+  #                                                  covariate_sex = active_analyses$covariate_sex[x],
+  #                                                  covariate_age = active_analyses$covariate_age[x],
+  #                                                  covariate_other = active_analyses$covariate_other[x],
+  #                                                  cox_start = active_analyses$cox_start[x],
+  #                                                  cox_stop = active_analyses$cox_stop[x],
+  #                                                  study_start = active_analyses$study_start[x],
+  #                                                  study_stop = active_analyses$study_stop[x],
+  #                                                  cut_points = active_analyses$cut_points[x],
+  #                                                  controls_per_case = active_analyses$controls_per_case[x],
+  #                                                  total_event_threshold = active_analyses$total_event_threshold[x],
+  #                                                  episode_event_threshold = active_analyses$episode_event_threshold[x],
+  #                                                  covariate_threshold = active_analyses$covariate_threshold[x],
+  #                                                  age_spline = active_analyses$age_spline[x])), recursive = FALSE
+  #   )
+  # ),
+  # 
+  # ## Table 2 -------------------------------------------------------------------
+  # 
+  # splice(
+  #   unlist(lapply(unique(active_analyses$cohort), 
+  #                 function(x) table2(cohort = x)), 
+  #          recursive = FALSE
+  #   )
+  # ),
+  # 
   ## Venn data -----------------------------------------------------------------
   
   splice(
@@ -385,25 +380,20 @@ actions_list <- splice(
                   function(x) venn(cohort = x)), 
            recursive = FALSE
     )
-  ),
-  
-  comment("Stage 6 - make model output"),
-
-  action(
-    name = "make_model_output",
-    run = "r:latest analysis/model/make_model_output.R",
-    needs = as.list(paste0("cox_ipw-",success$name)),
-    moderately_sensitive = list(
-      model_output = glue("output/model_output.csv")
-    )
+  # ),
+  # 
+  # comment("Stage 6 - make model output"),
+  # 
+  # action(
+  #   name = "make_model_output",
+  #   run = "r:latest analysis/model/make_model_output.R",
+  #   needs = as.list(paste0("cox_ipw-",success$name)),
+  #   moderately_sensitive = list(
+  #     model_output = glue("output/model_output.csv")
+  #   )
   ) 
 )
 
-## combine everything ----
-project_list <- splice(
-  defaults_list,
-  list(actions = actions_list)
-)
 
 #####################################################################################
 ## convert list to yaml, reformat comments and white space, and output a .yaml file #
