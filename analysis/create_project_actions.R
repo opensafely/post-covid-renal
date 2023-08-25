@@ -24,7 +24,7 @@ success <- readxl::read_excel("../post-covid-outcome-tracker.xlsx",
                               col_types = c("text","text", "text", "text", "text", "text",
                                             "text", "text", "text", "text", "text",
                                             "text", "text", 
-                                            "text", "text", "text", "text","text","text","text","text",
+                                            "text", "text", "text", "text",
                                             "skip", "skip"))
 
 success <- tidyr::pivot_longer(success,
