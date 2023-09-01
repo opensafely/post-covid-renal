@@ -217,42 +217,42 @@ actions:
 
   ## Venn - prevax 
 
-#  venn_prevax:
-#    run: r:latest analysis/descriptives/venn.R prevax
-#    needs:
-#    - preprocess_data_prevax
-#    - make_model_input-cohort_prevax-main-aki
-#    - make_model_input-cohort_prevax-main-ckd
-#    - make_model_input-cohort_prevax-main-esrd
-#    outputs:
-#      moderately_sensitive:
-#        table2: output/venn_prevax.csv
-#        table2_rounded: output/venn_prevax_rounded.csv
+  venn_prevax:
+    run: r:latest analysis/descriptives/venn.R prevax
+    needs:
+    - preprocess_data_prevax
+    - make_model_input-cohort_prevax-main-aki
+    - make_model_input-cohort_prevax-main-ckd
+    - make_model_input-cohort_prevax-main-esrd
+    outputs:
+      moderately_sensitive:
+        table2: output/venn_prevax.csv
+        table2_rounded: output/venn_prevax_rounded.csv
 
   ## Venn - unvax 
 
-#  venn_unvax:
-#    run: r:latest analysis/descriptives/venn.R unvax
-#    needs:
-#    - preprocess_data_unvax
-#    - make_model_input-cohort_unvax-main-aki
-#    - make_model_input-cohort_unvax-main-ckd
-#    - make_model_input-cohort_unvax-main-esrd
-#    outputs:
-#      moderately_sensitive:
-#        table2: output/venn_unvax.csv
-#        table2_rounded: output/venn_unvax_rounded.csv
+  venn_unvax:
+    run: r:latest analysis/descriptives/venn.R unvax
+    needs:
+    - preprocess_data_unvax
+    - make_model_input-cohort_unvax-main-aki
+    - make_model_input-cohort_unvax-main-ckd
+    - make_model_input-cohort_unvax-main-esrd
+    outputs:
+      moderately_sensitive:
+        table2: output/venn_unvax.csv
+        table2_rounded: output/venn_unvax_rounded.csv
 
   ## Venn - vax 
 
-#  venn_vax:
-#    run: r:latest analysis/descriptives/venn.R vax
-#    needs:
-#    - preprocess_data_vax
-#    - make_model_input-cohort_vax-main-aki
-#    - make_model_input-cohort_vax-main-ckd
-#    - make_model_input-cohort_vax-main-esrd
-#    outputs:
-#      moderately_sensitive:
-#        table2: output/venn_vax.csv
-#        table2_rounded: output/venn_vax_rounded.csv
+  venn_vax:
+    run: r:latest analysis/descriptives/venn.R vax
+    needs:
+    - preprocess_data_vax
+    - make_model_input-cohort_vax-main-aki
+    - make_model_input-cohort_vax-main-ckd
+    - make_model_input-cohort_vax-main-esrd
+    outputs:
+      moderately_sensitive:
+        table2: output/venn_vax.csv
+        table2_rounded: output/venn_vax_rounded.csv
