@@ -335,32 +335,32 @@ actions_list <- splice(
            recursive = FALSE
     )
   ),
-  ## Run models ----------------------------------------------------------------
+  # Run models ----------------------------------------------------------------
   # comment("Run models"),
   # 
-  # splice(
-  #   unlist(lapply(1:nrow(active_analyses), 
-  #                 function(x) apply_model_function(name = active_analyses$name[x],
-  #                                                  cohort = active_analyses$cohort[x],
-  #                                                  analysis = active_analyses$analysis[x],
-  #                                                  ipw = active_analyses$ipw[x],
-  #                                                  strata = active_analyses$strata[x],
-  #                                                  covariate_sex = active_analyses$covariate_sex[x],
-  #                                                  covariate_age = active_analyses$covariate_age[x],
-  #                                                  covariate_other = active_analyses$covariate_other[x],
-  #                                                  cox_start = active_analyses$cox_start[x],
-  #                                                  cox_stop = active_analyses$cox_stop[x],
-  #                                                  study_start = active_analyses$study_start[x],
-  #                                                  study_stop = active_analyses$study_stop[x],
-  #                                                  cut_points = active_analyses$cut_points[x],
-  #                                                  controls_per_case = active_analyses$controls_per_case[x],
-  #                                                  total_event_threshold = active_analyses$total_event_threshold[x],
-  #                                                  episode_event_threshold = active_analyses$episode_event_threshold[x],
-  #                                                  covariate_threshold = active_analyses$covariate_threshold[x],
-  #                                                  age_spline = active_analyses$age_spline[x])), recursive = FALSE
-  #   )
-  # ),
-  # 
+   splice(
+    unlist(lapply(1:nrow(active_analyses), 
+                   function(x) apply_model_function(name = active_analyses$name[x],
+                                                   cohort = active_analyses$cohort[x],
+                                                    analysis = active_analyses$analysis[x],
+                                                    ipw = active_analyses$ipw[x],
+                                                    strata = active_analyses$strata[x],
+                                                    covariate_sex = active_analyses$covariate_sex[x],
+                                                    covariate_age = active_analyses$covariate_age[x],
+                                                    covariate_other = active_analyses$covariate_other[x],
+                                                    cox_start = active_analyses$cox_start[x],
+                                                   cox_stop = active_analyses$cox_stop[x],
+                                                    study_start = active_analyses$study_start[x],
+                                                    study_stop = active_analyses$study_stop[x],
+                                                    cut_points = active_analyses$cut_points[x],
+                                                   controls_per_case = active_analyses$controls_per_case[x],
+                                                    total_event_threshold = active_analyses$total_event_threshold[x],
+                                                    episode_event_threshold = active_analyses$episode_event_threshold[x],
+                                                    covariate_threshold = active_analyses$covariate_threshold[x],
+                                                    age_spline = active_analyses$age_spline[x])), recursive = FALSE
+     )
+   ),
+   
   # ## Table 2 -------------------------------------------------------------------
   # 
   # splice(
