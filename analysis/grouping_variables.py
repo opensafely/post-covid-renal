@@ -256,36 +256,36 @@ jcvi_variables = dict(
     ),
 
     # Chronic kidney disease diagnostic codes
-    ckd_group=patients.satisfying(
-        """
-            ckd OR
-            (ckd15_date AND 
-            (ckd35_date >= ckd15_date) OR (ckd35_date AND NOT ckd15_date))
-        """,
-        # Chronic kidney disease codes - all stages
-        ckd15_date=patients.with_these_clinical_events(
-            ckd15_primis,
-            returning="date",
-            find_last_match_in_period=True,
-            on_or_before=days(ref_ar, -1),
-            date_format="YYYY-MM-DD",
-        ),
+#    ckd_group=patients.satisfying(
+#        """
+#            ckd OR
+#            (ckd15_date AND 
+#            (ckd35_date >= ckd15_date) OR (ckd35_date AND NOT ckd15_date))
+#        """,
+#        # Chronic kidney disease codes - all stages
+#        ckd15_date=patients.with_these_clinical_events(
+#            ckd15_primis,
+#            returning="date",
+#            find_last_match_in_period=True,
+#            on_or_before=days(ref_ar, -1),
+#            date_format="YYYY-MM-DD",
+#        ),
         # Chronic kidney disease codes-stages 3 - 5
-        ckd35_date=patients.with_these_clinical_events(
-            ckd35_primis,
-            returning="date",
-            find_last_match_in_period=True,
-            on_or_before=days(ref_ar, -1),
-            date_format="YYYY-MM-DD",
-        ),
+#        ckd35_date=patients.with_these_clinical_events(
+#            ckd35_primis,
+#            returning="date",
+#            find_last_match_in_period=True,
+#            on_or_before=days(ref_ar, -1),
+#            date_format="YYYY-MM-DD",
+#        ),
         # Chronic kidney disease diagnostic codes
-        ckd=patients.with_these_clinical_events(
-            ckd_primis,
-            returning="binary_flag",
-            on_or_before=days(ref_ar, -1),
-        ),
-        return_expectations={"incidence": 0.01},
-    ),
+#        ckd=patients.with_these_clinical_events(
+#            ckd_primis,
+#            returning="binary_flag",
+#            on_or_before=days(ref_ar, -1),
+#        ),
+#        return_expectations={"incidence": 0.01},
+#    ),
 
     # Chronic Liver disease codes
     cld_group=patients.with_these_clinical_events(
@@ -376,7 +376,6 @@ jcvi_variables = dict(
     atrisk_group=patients.satisfying(
              """
              immuno_group OR
-             ckd_group OR
              resp_group OR
              diab_group OR
              cld_group OR

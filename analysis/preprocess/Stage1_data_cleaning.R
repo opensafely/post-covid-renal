@@ -356,6 +356,7 @@ if (cohort == "vax") {
 
 #Apply outcome specific exclusions criteria
 #-------------------------------------------------#
+#Exclude: cov_cat_esrd_history=1
 
 #Remove chronic people with Coeliac, IBD and Cirrhosis
 #input <- input %>% 

@@ -239,10 +239,7 @@ venn <- function(cohort){
 # Define and combine all actions into a list of actions ------------------------
 
 ## combine everything ----
-project_list <- splice(
-  defaults_list,
-  list(actions = actions_list)
-)
+
 actions_list <- splice(
   
   ## Post YAML disclaimer ------------------------------------------------------
@@ -380,20 +377,24 @@ actions_list <- splice(
                   function(x) venn(cohort = x)), 
            recursive = FALSE
     )
-  # ),
-  # 
-  # comment("Stage 6 - make model output"),
-  # 
-  # action(
-  #   name = "make_model_output",
-  #   run = "r:latest analysis/model/make_model_output.R",
-  #   needs = as.list(paste0("cox_ipw-",success$name)),
-  #   moderately_sensitive = list(
-  #     model_output = glue("output/model_output.csv")
-  #   )
+  ),
+   
+   comment("Stage 6 - make model output"),
+   
+   action(
+     name = "make_model_output",
+     run = "r:latest analysis/model/make_model_output.R",
+     needs = as.list(paste0("cox_ipw-",success$name)),
+     moderately_sensitive = list(
+       model_output = glue("output/model_output.csv")
+     )
   ) 
 )
 
+project_list <- splice(
+  defaults_list,
+  list(actions = actions_list)
+)
 
 #####################################################################################
 ## convert list to yaml, reformat comments and white space, and output a .yaml file #
