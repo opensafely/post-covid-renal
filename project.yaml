@@ -3035,7 +3035,6 @@ actions:
     - cox_ipw-cohort_prevax-main-aki
     - cox_ipw-cohort_prevax-sub_covid_hospitalised-aki
     - cox_ipw-cohort_prevax-sub_covid_nonhospitalised-aki
-    - cox_ipw-cohort_prevax-sub_covid_history-aki
     - cox_ipw-cohort_vax-main-aki
     - cox_ipw-cohort_vax-sub_covid_hospitalised-aki
     - cox_ipw-cohort_vax-sub_covid_nonhospitalised-aki
@@ -3047,7 +3046,6 @@ actions:
     - cox_ipw-cohort_prevax-main-ckd
     - cox_ipw-cohort_prevax-sub_covid_hospitalised-ckd
     - cox_ipw-cohort_prevax-sub_covid_nonhospitalised-ckd
-    - cox_ipw-cohort_prevax-sub_covid_history-ckd
     - cox_ipw-cohort_vax-main-ckd
     - cox_ipw-cohort_vax-sub_covid_hospitalised-ckd
     - cox_ipw-cohort_vax-sub_covid_nonhospitalised-ckd
@@ -3059,7 +3057,6 @@ actions:
     - cox_ipw-cohort_prevax-main-esrd
     - cox_ipw-cohort_prevax-sub_covid_hospitalised-esrd
     - cox_ipw-cohort_prevax-sub_covid_nonhospitalised-esrd
-    - cox_ipw-cohort_prevax-sub_covid_history-esrd
     - cox_ipw-cohort_vax-main-esrd
     - cox_ipw-cohort_vax-sub_covid_hospitalised-esrd
     - cox_ipw-cohort_vax-sub_covid_nonhospitalised-esrd
