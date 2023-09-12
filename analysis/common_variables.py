@@ -392,7 +392,7 @@ def generate_common_variables(index_date_variable,exposure_end_date_variable,out
 
 ## Patients with a history of end stage renal disease - to be excluded
         #eGFR<15 to be added as a criteria for ESRD ??
-    cov_bin_esrd = patients.categorised_as(
+    sub_bin_esrd = patients.categorised_as(
         {
             "1": "esrd_snomed OR esrd_icd10 OR dialysis_snomed OR dialysis_icd10 OR kidtrans_snomed OR kidtrans_icd10",  
             "0": "DEFAULT", 
@@ -442,9 +442,9 @@ def generate_common_variables(index_date_variable,exposure_end_date_variable,out
     ),
 
     ## Patients with a history of CKD
-    cov_bin_ckd = patients.categorised_as(
+    sub_bin_ckd = patients.categorised_as(
         {
-            "1": "ckd34_snomed OR ckd34_icd10 OR cov_bin_esrd=1",  
+            "1": "ckd34_snomed OR ckd34_icd10 OR sub_bin_esrd=1",  #do we need to remove the last OR since we are removing those it doesn't matter so much
             "0": "DEFAULT", 
         }, 
         ckd34_snomed=patients.with_these_clinical_events(

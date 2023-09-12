@@ -19,12 +19,11 @@ active_analyses <- active_analyses[order(active_analyses$analysis,active_analyse
 cohorts <- unique(active_analyses$cohort)
 # Determine which outputs are ready --------------------------------------------
 
-success <- readxl::read_excel("../post-covid-outcome-tracker.xlsx",
+success <- readxl::read_excel("C:/Users/ee15592/Documents/post-covid-renal/post-covid-outcome-tracker.xlsx",
                               sheet = "renal",
                               col_types = c("text","text", "text", "text", "text", "text",
                                             "text", "text", "text", "text", "text",
-                                            "text", "text", 
-                                            "text", "text", "text", "text",
+                                            "text", "text", "text" , "text" , "text" , "text",
                                             "skip", "skip"))
 
 success <- tidyr::pivot_longer(success,
@@ -379,7 +378,7 @@ actions_list <- splice(
     )
   ),
    
-   comment("Stage 6 - make model output"),
+  # comment("Stage 6 - make model output"),
    
    action(
      name = "make_model_output",

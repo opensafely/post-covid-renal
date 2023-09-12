@@ -30,10 +30,16 @@ print("Load data")
 
 df <- readr::read_rds(paste0("output/input_",cohort,"_stage1.rds"))
 
+df <- readr::read_rds(paste0("output/input_unvax_stage1.rds")) #testing
+
+
 # Create exposure indicator ----------------------------------------------------
 print("Create exposure indicator")
 
 df$exposed <- !is.na(df$exp_date_covid19_confirmed)
+df$sub_bin_ckd <- !is.na(df$sub_bin_ckd)
+
+# Subset CKD -------------------------------------------------------------------
 
 # Define age groups ------------------------------------------------------------
 print("Define age groups")
@@ -53,13 +59,14 @@ print("Filter data")
 
 df <- df[,c("patient_id",
                   "exposed",
+                  "sub_bin_ckd",
                   "cov_cat_sex",
                   "cov_cat_age_group",
                   "cov_cat_ethnicity",
                   "cov_cat_deprivation",
                   "cov_cat_smoking_status",
                   "cov_cat_region",
-                  "cov_bin_carehome_status")]
+                  "cov_bin_carehome_status")] 
 
 df$All <- "All"
 
@@ -67,13 +74,13 @@ df$All <- "All"
 print("Aggregate data")
 
 df <- tidyr::pivot_longer(df,
-                             cols = setdiff(colnames(df),c("patient_id","exposed")),
+                             cols = setdiff(colnames(df),c("patient_id","exposed", "sub_bin_ckd")),
                              names_to = "characteristic",
                              values_to = "subcharacteristic")
 
 df$total <- 1
 
-df <- aggregate(cbind(total, exposed) ~ characteristic + subcharacteristic, 
+df <- aggregate(cbind(total, exposed, sub_bin_ckd) ~ characteristic + subcharacteristic, 
                    data = df,
                    sum)
 
@@ -207,7 +214,7 @@ df[,setdiff(colnames(df),c("characteristic","subcharacteristic"))] <- lapply(df[
 df$Npercent <- paste0(df$total,ifelse(df$characteristic=="All","",
                                       paste0(" (",round(100*(df$total / df[df$characteristic=="All","total"]),1),"%)")))
 
-df <- df[,c("characteristic","subcharacteristic","Npercent","exposed")]
+df <- df[,c("characteristic","subcharacteristic","Npercent","exposed", "ckd")]
 colnames(df) <- c("Characteristic","Subcharacteristic","N (%)","COVID-19 diagnoses")
 
 # Save Table 1 -----------------------------------------------------------------
