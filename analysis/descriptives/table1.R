@@ -35,6 +35,9 @@ df <- readr::read_rds(paste0("output/input_",cohort,"_stage1.rds"))
 print("Create exposure indicator")
 
 df$exposed <- !is.na(df$exp_date_covid19_confirmed)
+
+#Create CKD cohort flag --------------------------------------------------------
+
 df$sub_bin_ckd <- !is.na(df$sub_bin_ckd)
 
 # Define age groups ------------------------------------------------------------
