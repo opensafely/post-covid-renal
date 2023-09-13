@@ -186,8 +186,10 @@ table1 <- function(cohort){
       arguments = c(cohort),
       needs = list(glue("stage1_data_cleaning_{cohort}")),
       moderately_sensitive = list(
-        table1 = glue("output/table1_{cohort}.csv"),
-        table1_rounded = glue("output/table1_{cohort}_rounded.csv")
+        table1a = glue("output/table1_{cohort}_ckd.csv"),
+        table1b = glue("output/table1_{cohort}_gen.csv"),
+        table1a_rounded = glue("output/table1_{cohort}_ckd_rounded.csv"),
+        table1b_rounded = glue("output/table1_{cohort}_gen_rounded.csv")
       )
     )
   )
