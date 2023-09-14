@@ -340,7 +340,7 @@ print("General population cohort complete")
 # Save Table 1 -----------------------------------------------------------------
 print('Save Table 1')
 
-write.csv(df_ckd, paste0("output/table1_",cohort,"_ckd.csv"), row.names = FALSE)
+write.csv(df_ckd, paste0("output/table1_",cohort,"_histckd.csv"), row.names = FALSE)
 
 print("CKD cohort saved")
 
@@ -382,6 +382,6 @@ colnames(df_gen) <- c("Characteristic","Subcharacteristic","N (%)","COVID-19 dia
 # Save Table 1 -----------------------------------------------------------------
 print('Save rounded Table 1')
 
-write.csv(df_ckd, paste0("output/table1_",cohort,"_ckd_rounded.csv"), row.names = FALSE)
+write.csv(df_ckd, paste0("output/table1_",cohort,"_histckd_rounded.csv"), row.names = FALSE)
 
 write.csv(df_gen, paste0("output/table1_",cohort,"_gen_rounded.csv"), row.names = FALSE)
