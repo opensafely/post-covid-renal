@@ -816,6 +816,18 @@ def generate_common_variables(index_date_variable,exposure_end_date_variable,out
     ),
 
     ### Categorising BMI
+    cov_num_bmi = patients.most_recent_bmi(
+        on_or_before=f"{index_date_variable} - 1 day",
+        minimum_age_at_measurement=18,
+        include_measurement_date=True,
+        date_format="YYYY-MM",
+        return_expectations={
+            "date": {"earliest": "2010-02-01", "latest": "2022-02-01"}, ##How do we obtain these dates ?
+            "float": {"distribution": "normal", "mean": 28, "stddev": 8},
+            "incidence": 0.7,
+        },
+    ),
+
     cov_cat_bmi_groups = patients.categorised_as(
         {
             "Underweight": "cov_num_bmi < 18.5 AND cov_num_bmi > 12", 
@@ -838,7 +850,8 @@ def generate_common_variables(index_date_variable,exposure_end_date_variable,out
         },
         
     ),
-    
+
+
             ## Chronic obstructive pulmonary disease
             
                 ### Primary care
