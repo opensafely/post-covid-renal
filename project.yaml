@@ -190,9 +190,9 @@ actions:
     - stage1_data_cleaning_prevax
     outputs:
       moderately_sensitive:
-        table1a: output/table1_prevax_ckd.csv
+        table1a: output/table1_prevax_histckd.csv
         table1b: output/table1_prevax_gen.csv
-        table1a_rounded: output/table1_prevax_ckd_rounded.csv
+        table1a_rounded: output/table1_prevax_histckd_rounded.csv
         table1b_rounded: output/table1_prevax_gen_rounded.csv
 
   ## Table 1 - unvax 
@@ -203,9 +203,9 @@ actions:
     - stage1_data_cleaning_unvax
     outputs:
       moderately_sensitive:
-        table1a: output/table1_unvax_ckd.csv
+        table1a: output/table1_unvax_histckd.csv
         table1b: output/table1_unvax_gen.csv
-        table1a_rounded: output/table1_unvax_ckd_rounded.csv
+        table1a_rounded: output/table1_unvax_histckd_rounded.csv
         table1b_rounded: output/table1_unvax_gen_rounded.csv
 
   ## Table 1 - vax 
@@ -216,9 +216,9 @@ actions:
     - stage1_data_cleaning_vax
     outputs:
       moderately_sensitive:
-        table1a: output/table1_vax_ckd.csv
+        table1a: output/table1_vax_histckd.csv
         table1b: output/table1_vax_gen.csv
-        table1a_rounded: output/table1_vax_ckd_rounded.csv
+        table1a_rounded: output/table1_vax_histckd_rounded.csv
         table1b_rounded: output/table1_vax_gen_rounded.csv
 
   make_model_input-cohort_prevax-main-aki:
