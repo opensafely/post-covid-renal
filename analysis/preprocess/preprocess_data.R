@@ -65,9 +65,7 @@ message ("Cohort ",cohort_name, " description written successfully!")
 
 #Combine BMI variables to create one history of obesity variable  ---------------
 
-##we don't have cov_cat_bmi_groups in common variables, gastro does if we do need it
-
-#df$cov_bin_obesity <- ifelse(df$cov_bin_obesity == TRUE | 
+df$cov_bin_obesity <- ifelse(df$cov_bin_obesity == TRUE | 
                                #df$cov_cat_bmi_groups=="Obese",TRUE,FALSE)
 #df[,c("cov_num_bmi")] <- NULL
 

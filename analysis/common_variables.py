@@ -815,6 +815,30 @@ def generate_common_variables(index_date_variable,exposure_end_date_variable,out
         "tmp_cov_bin_obesity_snomed", "tmp_cov_bin_obesity_hes",
     ),
 
+    ### Categorising BMI
+    cov_cat_bmi_groups = patients.categorised_as(
+        {
+            "Underweight": "cov_num_bmi < 18.5 AND cov_num_bmi > 12", 
+            "Healthy_weight": "cov_num_bmi >= 18.5 AND cov_num_bmi < 25", 
+            "Overweight": "cov_num_bmi >= 25 AND cov_num_bmi < 30",
+            "Obese": "cov_num_bmi >=30 AND cov_num_bmi <70", 
+            "Missing": "DEFAULT", 
+        }, 
+        return_expectations = {
+            "rate": "universal", 
+            "category": {
+                "ratios": {
+                    "Underweight": 0.05, 
+                    "Healthy_weight": 0.25, 
+                    "Overweight": 0.3,
+                    "Obese": 0.3,
+                    "Missing": 0.1, 
+                }
+            },
+        },
+        
+    ),
+    
             ## Chronic obstructive pulmonary disease
             
                 ### Primary care
