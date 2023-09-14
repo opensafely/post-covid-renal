@@ -19,12 +19,11 @@ active_analyses <- active_analyses[order(active_analyses$analysis,active_analyse
 cohorts <- unique(active_analyses$cohort)
 # Determine which outputs are ready --------------------------------------------
 
-success <- readxl::read_excel("../post-covid-outcome-tracker.xlsx",
+success <- readxl::read_excel("post-covid-outcome-tracker.xlsx",
                               sheet = "renal",
                               col_types = c("text","text", "text", "text", "text", "text",
                                             "text", "text", "text", "text", "text",
-                                            "text", "text", 
-                                            "text", "text", "text", "text",
+                                            "text", "text", "text" , "text" , "text" , "text",
                                             "skip", "skip"))
 
 success <- tidyr::pivot_longer(success,
@@ -187,8 +186,10 @@ table1 <- function(cohort){
       arguments = c(cohort),
       needs = list(glue("stage1_data_cleaning_{cohort}")),
       moderately_sensitive = list(
-        table1 = glue("output/table1_{cohort}.csv"),
-        table1_rounded = glue("output/table1_{cohort}_rounded.csv")
+        table1a = glue("output/table1_{cohort}_histckd.csv"),
+        table1b = glue("output/table1_{cohort}_gen.csv"),
+        table1a_rounded = glue("output/table1_{cohort}_histckd_rounded.csv"),
+        table1b_rounded = glue("output/table1_{cohort}_gen_rounded.csv")
       )
     )
   )
@@ -335,32 +336,32 @@ actions_list <- splice(
            recursive = FALSE
     )
   ),
-  ## Run models ----------------------------------------------------------------
+  # Run models ----------------------------------------------------------------
   # comment("Run models"),
   # 
-  # splice(
-  #   unlist(lapply(1:nrow(active_analyses), 
-  #                 function(x) apply_model_function(name = active_analyses$name[x],
-  #                                                  cohort = active_analyses$cohort[x],
-  #                                                  analysis = active_analyses$analysis[x],
-  #                                                  ipw = active_analyses$ipw[x],
-  #                                                  strata = active_analyses$strata[x],
-  #                                                  covariate_sex = active_analyses$covariate_sex[x],
-  #                                                  covariate_age = active_analyses$covariate_age[x],
-  #                                                  covariate_other = active_analyses$covariate_other[x],
-  #                                                  cox_start = active_analyses$cox_start[x],
-  #                                                  cox_stop = active_analyses$cox_stop[x],
-  #                                                  study_start = active_analyses$study_start[x],
-  #                                                  study_stop = active_analyses$study_stop[x],
-  #                                                  cut_points = active_analyses$cut_points[x],
-  #                                                  controls_per_case = active_analyses$controls_per_case[x],
-  #                                                  total_event_threshold = active_analyses$total_event_threshold[x],
-  #                                                  episode_event_threshold = active_analyses$episode_event_threshold[x],
-  #                                                  covariate_threshold = active_analyses$covariate_threshold[x],
-  #                                                  age_spline = active_analyses$age_spline[x])), recursive = FALSE
-  #   )
-  # ),
-  # 
+   splice(
+    unlist(lapply(1:nrow(active_analyses), 
+                   function(x) apply_model_function(name = active_analyses$name[x],
+                                                   cohort = active_analyses$cohort[x],
+                                                    analysis = active_analyses$analysis[x],
+                                                    ipw = active_analyses$ipw[x],
+                                                    strata = active_analyses$strata[x],
+                                                    covariate_sex = active_analyses$covariate_sex[x],
+                                                    covariate_age = active_analyses$covariate_age[x],
+                                                    covariate_other = active_analyses$covariate_other[x],
+                                                    cox_start = active_analyses$cox_start[x],
+                                                   cox_stop = active_analyses$cox_stop[x],
+                                                    study_start = active_analyses$study_start[x],
+                                                    study_stop = active_analyses$study_stop[x],
+                                                    cut_points = active_analyses$cut_points[x],
+                                                   controls_per_case = active_analyses$controls_per_case[x],
+                                                    total_event_threshold = active_analyses$total_event_threshold[x],
+                                                    episode_event_threshold = active_analyses$episode_event_threshold[x],
+                                                    covariate_threshold = active_analyses$covariate_threshold[x],
+                                                    age_spline = active_analyses$age_spline[x])), recursive = FALSE
+     )
+   ),
+   
   # ## Table 2 -------------------------------------------------------------------
   # 
   # splice(
@@ -379,7 +380,7 @@ actions_list <- splice(
     )
   ),
    
-   comment("Stage 6 - make model output"),
+  # comment("Stage 6 - make model output"),
    
    action(
      name = "make_model_output",

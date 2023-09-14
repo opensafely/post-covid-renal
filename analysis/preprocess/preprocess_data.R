@@ -63,7 +63,7 @@ sink()
 
 message ("Cohort ",cohort_name, " description written successfully!")
 
-#Combine BMI variables to create one history of obesity variable ---------------
+#Combine BMI variables to create one history of obesity variable  ---------------
 
 df$cov_bin_obesity <- ifelse(df$cov_bin_obesity == TRUE | 
                                df$cov_cat_bmi_groups=="Obese",TRUE,FALSE)

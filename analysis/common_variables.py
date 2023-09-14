@@ -392,7 +392,7 @@ def generate_common_variables(index_date_variable,exposure_end_date_variable,out
 
 ## Patients with a history of end stage renal disease - to be excluded
         #eGFR<15 to be added as a criteria for ESRD ??
-    cov_bin_esrd = patients.categorised_as(
+    sub_bin_esrd = patients.categorised_as(
         {
             "1": "esrd_snomed OR esrd_icd10 OR dialysis_snomed OR dialysis_icd10 OR kidtrans_snomed OR kidtrans_icd10",  
             "0": "DEFAULT", 
@@ -442,9 +442,9 @@ def generate_common_variables(index_date_variable,exposure_end_date_variable,out
     ),
 
     ## Patients with a history of CKD
-    cov_bin_ckd = patients.categorised_as(
+    sub_bin_ckd = patients.categorised_as(
         {
-            "1": "ckd34_snomed OR ckd34_icd10 OR cov_bin_esrd=1",  
+            "1": "ckd34_snomed OR ckd34_icd10 OR sub_bin_esrd=1",  #do we need to remove the last OR since we are removing those it doesn't matter so much
             "0": "DEFAULT", 
         }, 
         ckd34_snomed=patients.with_these_clinical_events(
@@ -814,6 +814,43 @@ def generate_common_variables(index_date_variable,exposure_end_date_variable,out
     cov_bin_obesity=patients.maximum_of(
         "tmp_cov_bin_obesity_snomed", "tmp_cov_bin_obesity_hes",
     ),
+
+    ### Categorising BMI
+    cov_num_bmi = patients.most_recent_bmi(
+        on_or_before=f"{index_date_variable} - 1 day",
+        minimum_age_at_measurement=18,
+        include_measurement_date=True,
+        date_format="YYYY-MM",
+        return_expectations={
+            "date": {"earliest": "2010-02-01", "latest": "2022-02-01"}, ##How do we obtain these dates ?
+            "float": {"distribution": "normal", "mean": 28, "stddev": 8},
+            "incidence": 0.7,
+        },
+    ),
+
+    cov_cat_bmi_groups = patients.categorised_as(
+        {
+            "Underweight": "cov_num_bmi < 18.5 AND cov_num_bmi > 12", 
+            "Healthy_weight": "cov_num_bmi >= 18.5 AND cov_num_bmi < 25", 
+            "Overweight": "cov_num_bmi >= 25 AND cov_num_bmi < 30",
+            "Obese": "cov_num_bmi >=30 AND cov_num_bmi <70", 
+            "Missing": "DEFAULT", 
+        }, 
+        return_expectations = {
+            "rate": "universal", 
+            "category": {
+                "ratios": {
+                    "Underweight": 0.05, 
+                    "Healthy_weight": 0.25, 
+                    "Overweight": 0.3,
+                    "Obese": 0.3,
+                    "Missing": 0.1, 
+                }
+            },
+        },
+        
+    ),
+
 
             ## Chronic obstructive pulmonary disease
             

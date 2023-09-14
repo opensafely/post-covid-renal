@@ -356,22 +356,14 @@ if (cohort == "vax") {
 
 #Apply outcome specific exclusions criteria
 #-------------------------------------------------#
-#Exclude: cov_cat_esrd_history=1
+#Exclude: sub_bin_esrd = 1 (Patients with a history of end stage renal disease)
 
-#Remove chronic people with Coeliac, IBD and Cirrhosis
-#input <- input %>% 
-#filter_at(vars(out_bin_crohn, out_bin_cirrhosis,out_bin_coeliac_disease), all_vars(.== FALSE))
+input <- input %>% 
+filter_at(vars(sub_bin_esrd), all_vars(.== FALSE))
 
-#consort[nrow(consort)+1,] <- c("Exclusion criteria: Remove those with prior chronic GI disease (IBD, Crhon and Coeliac)",
-#                              nrow(input))
+consort[nrow(consort)+1,] <- c("Exclusion criteria: Remove those with prior history of end stage renal disease",
+                              nrow(input))
     
-#for appendicitis, exclude those with prior record of appendicitis
-#input <- input %>%
-#mutate(out_date_appendicitis = case_when(
- #                                     (!is.na(out_date_appendicitis) & cov_bin_appendicitis==FALSE) ~ out_date_appendicitis,
-  #                                     TRUE ~ NA_real_))
-    
-#consort[nrow(consort)+1,] <- c( "Exclusion Criteria: Remove those with previous appendicitis from appendicitis events",nrow(input))
 
     
 # Save consort data ------------------------------------------------------------
