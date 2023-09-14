@@ -19,7 +19,7 @@ active_analyses <- active_analyses[order(active_analyses$analysis,active_analyse
 cohorts <- unique(active_analyses$cohort)
 # Determine which outputs are ready --------------------------------------------
 
-success <- readxl::read_excel("C:/Users/ee15592/Documents/post-covid-renal/post-covid-outcome-tracker.xlsx",
+success <- readxl::read_excel("../post-covid-outcome-tracker.xlsx",
                               sheet = "renal",
                               col_types = c("text","text", "text", "text", "text", "text",
                                             "text", "text", "text", "text", "text",
