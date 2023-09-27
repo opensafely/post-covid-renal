@@ -30,6 +30,7 @@ print("Load data")
 
 df <- readr::read_rds(paste0("output/input_",cohort,"_stage1.rds"))
 
+df <- readr::read_rds(paste0("output/input_prevax_stage1.rds"))
 
 # Create exposure indicator ----------------------------------------------------
 print("Create exposure indicator")
@@ -37,8 +38,9 @@ print("Create exposure indicator")
 df$exposed <- !is.na(df$exp_date_covid19_confirmed)
 
 #Create CKD cohort flag --------------------------------------------------------
+# multiplying by 1 makes it a binary and not a logical operator
 
-df$sub_bin_ckd <- !is.na(df$sub_bin_ckd)
+df$sub_bin_ckd = df$sub_bin_ckd * 1
 
 # Define age groups ------------------------------------------------------------
 print("Define age groups")
@@ -54,9 +56,10 @@ df$cov_cat_age_group <- ifelse(df$cov_num_age>=80 & df$cov_num_age<=89, "80-89",
 df$cov_cat_age_group <- ifelse(df$cov_num_age>=90, "90+", df$cov_cat_age_group)
 
 # Filter data and create cohorts -----------------------------------------------
+#using na.omit so that NAs don't make their way into the subsets
 print("Filter data")
 
-df_ckd <- df[df$sub_bin_ckd,c("patient_id",
+df_ckd <- na.omit(df[df$sub_bin_ckd ==1,c("patient_id",
                   "exposed",
                   "cov_cat_sex",
                   "cov_cat_age_group",
@@ -64,9 +67,9 @@ df_ckd <- df[df$sub_bin_ckd,c("patient_id",
                   "cov_cat_deprivation",
                   "cov_cat_smoking_status",
                   "cov_cat_region",
-                  "cov_bin_carehome_status")] 
+                  "cov_bin_carehome_status")]) 
 
-df_gen <- df[!df$sub_bin_ckd,c("patient_id",
+df_gen <- na.omit(df[df$sub_bin_ckd== 0,c("patient_id",
                               "exposed",
                               "cov_cat_sex",
                               "cov_cat_age_group",
@@ -74,7 +77,7 @@ df_gen <- df[!df$sub_bin_ckd,c("patient_id",
                               "cov_cat_deprivation",
                               "cov_cat_smoking_status",
                               "cov_cat_region",
-                              "cov_bin_carehome_status")] 
+                              "cov_bin_carehome_status")]) 
 
 
 df_ckd$All <- "All"
