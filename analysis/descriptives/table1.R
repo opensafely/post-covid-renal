@@ -30,7 +30,7 @@ print("Load data")
 
 df <- readr::read_rds(paste0("output/input_",cohort,"_stage1.rds"))
 
-df <- readr::read_rds(paste0("output/input_prevax_stage1.rds"))
+#df <- readr::read_rds(paste0("output/input_prevax_stage1.rds"))
 
 # Create exposure indicator ----------------------------------------------------
 print("Create exposure indicator")
