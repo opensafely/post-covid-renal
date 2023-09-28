@@ -98,6 +98,14 @@ generate_study_population <- function(cohort){
       highly_sensitive = list(
         cohort = glue("output/input_{cohort}.csv.gz")
       )
+    ),
+    action(
+      name = glue("describe_study_population_{cohort}"),
+      run = glue("r:latest analysis/describe_file.R input_{cohort} csv.gz"),
+      needs = list(glue("generate_study_population_{cohort}")),
+      moderately_sensitive = list(
+        describe_model_input = glue("output/describe-input_{cohort}.txt")
+      )
     )
   )
 }

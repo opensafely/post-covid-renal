@@ -55,6 +55,14 @@ actions:
       highly_sensitive:
         cohort: output/input_prevax.csv.gz
 
+  describe_study_population_prevax:
+    run: r:latest analysis/describe_file.R input_prevax csv.gz
+    needs:
+    - generate_study_population_prevax
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-input_prevax.txt
+
   ## Generate study population - unvax 
 
   generate_study_population_unvax:
@@ -67,6 +75,14 @@ actions:
       highly_sensitive:
         cohort: output/input_unvax.csv.gz
 
+  describe_study_population_unvax:
+    run: r:latest analysis/describe_file.R input_unvax csv.gz
+    needs:
+    - generate_study_population_unvax
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-input_unvax.txt
+
   ## Generate study population - vax 
 
   generate_study_population_vax:
@@ -78,6 +94,14 @@ actions:
     outputs:
       highly_sensitive:
         cohort: output/input_vax.csv.gz
+
+  describe_study_population_vax:
+    run: r:latest analysis/describe_file.R input_vax csv.gz
+    needs:
+    - generate_study_population_vax
+    outputs:
+      moderately_sensitive:
+        describe_model_input: output/describe-input_vax.txt
 
   ## Preprocess data - prevax 
 
