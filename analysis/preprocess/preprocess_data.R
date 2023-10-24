@@ -4,6 +4,8 @@ library(magrittr)
 library(dplyr)
 library(tidyverse)
 library(lubridate)
+library(data.table)
+library(readr)
 
 # Specify command arguments ----------------------------------------------------
 args <- commandArgs(trailingOnly=TRUE)
@@ -18,12 +20,37 @@ if(length(args)==0){
 fs::dir_create(here::here("output", "not-for-review"))
 fs::dir_create(here::here("output", "review"))
 
+input_path<-paste0("output/input_",cohort_name,".csv.gz")
+
+# # Get colnames 
+all_cols <- fread(input_path, header = TRUE, sep = ",", nrows = 0, stringsAsFactors = FALSE)%>%
+  names()
+
+#Get columns types based on their names
+cat_cols <- c("patient_id", grep("_cat", all_cols, value = TRUE))
+bin_cols <- c(grep("_bin", all_cols, value = TRUE), 
+              grep("prostate_cancer_", all_cols, value = TRUE),
+              "has_follow_up_previous_6months", "has_died", "registered_at_start")
+num_cols <- c(grep("_num", all_cols, value = TRUE),
+              grep("vax_jcvi_age_", all_cols, value = TRUE))
+date_cols <- c(grep("_date", all_cols, value = TRUE))
+
+# Set the class of the columns with match to make sure the columns match the type
+col_classes <- setNames(
+  c(rep("c", length(cat_cols)),
+    rep("l", length(bin_cols)),
+    rep("d", length(num_cols)),
+    rep("D", length(date_cols))
+  ), 
+  all_cols[match(c(cat_cols, bin_cols, num_cols, date_cols), all_cols)]
+)
 
 # Read cohort dataset ---------------------------------------------------------- 
 
-df <-  readr::read_csv(file = paste0("output/input_",cohort_name,".csv.gz") )
+df <-  readr::read_csv(input_path,col_types = col_classes )
 
 message(paste0("Dataset has been read successfully with N = ", nrow(df), " rows"))
+print("type of columns:\n")
 
 #Add death_date from prelim data
 prelim_data <- read_csv("output/index_dates.csv.gz") %>%
@@ -38,9 +65,9 @@ message("Death date added!")
 
 df <- df %>%
   mutate(across(c(contains("_date")),
-                ~ floor_date(as.Date(., format="%Y-%m-%d",origin='1970-01-01'), unit = "days")),
+                ~ floor_date(as.Date(., format="%Y-%m-%d",origin="1970-01-01"), unit = "days")),
          across(contains('_birth_year'),
-                ~ format(as.Date(.,origin='1970-01-01'), "%Y")),
+                ~ format(as.Date(.,origin="1970-01-01"), "%Y")),
          across(contains('_num') & !contains('date'), ~ as.numeric(.)),
          across(contains('_cat'), ~ as.factor(.)),
          across(contains('_bin'), ~ as.logical(.)))
