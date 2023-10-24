@@ -36,9 +36,10 @@ print("Create exposure indicator")
 df$exposed <- !is.na(df$exp_date_covid19_confirmed)
 
 #Create CKD cohort flag --------------------------------------------------------
-# multiplying by 1 makes it a binary and not a logical operator
+# multiplying by 1 makes it a binary and not a logical operator 
+#shouldn't need this due to changes in stage1 
 
-df$sub_bin_ckd = df$sub_bin_ckd * 1
+#df$sub_bin_ckd = df$sub_bin_ckd * 1
 
 # Define age groups ------------------------------------------------------------
 print("Define age groups")

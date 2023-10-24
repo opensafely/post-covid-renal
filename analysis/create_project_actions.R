@@ -15,22 +15,22 @@ defaults_list <- list(
 # Define active analyses -------------------------------------------------------
 
 active_analyses <- read_rds("lib/active_analyses.rds")
-active_analyses <- active_analyses[order(active_analyses$analysis,active_analyses$cohort,active_analyses$outcome),]
+active_analyses <- active_analyses[order(active_analyses$analysis,active_analyses$cohort,active_analyses$outcome,active_analyses$ckd_group),]
 cohorts <- unique(active_analyses$cohort)
 # Determine which outputs are ready --------------------------------------------
 
 success <- readxl::read_excel("post-covid-outcome-tracker.xlsx",
                               sheet = "renal",
-                              col_types = c("text","text", "text", "text", "text", "text",
+                              col_types = c("text","text", "text", "text", "text", "text", "text",
                                             "text", "text", "text", "text", "text",
                                             "text", "text", "text" , "text" , "text" , "text",
                                             "skip", "skip"))
 
 success <- tidyr::pivot_longer(success,
-                               cols = setdiff(colnames(success),c("outcome","cohort")),
+                               cols = setdiff(colnames(success),c("outcome","cohort","ckd_group")),
                                names_to = "analysis") 
 
-success$name <- paste0("cohort_",success$cohort, "-",success$analysis, "-",success$outcome)
+success$name <- paste0("cohort_",success$cohort, "-",success$analysis, "-", success$ckd_group, "-",success$outcome)
 
 success <- success[grepl("success",success$value, ignore.case = TRUE),]
 
@@ -160,7 +160,7 @@ apply_model_function <- function(name, cohort, analysis, ipw, strata,
                                  cox_start, cox_stop, study_start, study_stop,
                                  cut_points, controls_per_case,
                                  total_event_threshold, episode_event_threshold,
-                                 covariate_threshold, age_spline){
+                                 covariate_threshold, age_spline, ckd_group){
   
   splice(
     action(
@@ -176,7 +176,7 @@ apply_model_function <- function(name, cohort, analysis, ipw, strata,
     
     action(
       name = glue("cox_ipw-{name}"),
-      run = glue("cox-ipw:v0.0.20 --df_input=model_input-{name}.rds --ipw={ipw} --exposure=exp_date --outcome=out_date --strata={strata} --covariate_sex={covariate_sex} --covariate_age={covariate_age} --covariate_other={covariate_other} --cox_start={cox_start} --cox_stop={cox_stop} --study_start={study_start} --study_stop={study_stop} --cut_points={cut_points} --controls_per_case={controls_per_case} --total_event_threshold={total_event_threshold} --episode_event_threshold={episode_event_threshold} --covariate_threshold={covariate_threshold} --age_spline={age_spline} --df_output=model_output-{name}.csv"),
+      run = glue("cox-ipw:v0.0.20 --df_input=model_input-{name}.rds --ipw={ipw} --exposure=exp_date --outcome=out_date --strata={strata} --covariate_sex={covariate_sex} --covariate_age={covariate_age} --covariate_other={covariate_other} --cox_start={cox_start} --cox_stop={cox_stop} --study_start={study_start} --study_stop={study_stop} --cut_points={cut_points} --controls_per_case={controls_per_case} --total_event_threshold={total_event_threshold} --episode_event_threshold={episode_event_threshold} --covariate_threshold={covariate_threshold} --age_spline={age_spline} -- ckd_group={ckd_group} --df_output=model_output-{name}.csv"),
       needs = list(glue("make_model_input-{name}")),
       moderately_sensitive = list(
         model_output = glue("output/model_output-{name}.csv"))
@@ -225,25 +225,26 @@ table2 <- function(cohort){
 
 # Create function to make Venn data --------------------------------------------
 
-venn <- function(cohort){
+#venn <- function(cohort){
   
-  venn_outcomes <- gsub("out_date_","",unique(active_analyses[active_analyses$cohort=={cohort},]$outcome))
+ # venn_outcomes <- gsub("out_date_","",unique(active_analyses[active_analyses$cohort=={cohort},]$outcome))
+ # venn_ckd_groups <- gsub("out_date_","",unique(active_analyses[active_analyses$cohort=={cohort},]$ckd_group))
   
-  splice(
-    comment(glue("Venn - {cohort}")),
-    action(
-      name = glue("venn_{cohort}"),
-      run = "r:latest analysis/descriptives/venn.R",
-      arguments = c(cohort),
-      needs = c(as.list(glue("preprocess_data_{cohort}")),
-                as.list(paste0(glue("make_model_input-cohort_{cohort}-main-"),venn_outcomes))),
-      moderately_sensitive = list(
-        table2 = glue("output/venn_{cohort}.csv"),
-        table2_rounded = glue("output/venn_{cohort}_rounded.csv")
-      )
-    )
-  )
-}
+  #splice(
+ #   comment(glue("Venn - {cohort}")),
+  #  action(
+   #   name = glue("venn_{cohort}"),
+   #   run = "r:latest analysis/descriptives/venn.R",
+   #   arguments = c(cohort),
+ #     needs = c(as.list(glue("preprocess_data_{cohort}")),
+    #            as.list(paste0(glue("make_model_input-cohort_{cohort}-main-"),venn_ckd_groups,"-",venn_outcomes))),
+  #    moderately_sensitive = list(
+  #      table2 = glue("output/venn_{ckd_group}_{cohort}.csv"),
+   #     table2_rounded = glue("output/venn_{ckd_group}_{cohort}_rounded.csv")
+  #    )
+ #   )
+ # )
+#}
 
 # Define and combine all actions into a list of actions ------------------------
 
@@ -366,6 +367,7 @@ actions_list <- splice(
                                                     total_event_threshold = active_analyses$total_event_threshold[x],
                                                     episode_event_threshold = active_analyses$episode_event_threshold[x],
                                                     covariate_threshold = active_analyses$covariate_threshold[x],
+                                                   ckd_group = active_analyses$ckd_group[x],
                                                     age_spline = active_analyses$age_spline[x])), recursive = FALSE
      )
    ),
@@ -381,12 +383,12 @@ actions_list <- splice(
   # 
   ## Venn data -----------------------------------------------------------------
   
-  splice(
-    unlist(lapply(unique(active_analyses$cohort), 
-                  function(x) venn(cohort = x)), 
-           recursive = FALSE
-    )
-  ),
+ # splice(
+  #  unlist(lapply(unique(active_analyses$cohort), 
+ #                 function(x) venn(cohort = x)), 
+ #          recursive = FALSE
+ #   )
+#  ),
    
   # comment("Stage 6 - make model output"),
    
