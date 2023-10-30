@@ -27,11 +27,11 @@ all_cols <- fread(input_path, header = TRUE, sep = ",", nrows = 0, stringsAsFact
   names()
 
 #Get columns types based on their names
-cat_cols <- c("patient_id", grep("_cat", all_cols, value = TRUE))
+cat_cols <- c(grep("_cat", all_cols, value = TRUE))
 bin_cols <- c(grep("_bin", all_cols, value = TRUE), 
               grep("prostate_cancer_", all_cols, value = TRUE),
               "has_follow_up_previous_6months", "has_died", "registered_at_start")
-num_cols <- c(grep("_num", all_cols, value = TRUE),
+num_cols <- c("patient_id", grep("_num", all_cols, value = TRUE),
               grep("vax_jcvi_age_", all_cols, value = TRUE))
 date_cols <- c(grep("_date", all_cols, value = TRUE))
 
