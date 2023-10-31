@@ -446,8 +446,29 @@
                       df$analysis, "-", df$ckd_group, "-",
                       gsub("out_date_","",df$outcome))
 
-
-
+    ## Remove models where the CKD population doesn't match the outcome
+    
+    #create two dataframes with the unwanted models 
+    #(df2 - ckd history population and ckd outcome)
+    #(df3 - general population and esrd outcome)
+    
+    df2= filter(df, outcome == "out_date_ckd" & ckd_group == "ckd_hist")
+    df3= filter(df, outcome == "out_date_esrd" & ckd_group == "gen")
+    
+    #create a new dataframe using 'anti-join' to only keep the observations
+    #that don't match in the original dataframe
+    
+    df4=dplyr::anti_join(df,df2) #keep those from df that don't match those in df2
+    df4=dplyr::anti_join(df4,df3) #keep those from df4 that don't match those in df3
+    
+    #to save changing further code, consolidate df4 into df
+    
+    df = df4
+    
+    #remove unneeded dfs
+    
+    rm(df2,df3,df4)
+    
     # Check names are unique and save active analyses list -------------------------
 
     if (length(unique(df$name))==nrow(df)) {
