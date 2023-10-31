@@ -296,7 +296,7 @@ def generate_common_variables(index_date_variable,exposure_end_date_variable,out
     ),
 
     tmp_out_date_dialysis_opcs = patients.admitted_to_hospital(
-        with_these_diagnoses=dialysis_opcs,
+        with_these_procedures=dialysis_opcs,
         returning="date_admitted",
         between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
         date_format="YYYY-MM-DD",
@@ -348,7 +348,7 @@ def generate_common_variables(index_date_variable,exposure_end_date_variable,out
     ),
 
     tmp_out_date_kidtrans_opcs = patients.admitted_to_hospital(
-        with_these_diagnoses=kidtrans_opcs,
+        with_these_procedures=kidtrans_opcs,
         returning="date_admitted",
         between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
         date_format="YYYY-MM-DD",
