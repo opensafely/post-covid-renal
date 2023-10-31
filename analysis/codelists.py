@@ -266,21 +266,21 @@ diabetes_gestational_snomed_clinical = codelist_from_csv(
 insulin_snomed_clinical = codelist_from_csv(
      "codelists/opensafely-insulin-medication.csv",
      system="snomed",
-     column="id",
+     column="code",
 )
 
 # Antidiabetic drugs
 antidiabetic_drugs_snomed_clinical = codelist_from_csv(
      "codelists/opensafely-antidiabetic-drugs.csv",
      system="snomed",
-     column="id",
+     column="code",
 )
 
 # Antidiabetic drugs - non metformin
 non_metformin_dmd = codelist_from_csv(
     "codelists/user-r_denholm-non-metformin-antidiabetic-drugs_bristol.csv", 
     system="snomed", 
-    column="id",
+    column="code",
 )
 
 # Prediabetes
@@ -430,12 +430,12 @@ pregnancy_snomed_clinical = codelist_from_csv(
 cocp_dmd = codelist_from_csv(
     "codelists/user-elsie_horne-cocp_dmd.csv",
     system="snomed",
-    column="dmd_id",
+    column="code",
 )
 hrt_dmd = codelist_from_csv(
     "codelists/user-elsie_horne-hrt_dmd.csv",
     system="snomed",
-    column="dmd_id",
+    column="code",
 )
 
  # Hypertension
@@ -447,7 +447,7 @@ hypertension_icd10 = codelist_from_csv(
 hypertension_drugs_dmd = codelist_from_csv(
     "codelists/user-elsie_horne-hypertension_drugs_dmd.csv",
     system="snomed",
-    column="dmd_id",
+    column="code",
 )
 hypertension_snomed_clinical = codelist_from_csv(
     "codelists/nhsd-primary-care-domain-refsets-hyp_cod.csv",
@@ -504,6 +504,12 @@ dialysis_icd10 = codelist_from_csv(
     column="code",
 )
 
+dialysis_opcs = codelist_from_csv(
+    "codelists/user-viyaasan-dialysis-opcs-4.csv",
+    system="icd10",
+    column="code",
+)
+
 kidtrans_snomed = codelist_from_csv(
     "codelists/user-S_Walter-renal-transplant.csv",
     system="snomed",
@@ -512,6 +518,12 @@ kidtrans_snomed = codelist_from_csv(
 
 kidtrans_icd10 = codelist_from_csv(
     "codelists/user-S_Walter-renal-transplant.csv",
+    system="icd10",
+    column="code",
+)
+
+kidtrans_opcs = codelist_from_csv(
+    "codelists/user-viyaasan-kidney-transplant-opcs-4.csv",
     system="icd10",
     column="code",
 )
