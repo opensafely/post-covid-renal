@@ -289,28 +289,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_prevax-main-gen-aki.csv
 
-  make_model_input-cohort_prevax-main-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_prevax-main-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_prevax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_prevax-main-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_prevax-main-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-main-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
-      --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-main-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_prevax-main-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_prevax-main-ckd_hist-ckd.csv
-
   make_model_input-cohort_prevax-main-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-main-gen-ckd
     needs:
@@ -354,28 +332,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_prevax-main-ckd_hist-esrd.csv
-
-  make_model_input-cohort_prevax-main-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_prevax-main-gen-esrd
-    needs:
-    - stage1_data_cleaning_prevax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_prevax-main-gen-esrd.rds
-
-  cox_ipw-cohort_prevax-main-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-main-gen-esrd.rds --ipw=TRUE
-      --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
-      --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-main-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_prevax-main-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_prevax-main-gen-esrd.csv
 
   make_model_input-cohort_unvax-main-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-main-ckd_hist-aki
@@ -421,28 +377,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_unvax-main-gen-aki.csv
 
-  make_model_input-cohort_unvax-main-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_unvax-main-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_unvax-main-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_unvax-main-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-main-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-main-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_unvax-main-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_unvax-main-ckd_hist-ckd.csv
-
   make_model_input-cohort_unvax-main-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-main-gen-ckd
     needs:
@@ -486,28 +420,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_unvax-main-ckd_hist-esrd.csv
-
-  make_model_input-cohort_unvax-main-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_unvax-main-gen-esrd
-    needs:
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_unvax-main-gen-esrd.rds
-
-  cox_ipw-cohort_unvax-main-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-main-gen-esrd.rds --ipw=TRUE
-      --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-main-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_unvax-main-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_unvax-main-gen-esrd.csv
 
   make_model_input-cohort_vax-main-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_vax-main-ckd_hist-aki
@@ -553,28 +465,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_vax-main-gen-aki.csv
 
-  make_model_input-cohort_vax-main-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_vax-main-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_vax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_vax-main-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_vax-main-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-main-ckd_hist-ckd.rds --ipw=TRUE
-      --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-main-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_vax-main-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_vax-main-ckd_hist-ckd.csv
-
   make_model_input-cohort_vax-main-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_vax-main-gen-ckd
     needs:
@@ -618,28 +508,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_vax-main-ckd_hist-esrd.csv
-
-  make_model_input-cohort_vax-main-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_vax-main-gen-esrd
-    needs:
-    - stage1_data_cleaning_vax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_vax-main-gen-esrd.rds
-
-  cox_ipw-cohort_vax-main-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-main-gen-esrd.rds --ipw=TRUE
-      --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-main-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_vax-main-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_vax-main-gen-esrd.csv
 
   make_model_input-cohort_prevax-sub_age_18_39-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_age_18_39-ckd_hist-aki
@@ -685,28 +553,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_prevax-sub_age_18_39-gen-aki.csv
 
-  make_model_input-cohort_prevax-sub_age_18_39-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_age_18_39-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_prevax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_prevax-sub_age_18_39-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_prevax-sub_age_18_39-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_age_18_39-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
-      --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-sub_age_18_39-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_prevax-sub_age_18_39-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_prevax-sub_age_18_39-ckd_hist-ckd.csv
-
   make_model_input-cohort_prevax-sub_age_18_39-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_age_18_39-gen-ckd
     needs:
@@ -750,28 +596,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_prevax-sub_age_18_39-ckd_hist-esrd.csv
-
-  make_model_input-cohort_prevax-sub_age_18_39-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_age_18_39-gen-esrd
-    needs:
-    - stage1_data_cleaning_prevax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_prevax-sub_age_18_39-gen-esrd.rds
-
-  cox_ipw-cohort_prevax-sub_age_18_39-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_age_18_39-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
-      --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-sub_age_18_39-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_prevax-sub_age_18_39-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_prevax-sub_age_18_39-gen-esrd.csv
 
   make_model_input-cohort_unvax-sub_age_18_39-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_age_18_39-ckd_hist-aki
@@ -817,28 +641,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_unvax-sub_age_18_39-gen-aki.csv
 
-  make_model_input-cohort_unvax-sub_age_18_39-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_age_18_39-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_unvax-sub_age_18_39-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_unvax-sub_age_18_39-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_age_18_39-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_age_18_39-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_unvax-sub_age_18_39-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_unvax-sub_age_18_39-ckd_hist-ckd.csv
-
   make_model_input-cohort_unvax-sub_age_18_39-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_age_18_39-gen-ckd
     needs:
@@ -882,28 +684,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_unvax-sub_age_18_39-ckd_hist-esrd.csv
-
-  make_model_input-cohort_unvax-sub_age_18_39-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_age_18_39-gen-esrd
-    needs:
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_unvax-sub_age_18_39-gen-esrd.rds
-
-  cox_ipw-cohort_unvax-sub_age_18_39-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_age_18_39-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_age_18_39-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_unvax-sub_age_18_39-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_unvax-sub_age_18_39-gen-esrd.csv
 
   make_model_input-cohort_vax-sub_age_18_39-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_age_18_39-ckd_hist-aki
@@ -949,28 +729,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_vax-sub_age_18_39-gen-aki.csv
 
-  make_model_input-cohort_vax-sub_age_18_39-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_vax-sub_age_18_39-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_vax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_vax-sub_age_18_39-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_vax-sub_age_18_39-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_age_18_39-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_age_18_39-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_vax-sub_age_18_39-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_vax-sub_age_18_39-ckd_hist-ckd.csv
-
   make_model_input-cohort_vax-sub_age_18_39-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_age_18_39-gen-ckd
     needs:
@@ -1014,28 +772,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_vax-sub_age_18_39-ckd_hist-esrd.csv
-
-  make_model_input-cohort_vax-sub_age_18_39-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_vax-sub_age_18_39-gen-esrd
-    needs:
-    - stage1_data_cleaning_vax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_vax-sub_age_18_39-gen-esrd.rds
-
-  cox_ipw-cohort_vax-sub_age_18_39-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_age_18_39-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_age_18_39-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_vax-sub_age_18_39-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_vax-sub_age_18_39-gen-esrd.csv
 
   make_model_input-cohort_prevax-sub_age_40_59-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_age_40_59-ckd_hist-aki
@@ -1081,28 +817,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_prevax-sub_age_40_59-gen-aki.csv
 
-  make_model_input-cohort_prevax-sub_age_40_59-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_age_40_59-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_prevax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_prevax-sub_age_40_59-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_prevax-sub_age_40_59-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_age_40_59-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
-      --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-sub_age_40_59-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_prevax-sub_age_40_59-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_prevax-sub_age_40_59-ckd_hist-ckd.csv
-
   make_model_input-cohort_prevax-sub_age_40_59-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_age_40_59-gen-ckd
     needs:
@@ -1146,28 +860,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_prevax-sub_age_40_59-ckd_hist-esrd.csv
-
-  make_model_input-cohort_prevax-sub_age_40_59-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_age_40_59-gen-esrd
-    needs:
-    - stage1_data_cleaning_prevax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_prevax-sub_age_40_59-gen-esrd.rds
-
-  cox_ipw-cohort_prevax-sub_age_40_59-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_age_40_59-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
-      --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-sub_age_40_59-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_prevax-sub_age_40_59-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_prevax-sub_age_40_59-gen-esrd.csv
 
   make_model_input-cohort_unvax-sub_age_40_59-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_age_40_59-ckd_hist-aki
@@ -1213,28 +905,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_unvax-sub_age_40_59-gen-aki.csv
 
-  make_model_input-cohort_unvax-sub_age_40_59-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_age_40_59-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_unvax-sub_age_40_59-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_unvax-sub_age_40_59-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_age_40_59-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_age_40_59-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_unvax-sub_age_40_59-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_unvax-sub_age_40_59-ckd_hist-ckd.csv
-
   make_model_input-cohort_unvax-sub_age_40_59-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_age_40_59-gen-ckd
     needs:
@@ -1278,28 +948,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_unvax-sub_age_40_59-ckd_hist-esrd.csv
-
-  make_model_input-cohort_unvax-sub_age_40_59-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_age_40_59-gen-esrd
-    needs:
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_unvax-sub_age_40_59-gen-esrd.rds
-
-  cox_ipw-cohort_unvax-sub_age_40_59-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_age_40_59-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_age_40_59-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_unvax-sub_age_40_59-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_unvax-sub_age_40_59-gen-esrd.csv
 
   make_model_input-cohort_vax-sub_age_40_59-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_age_40_59-ckd_hist-aki
@@ -1345,28 +993,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_vax-sub_age_40_59-gen-aki.csv
 
-  make_model_input-cohort_vax-sub_age_40_59-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_vax-sub_age_40_59-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_vax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_vax-sub_age_40_59-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_vax-sub_age_40_59-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_age_40_59-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_age_40_59-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_vax-sub_age_40_59-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_vax-sub_age_40_59-ckd_hist-ckd.csv
-
   make_model_input-cohort_vax-sub_age_40_59-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_age_40_59-gen-ckd
     needs:
@@ -1410,28 +1036,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_vax-sub_age_40_59-ckd_hist-esrd.csv
-
-  make_model_input-cohort_vax-sub_age_40_59-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_vax-sub_age_40_59-gen-esrd
-    needs:
-    - stage1_data_cleaning_vax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_vax-sub_age_40_59-gen-esrd.rds
-
-  cox_ipw-cohort_vax-sub_age_40_59-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_age_40_59-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_age_40_59-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_vax-sub_age_40_59-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_vax-sub_age_40_59-gen-esrd.csv
 
   make_model_input-cohort_prevax-sub_age_60_79-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_age_60_79-ckd_hist-aki
@@ -1477,28 +1081,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_prevax-sub_age_60_79-gen-aki.csv
 
-  make_model_input-cohort_prevax-sub_age_60_79-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_age_60_79-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_prevax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_prevax-sub_age_60_79-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_prevax-sub_age_60_79-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_age_60_79-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
-      --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-sub_age_60_79-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_prevax-sub_age_60_79-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_prevax-sub_age_60_79-ckd_hist-ckd.csv
-
   make_model_input-cohort_prevax-sub_age_60_79-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_age_60_79-gen-ckd
     needs:
@@ -1542,28 +1124,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_prevax-sub_age_60_79-ckd_hist-esrd.csv
-
-  make_model_input-cohort_prevax-sub_age_60_79-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_age_60_79-gen-esrd
-    needs:
-    - stage1_data_cleaning_prevax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_prevax-sub_age_60_79-gen-esrd.rds
-
-  cox_ipw-cohort_prevax-sub_age_60_79-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_age_60_79-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
-      --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-sub_age_60_79-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_prevax-sub_age_60_79-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_prevax-sub_age_60_79-gen-esrd.csv
 
   make_model_input-cohort_unvax-sub_age_60_79-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_age_60_79-ckd_hist-aki
@@ -1609,28 +1169,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_unvax-sub_age_60_79-gen-aki.csv
 
-  make_model_input-cohort_unvax-sub_age_60_79-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_age_60_79-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_unvax-sub_age_60_79-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_unvax-sub_age_60_79-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_age_60_79-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_age_60_79-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_unvax-sub_age_60_79-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_unvax-sub_age_60_79-ckd_hist-ckd.csv
-
   make_model_input-cohort_unvax-sub_age_60_79-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_age_60_79-gen-ckd
     needs:
@@ -1674,28 +1212,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_unvax-sub_age_60_79-ckd_hist-esrd.csv
-
-  make_model_input-cohort_unvax-sub_age_60_79-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_age_60_79-gen-esrd
-    needs:
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_unvax-sub_age_60_79-gen-esrd.rds
-
-  cox_ipw-cohort_unvax-sub_age_60_79-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_age_60_79-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_age_60_79-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_unvax-sub_age_60_79-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_unvax-sub_age_60_79-gen-esrd.csv
 
   make_model_input-cohort_vax-sub_age_60_79-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_age_60_79-ckd_hist-aki
@@ -1741,28 +1257,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_vax-sub_age_60_79-gen-aki.csv
 
-  make_model_input-cohort_vax-sub_age_60_79-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_vax-sub_age_60_79-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_vax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_vax-sub_age_60_79-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_vax-sub_age_60_79-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_age_60_79-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_age_60_79-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_vax-sub_age_60_79-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_vax-sub_age_60_79-ckd_hist-ckd.csv
-
   make_model_input-cohort_vax-sub_age_60_79-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_age_60_79-gen-ckd
     needs:
@@ -1806,28 +1300,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_vax-sub_age_60_79-ckd_hist-esrd.csv
-
-  make_model_input-cohort_vax-sub_age_60_79-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_vax-sub_age_60_79-gen-esrd
-    needs:
-    - stage1_data_cleaning_vax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_vax-sub_age_60_79-gen-esrd.rds
-
-  cox_ipw-cohort_vax-sub_age_60_79-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_age_60_79-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_age_60_79-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_vax-sub_age_60_79-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_vax-sub_age_60_79-gen-esrd.csv
 
   make_model_input-cohort_prevax-sub_age_80_110-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_age_80_110-ckd_hist-aki
@@ -1873,28 +1345,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_prevax-sub_age_80_110-gen-aki.csv
 
-  make_model_input-cohort_prevax-sub_age_80_110-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_age_80_110-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_prevax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_prevax-sub_age_80_110-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_prevax-sub_age_80_110-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_age_80_110-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
-      --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-sub_age_80_110-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_prevax-sub_age_80_110-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_prevax-sub_age_80_110-ckd_hist-ckd.csv
-
   make_model_input-cohort_prevax-sub_age_80_110-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_age_80_110-gen-ckd
     needs:
@@ -1938,28 +1388,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_prevax-sub_age_80_110-ckd_hist-esrd.csv
-
-  make_model_input-cohort_prevax-sub_age_80_110-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_age_80_110-gen-esrd
-    needs:
-    - stage1_data_cleaning_prevax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_prevax-sub_age_80_110-gen-esrd.rds
-
-  cox_ipw-cohort_prevax-sub_age_80_110-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_age_80_110-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
-      --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-sub_age_80_110-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_prevax-sub_age_80_110-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_prevax-sub_age_80_110-gen-esrd.csv
 
   make_model_input-cohort_unvax-sub_age_80_110-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_age_80_110-ckd_hist-aki
@@ -2005,28 +1433,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_unvax-sub_age_80_110-gen-aki.csv
 
-  make_model_input-cohort_unvax-sub_age_80_110-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_age_80_110-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_unvax-sub_age_80_110-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_unvax-sub_age_80_110-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_age_80_110-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_age_80_110-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_unvax-sub_age_80_110-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_unvax-sub_age_80_110-ckd_hist-ckd.csv
-
   make_model_input-cohort_unvax-sub_age_80_110-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_age_80_110-gen-ckd
     needs:
@@ -2070,28 +1476,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_unvax-sub_age_80_110-ckd_hist-esrd.csv
-
-  make_model_input-cohort_unvax-sub_age_80_110-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_age_80_110-gen-esrd
-    needs:
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_unvax-sub_age_80_110-gen-esrd.rds
-
-  cox_ipw-cohort_unvax-sub_age_80_110-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_age_80_110-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_age_80_110-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_unvax-sub_age_80_110-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_unvax-sub_age_80_110-gen-esrd.csv
 
   make_model_input-cohort_vax-sub_age_80_110-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_age_80_110-ckd_hist-aki
@@ -2137,28 +1521,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_vax-sub_age_80_110-gen-aki.csv
 
-  make_model_input-cohort_vax-sub_age_80_110-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_vax-sub_age_80_110-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_vax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_vax-sub_age_80_110-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_vax-sub_age_80_110-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_age_80_110-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_age_80_110-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_vax-sub_age_80_110-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_vax-sub_age_80_110-ckd_hist-ckd.csv
-
   make_model_input-cohort_vax-sub_age_80_110-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_age_80_110-gen-ckd
     needs:
@@ -2202,28 +1564,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_vax-sub_age_80_110-ckd_hist-esrd.csv
-
-  make_model_input-cohort_vax-sub_age_80_110-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_vax-sub_age_80_110-gen-esrd
-    needs:
-    - stage1_data_cleaning_vax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_vax-sub_age_80_110-gen-esrd.rds
-
-  cox_ipw-cohort_vax-sub_age_80_110-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_age_80_110-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_age_80_110-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_vax-sub_age_80_110-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_vax-sub_age_80_110-gen-esrd.csv
 
   make_model_input-cohort_unvax-sub_covid_history-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_history-ckd_hist-aki
@@ -2269,28 +1609,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_unvax-sub_covid_history-gen-aki.csv
 
-  make_model_input-cohort_unvax-sub_covid_history-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_history-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_unvax-sub_covid_history-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_unvax-sub_covid_history-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_history-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_covid_history-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_unvax-sub_covid_history-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_unvax-sub_covid_history-ckd_hist-ckd.csv
-
   make_model_input-cohort_unvax-sub_covid_history-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_history-gen-ckd
     needs:
@@ -2334,28 +1652,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_unvax-sub_covid_history-ckd_hist-esrd.csv
-
-  make_model_input-cohort_unvax-sub_covid_history-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_history-gen-esrd
-    needs:
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_unvax-sub_covid_history-gen-esrd.rds
-
-  cox_ipw-cohort_unvax-sub_covid_history-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_history-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_covid_history-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_unvax-sub_covid_history-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_unvax-sub_covid_history-gen-esrd.csv
 
   make_model_input-cohort_vax-sub_covid_history-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_history-ckd_hist-aki
@@ -2401,28 +1697,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_vax-sub_covid_history-gen-aki.csv
 
-  make_model_input-cohort_vax-sub_covid_history-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_history-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_vax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_vax-sub_covid_history-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_vax-sub_covid_history-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_history-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_covid_history-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_vax-sub_covid_history-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_vax-sub_covid_history-ckd_hist-ckd.csv
-
   make_model_input-cohort_vax-sub_covid_history-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_history-gen-ckd
     needs:
@@ -2466,28 +1740,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_vax-sub_covid_history-ckd_hist-esrd.csv
-
-  make_model_input-cohort_vax-sub_covid_history-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_history-gen-esrd
-    needs:
-    - stage1_data_cleaning_vax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_vax-sub_covid_history-gen-esrd.rds
-
-  cox_ipw-cohort_vax-sub_covid_history-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_history-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_covid_history-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_vax-sub_covid_history-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_vax-sub_covid_history-gen-esrd.csv
 
   make_model_input-cohort_prevax-sub_covid_hospitalised-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_covid_hospitalised-ckd_hist-aki
@@ -2533,28 +1785,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_prevax-sub_covid_hospitalised-gen-aki.csv
 
-  make_model_input-cohort_prevax-sub_covid_hospitalised-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_covid_hospitalised-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_prevax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_prevax-sub_covid_hospitalised-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_prevax-sub_covid_hospitalised-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
-      --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-sub_covid_hospitalised-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_prevax-sub_covid_hospitalised-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_prevax-sub_covid_hospitalised-ckd_hist-ckd.csv
-
   make_model_input-cohort_prevax-sub_covid_hospitalised-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_covid_hospitalised-gen-ckd
     needs:
@@ -2598,28 +1828,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_prevax-sub_covid_hospitalised-ckd_hist-esrd.csv
-
-  make_model_input-cohort_prevax-sub_covid_hospitalised-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_covid_hospitalised-gen-esrd
-    needs:
-    - stage1_data_cleaning_prevax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_prevax-sub_covid_hospitalised-gen-esrd.rds
-
-  cox_ipw-cohort_prevax-sub_covid_hospitalised-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
-      --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-sub_covid_hospitalised-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_prevax-sub_covid_hospitalised-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_prevax-sub_covid_hospitalised-gen-esrd.csv
 
   make_model_input-cohort_unvax-sub_covid_hospitalised-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_hospitalised-ckd_hist-aki
@@ -2665,28 +1873,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_unvax-sub_covid_hospitalised-gen-aki.csv
 
-  make_model_input-cohort_unvax-sub_covid_hospitalised-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_hospitalised-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_unvax-sub_covid_hospitalised-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_unvax-sub_covid_hospitalised-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_hospitalised-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_covid_hospitalised-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_unvax-sub_covid_hospitalised-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_unvax-sub_covid_hospitalised-ckd_hist-ckd.csv
-
   make_model_input-cohort_unvax-sub_covid_hospitalised-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_hospitalised-gen-ckd
     needs:
@@ -2730,28 +1916,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_unvax-sub_covid_hospitalised-ckd_hist-esrd.csv
-
-  make_model_input-cohort_unvax-sub_covid_hospitalised-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_hospitalised-gen-esrd
-    needs:
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_unvax-sub_covid_hospitalised-gen-esrd.rds
-
-  cox_ipw-cohort_unvax-sub_covid_hospitalised-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_hospitalised-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_covid_hospitalised-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_unvax-sub_covid_hospitalised-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_unvax-sub_covid_hospitalised-gen-esrd.csv
 
   make_model_input-cohort_vax-sub_covid_hospitalised-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_hospitalised-ckd_hist-aki
@@ -2797,28 +1961,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_vax-sub_covid_hospitalised-gen-aki.csv
 
-  make_model_input-cohort_vax-sub_covid_hospitalised-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_hospitalised-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_vax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_vax-sub_covid_hospitalised-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_vax-sub_covid_hospitalised-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_hospitalised-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_covid_hospitalised-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_vax-sub_covid_hospitalised-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_vax-sub_covid_hospitalised-ckd_hist-ckd.csv
-
   make_model_input-cohort_vax-sub_covid_hospitalised-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_hospitalised-gen-ckd
     needs:
@@ -2862,28 +2004,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_vax-sub_covid_hospitalised-ckd_hist-esrd.csv
-
-  make_model_input-cohort_vax-sub_covid_hospitalised-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_hospitalised-gen-esrd
-    needs:
-    - stage1_data_cleaning_vax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_vax-sub_covid_hospitalised-gen-esrd.rds
-
-  cox_ipw-cohort_vax-sub_covid_hospitalised-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_hospitalised-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_covid_hospitalised-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_vax-sub_covid_hospitalised-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_vax-sub_covid_hospitalised-gen-esrd.csv
 
   make_model_input-cohort_prevax-sub_covid_nonhospitalised-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_covid_nonhospitalised-ckd_hist-aki
@@ -2929,28 +2049,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_prevax-sub_covid_nonhospitalised-gen-aki.csv
 
-  make_model_input-cohort_prevax-sub_covid_nonhospitalised-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_covid_nonhospitalised-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_prevax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_prevax-sub_covid_nonhospitalised-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_prevax-sub_covid_nonhospitalised-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
-      --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-sub_covid_nonhospitalised-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_prevax-sub_covid_nonhospitalised-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_prevax-sub_covid_nonhospitalised-ckd_hist-ckd.csv
-
   make_model_input-cohort_prevax-sub_covid_nonhospitalised-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_covid_nonhospitalised-gen-ckd
     needs:
@@ -2994,28 +2092,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_prevax-sub_covid_nonhospitalised-ckd_hist-esrd.csv
-
-  make_model_input-cohort_prevax-sub_covid_nonhospitalised-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_covid_nonhospitalised-gen-esrd
-    needs:
-    - stage1_data_cleaning_prevax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_prevax-sub_covid_nonhospitalised-gen-esrd.rds
-
-  cox_ipw-cohort_prevax-sub_covid_nonhospitalised-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_covid_nonhospitalised-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
-      --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-sub_covid_nonhospitalised-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_prevax-sub_covid_nonhospitalised-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_prevax-sub_covid_nonhospitalised-gen-esrd.csv
 
   make_model_input-cohort_unvax-sub_covid_nonhospitalised-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_nonhospitalised-ckd_hist-aki
@@ -3061,28 +2137,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_unvax-sub_covid_nonhospitalised-gen-aki.csv
 
-  make_model_input-cohort_unvax-sub_covid_nonhospitalised-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_nonhospitalised-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_unvax-sub_covid_nonhospitalised-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_unvax-sub_covid_nonhospitalised-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_nonhospitalised-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_covid_nonhospitalised-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_unvax-sub_covid_nonhospitalised-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_unvax-sub_covid_nonhospitalised-ckd_hist-ckd.csv
-
   make_model_input-cohort_unvax-sub_covid_nonhospitalised-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_nonhospitalised-gen-ckd
     needs:
@@ -3126,28 +2180,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_unvax-sub_covid_nonhospitalised-ckd_hist-esrd.csv
-
-  make_model_input-cohort_unvax-sub_covid_nonhospitalised-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_nonhospitalised-gen-esrd
-    needs:
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_unvax-sub_covid_nonhospitalised-gen-esrd.rds
-
-  cox_ipw-cohort_unvax-sub_covid_nonhospitalised-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_covid_nonhospitalised-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_covid_nonhospitalised-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_unvax-sub_covid_nonhospitalised-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_unvax-sub_covid_nonhospitalised-gen-esrd.csv
 
   make_model_input-cohort_vax-sub_covid_nonhospitalised-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_nonhospitalised-ckd_hist-aki
@@ -3193,28 +2225,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_vax-sub_covid_nonhospitalised-gen-aki.csv
 
-  make_model_input-cohort_vax-sub_covid_nonhospitalised-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_nonhospitalised-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_vax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_vax-sub_covid_nonhospitalised-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_vax-sub_covid_nonhospitalised-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_nonhospitalised-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_covid_nonhospitalised-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_vax-sub_covid_nonhospitalised-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_vax-sub_covid_nonhospitalised-ckd_hist-ckd.csv
-
   make_model_input-cohort_vax-sub_covid_nonhospitalised-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_nonhospitalised-gen-ckd
     needs:
@@ -3258,28 +2268,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_vax-sub_covid_nonhospitalised-ckd_hist-esrd.csv
-
-  make_model_input-cohort_vax-sub_covid_nonhospitalised-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_nonhospitalised-gen-esrd
-    needs:
-    - stage1_data_cleaning_vax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_vax-sub_covid_nonhospitalised-gen-esrd.rds
-
-  cox_ipw-cohort_vax-sub_covid_nonhospitalised-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_covid_nonhospitalised-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_covid_nonhospitalised-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_vax-sub_covid_nonhospitalised-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_vax-sub_covid_nonhospitalised-gen-esrd.csv
 
   make_model_input-cohort_prevax-sub_ethnicity_asian-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_ethnicity_asian-ckd_hist-aki
@@ -3325,28 +2313,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_prevax-sub_ethnicity_asian-gen-aki.csv
 
-  make_model_input-cohort_prevax-sub_ethnicity_asian-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_ethnicity_asian-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_prevax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_prevax-sub_ethnicity_asian-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_prevax-sub_ethnicity_asian-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_ethnicity_asian-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
-      --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-sub_ethnicity_asian-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_prevax-sub_ethnicity_asian-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_prevax-sub_ethnicity_asian-ckd_hist-ckd.csv
-
   make_model_input-cohort_prevax-sub_ethnicity_asian-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_ethnicity_asian-gen-ckd
     needs:
@@ -3390,28 +2356,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_prevax-sub_ethnicity_asian-ckd_hist-esrd.csv
-
-  make_model_input-cohort_prevax-sub_ethnicity_asian-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_ethnicity_asian-gen-esrd
-    needs:
-    - stage1_data_cleaning_prevax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_prevax-sub_ethnicity_asian-gen-esrd.rds
-
-  cox_ipw-cohort_prevax-sub_ethnicity_asian-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_ethnicity_asian-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
-      --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-sub_ethnicity_asian-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_prevax-sub_ethnicity_asian-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_prevax-sub_ethnicity_asian-gen-esrd.csv
 
   make_model_input-cohort_unvax-sub_ethnicity_asian-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_ethnicity_asian-ckd_hist-aki
@@ -3457,28 +2401,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_unvax-sub_ethnicity_asian-gen-aki.csv
 
-  make_model_input-cohort_unvax-sub_ethnicity_asian-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_ethnicity_asian-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_unvax-sub_ethnicity_asian-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_unvax-sub_ethnicity_asian-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_ethnicity_asian-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_ethnicity_asian-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_unvax-sub_ethnicity_asian-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_unvax-sub_ethnicity_asian-ckd_hist-ckd.csv
-
   make_model_input-cohort_unvax-sub_ethnicity_asian-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_ethnicity_asian-gen-ckd
     needs:
@@ -3522,28 +2444,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_unvax-sub_ethnicity_asian-ckd_hist-esrd.csv
-
-  make_model_input-cohort_unvax-sub_ethnicity_asian-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_ethnicity_asian-gen-esrd
-    needs:
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_unvax-sub_ethnicity_asian-gen-esrd.rds
-
-  cox_ipw-cohort_unvax-sub_ethnicity_asian-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_ethnicity_asian-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_ethnicity_asian-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_unvax-sub_ethnicity_asian-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_unvax-sub_ethnicity_asian-gen-esrd.csv
 
   make_model_input-cohort_vax-sub_ethnicity_asian-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_ethnicity_asian-ckd_hist-aki
@@ -3589,28 +2489,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_vax-sub_ethnicity_asian-gen-aki.csv
 
-  make_model_input-cohort_vax-sub_ethnicity_asian-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_vax-sub_ethnicity_asian-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_vax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_vax-sub_ethnicity_asian-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_vax-sub_ethnicity_asian-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_ethnicity_asian-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_ethnicity_asian-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_vax-sub_ethnicity_asian-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_vax-sub_ethnicity_asian-ckd_hist-ckd.csv
-
   make_model_input-cohort_vax-sub_ethnicity_asian-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_ethnicity_asian-gen-ckd
     needs:
@@ -3654,28 +2532,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_vax-sub_ethnicity_asian-ckd_hist-esrd.csv
-
-  make_model_input-cohort_vax-sub_ethnicity_asian-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_vax-sub_ethnicity_asian-gen-esrd
-    needs:
-    - stage1_data_cleaning_vax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_vax-sub_ethnicity_asian-gen-esrd.rds
-
-  cox_ipw-cohort_vax-sub_ethnicity_asian-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_ethnicity_asian-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_ethnicity_asian-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_vax-sub_ethnicity_asian-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_vax-sub_ethnicity_asian-gen-esrd.csv
 
   make_model_input-cohort_prevax-sub_ethnicity_black-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_ethnicity_black-ckd_hist-aki
@@ -3721,28 +2577,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_prevax-sub_ethnicity_black-gen-aki.csv
 
-  make_model_input-cohort_prevax-sub_ethnicity_black-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_ethnicity_black-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_prevax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_prevax-sub_ethnicity_black-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_prevax-sub_ethnicity_black-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_ethnicity_black-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
-      --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-sub_ethnicity_black-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_prevax-sub_ethnicity_black-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_prevax-sub_ethnicity_black-ckd_hist-ckd.csv
-
   make_model_input-cohort_prevax-sub_ethnicity_black-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_ethnicity_black-gen-ckd
     needs:
@@ -3786,28 +2620,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_prevax-sub_ethnicity_black-ckd_hist-esrd.csv
-
-  make_model_input-cohort_prevax-sub_ethnicity_black-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_ethnicity_black-gen-esrd
-    needs:
-    - stage1_data_cleaning_prevax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_prevax-sub_ethnicity_black-gen-esrd.rds
-
-  cox_ipw-cohort_prevax-sub_ethnicity_black-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_ethnicity_black-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
-      --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-sub_ethnicity_black-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_prevax-sub_ethnicity_black-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_prevax-sub_ethnicity_black-gen-esrd.csv
 
   make_model_input-cohort_unvax-sub_ethnicity_black-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_ethnicity_black-ckd_hist-aki
@@ -3853,28 +2665,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_unvax-sub_ethnicity_black-gen-aki.csv
 
-  make_model_input-cohort_unvax-sub_ethnicity_black-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_ethnicity_black-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_unvax-sub_ethnicity_black-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_unvax-sub_ethnicity_black-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_ethnicity_black-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_ethnicity_black-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_unvax-sub_ethnicity_black-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_unvax-sub_ethnicity_black-ckd_hist-ckd.csv
-
   make_model_input-cohort_unvax-sub_ethnicity_black-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_ethnicity_black-gen-ckd
     needs:
@@ -3918,28 +2708,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_unvax-sub_ethnicity_black-ckd_hist-esrd.csv
-
-  make_model_input-cohort_unvax-sub_ethnicity_black-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_ethnicity_black-gen-esrd
-    needs:
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_unvax-sub_ethnicity_black-gen-esrd.rds
-
-  cox_ipw-cohort_unvax-sub_ethnicity_black-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_ethnicity_black-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_ethnicity_black-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_unvax-sub_ethnicity_black-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_unvax-sub_ethnicity_black-gen-esrd.csv
 
   make_model_input-cohort_vax-sub_ethnicity_black-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_ethnicity_black-ckd_hist-aki
@@ -3985,28 +2753,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_vax-sub_ethnicity_black-gen-aki.csv
 
-  make_model_input-cohort_vax-sub_ethnicity_black-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_vax-sub_ethnicity_black-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_vax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_vax-sub_ethnicity_black-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_vax-sub_ethnicity_black-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_ethnicity_black-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_ethnicity_black-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_vax-sub_ethnicity_black-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_vax-sub_ethnicity_black-ckd_hist-ckd.csv
-
   make_model_input-cohort_vax-sub_ethnicity_black-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_ethnicity_black-gen-ckd
     needs:
@@ -4050,28 +2796,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_vax-sub_ethnicity_black-ckd_hist-esrd.csv
-
-  make_model_input-cohort_vax-sub_ethnicity_black-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_vax-sub_ethnicity_black-gen-esrd
-    needs:
-    - stage1_data_cleaning_vax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_vax-sub_ethnicity_black-gen-esrd.rds
-
-  cox_ipw-cohort_vax-sub_ethnicity_black-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_ethnicity_black-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_ethnicity_black-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_vax-sub_ethnicity_black-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_vax-sub_ethnicity_black-gen-esrd.csv
 
   make_model_input-cohort_prevax-sub_ethnicity_mixed-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_ethnicity_mixed-ckd_hist-aki
@@ -4117,28 +2841,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_prevax-sub_ethnicity_mixed-gen-aki.csv
 
-  make_model_input-cohort_prevax-sub_ethnicity_mixed-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_ethnicity_mixed-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_prevax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_prevax-sub_ethnicity_mixed-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_prevax-sub_ethnicity_mixed-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_ethnicity_mixed-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
-      --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-sub_ethnicity_mixed-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_prevax-sub_ethnicity_mixed-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_prevax-sub_ethnicity_mixed-ckd_hist-ckd.csv
-
   make_model_input-cohort_prevax-sub_ethnicity_mixed-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_ethnicity_mixed-gen-ckd
     needs:
@@ -4182,28 +2884,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_prevax-sub_ethnicity_mixed-ckd_hist-esrd.csv
-
-  make_model_input-cohort_prevax-sub_ethnicity_mixed-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_ethnicity_mixed-gen-esrd
-    needs:
-    - stage1_data_cleaning_prevax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_prevax-sub_ethnicity_mixed-gen-esrd.rds
-
-  cox_ipw-cohort_prevax-sub_ethnicity_mixed-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_ethnicity_mixed-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
-      --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-sub_ethnicity_mixed-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_prevax-sub_ethnicity_mixed-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_prevax-sub_ethnicity_mixed-gen-esrd.csv
 
   make_model_input-cohort_unvax-sub_ethnicity_mixed-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_ethnicity_mixed-ckd_hist-aki
@@ -4249,28 +2929,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_unvax-sub_ethnicity_mixed-gen-aki.csv
 
-  make_model_input-cohort_unvax-sub_ethnicity_mixed-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_ethnicity_mixed-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_unvax-sub_ethnicity_mixed-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_unvax-sub_ethnicity_mixed-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_ethnicity_mixed-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_ethnicity_mixed-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_unvax-sub_ethnicity_mixed-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_unvax-sub_ethnicity_mixed-ckd_hist-ckd.csv
-
   make_model_input-cohort_unvax-sub_ethnicity_mixed-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_ethnicity_mixed-gen-ckd
     needs:
@@ -4314,28 +2972,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_unvax-sub_ethnicity_mixed-ckd_hist-esrd.csv
-
-  make_model_input-cohort_unvax-sub_ethnicity_mixed-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_ethnicity_mixed-gen-esrd
-    needs:
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_unvax-sub_ethnicity_mixed-gen-esrd.rds
-
-  cox_ipw-cohort_unvax-sub_ethnicity_mixed-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_ethnicity_mixed-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_ethnicity_mixed-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_unvax-sub_ethnicity_mixed-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_unvax-sub_ethnicity_mixed-gen-esrd.csv
 
   make_model_input-cohort_vax-sub_ethnicity_mixed-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_ethnicity_mixed-ckd_hist-aki
@@ -4381,28 +3017,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_vax-sub_ethnicity_mixed-gen-aki.csv
 
-  make_model_input-cohort_vax-sub_ethnicity_mixed-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_vax-sub_ethnicity_mixed-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_vax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_vax-sub_ethnicity_mixed-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_vax-sub_ethnicity_mixed-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_ethnicity_mixed-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_ethnicity_mixed-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_vax-sub_ethnicity_mixed-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_vax-sub_ethnicity_mixed-ckd_hist-ckd.csv
-
   make_model_input-cohort_vax-sub_ethnicity_mixed-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_ethnicity_mixed-gen-ckd
     needs:
@@ -4446,28 +3060,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_vax-sub_ethnicity_mixed-ckd_hist-esrd.csv
-
-  make_model_input-cohort_vax-sub_ethnicity_mixed-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_vax-sub_ethnicity_mixed-gen-esrd
-    needs:
-    - stage1_data_cleaning_vax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_vax-sub_ethnicity_mixed-gen-esrd.rds
-
-  cox_ipw-cohort_vax-sub_ethnicity_mixed-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_ethnicity_mixed-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_ethnicity_mixed-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_vax-sub_ethnicity_mixed-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_vax-sub_ethnicity_mixed-gen-esrd.csv
 
   make_model_input-cohort_prevax-sub_ethnicity_other-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_ethnicity_other-ckd_hist-aki
@@ -4513,28 +3105,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_prevax-sub_ethnicity_other-gen-aki.csv
 
-  make_model_input-cohort_prevax-sub_ethnicity_other-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_ethnicity_other-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_prevax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_prevax-sub_ethnicity_other-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_prevax-sub_ethnicity_other-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_ethnicity_other-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
-      --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-sub_ethnicity_other-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_prevax-sub_ethnicity_other-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_prevax-sub_ethnicity_other-ckd_hist-ckd.csv
-
   make_model_input-cohort_prevax-sub_ethnicity_other-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_ethnicity_other-gen-ckd
     needs:
@@ -4578,28 +3148,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_prevax-sub_ethnicity_other-ckd_hist-esrd.csv
-
-  make_model_input-cohort_prevax-sub_ethnicity_other-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_ethnicity_other-gen-esrd
-    needs:
-    - stage1_data_cleaning_prevax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_prevax-sub_ethnicity_other-gen-esrd.rds
-
-  cox_ipw-cohort_prevax-sub_ethnicity_other-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_ethnicity_other-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
-      --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-sub_ethnicity_other-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_prevax-sub_ethnicity_other-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_prevax-sub_ethnicity_other-gen-esrd.csv
 
   make_model_input-cohort_unvax-sub_ethnicity_other-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_ethnicity_other-ckd_hist-aki
@@ -4645,28 +3193,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_unvax-sub_ethnicity_other-gen-aki.csv
 
-  make_model_input-cohort_unvax-sub_ethnicity_other-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_ethnicity_other-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_unvax-sub_ethnicity_other-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_unvax-sub_ethnicity_other-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_ethnicity_other-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_ethnicity_other-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_unvax-sub_ethnicity_other-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_unvax-sub_ethnicity_other-ckd_hist-ckd.csv
-
   make_model_input-cohort_unvax-sub_ethnicity_other-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_ethnicity_other-gen-ckd
     needs:
@@ -4710,28 +3236,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_unvax-sub_ethnicity_other-ckd_hist-esrd.csv
-
-  make_model_input-cohort_unvax-sub_ethnicity_other-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_ethnicity_other-gen-esrd
-    needs:
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_unvax-sub_ethnicity_other-gen-esrd.rds
-
-  cox_ipw-cohort_unvax-sub_ethnicity_other-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_ethnicity_other-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_ethnicity_other-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_unvax-sub_ethnicity_other-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_unvax-sub_ethnicity_other-gen-esrd.csv
 
   make_model_input-cohort_vax-sub_ethnicity_other-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_ethnicity_other-ckd_hist-aki
@@ -4777,28 +3281,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_vax-sub_ethnicity_other-gen-aki.csv
 
-  make_model_input-cohort_vax-sub_ethnicity_other-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_vax-sub_ethnicity_other-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_vax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_vax-sub_ethnicity_other-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_vax-sub_ethnicity_other-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_ethnicity_other-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_ethnicity_other-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_vax-sub_ethnicity_other-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_vax-sub_ethnicity_other-ckd_hist-ckd.csv
-
   make_model_input-cohort_vax-sub_ethnicity_other-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_ethnicity_other-gen-ckd
     needs:
@@ -4842,28 +3324,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_vax-sub_ethnicity_other-ckd_hist-esrd.csv
-
-  make_model_input-cohort_vax-sub_ethnicity_other-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_vax-sub_ethnicity_other-gen-esrd
-    needs:
-    - stage1_data_cleaning_vax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_vax-sub_ethnicity_other-gen-esrd.rds
-
-  cox_ipw-cohort_vax-sub_ethnicity_other-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_ethnicity_other-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_ethnicity_other-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_vax-sub_ethnicity_other-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_vax-sub_ethnicity_other-gen-esrd.csv
 
   make_model_input-cohort_prevax-sub_ethnicity_white-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_ethnicity_white-ckd_hist-aki
@@ -4909,28 +3369,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_prevax-sub_ethnicity_white-gen-aki.csv
 
-  make_model_input-cohort_prevax-sub_ethnicity_white-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_ethnicity_white-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_prevax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_prevax-sub_ethnicity_white-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_prevax-sub_ethnicity_white-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_ethnicity_white-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
-      --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-sub_ethnicity_white-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_prevax-sub_ethnicity_white-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_prevax-sub_ethnicity_white-ckd_hist-ckd.csv
-
   make_model_input-cohort_prevax-sub_ethnicity_white-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_ethnicity_white-gen-ckd
     needs:
@@ -4974,28 +3412,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_prevax-sub_ethnicity_white-ckd_hist-esrd.csv
-
-  make_model_input-cohort_prevax-sub_ethnicity_white-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_ethnicity_white-gen-esrd
-    needs:
-    - stage1_data_cleaning_prevax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_prevax-sub_ethnicity_white-gen-esrd.rds
-
-  cox_ipw-cohort_prevax-sub_ethnicity_white-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_ethnicity_white-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
-      --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-sub_ethnicity_white-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_prevax-sub_ethnicity_white-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_prevax-sub_ethnicity_white-gen-esrd.csv
 
   make_model_input-cohort_unvax-sub_ethnicity_white-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_ethnicity_white-ckd_hist-aki
@@ -5041,28 +3457,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_unvax-sub_ethnicity_white-gen-aki.csv
 
-  make_model_input-cohort_unvax-sub_ethnicity_white-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_ethnicity_white-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_unvax-sub_ethnicity_white-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_unvax-sub_ethnicity_white-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_ethnicity_white-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_ethnicity_white-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_unvax-sub_ethnicity_white-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_unvax-sub_ethnicity_white-ckd_hist-ckd.csv
-
   make_model_input-cohort_unvax-sub_ethnicity_white-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_ethnicity_white-gen-ckd
     needs:
@@ -5106,28 +3500,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_unvax-sub_ethnicity_white-ckd_hist-esrd.csv
-
-  make_model_input-cohort_unvax-sub_ethnicity_white-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_ethnicity_white-gen-esrd
-    needs:
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_unvax-sub_ethnicity_white-gen-esrd.rds
-
-  cox_ipw-cohort_unvax-sub_ethnicity_white-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_ethnicity_white-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_ethnicity_white-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_unvax-sub_ethnicity_white-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_unvax-sub_ethnicity_white-gen-esrd.csv
 
   make_model_input-cohort_vax-sub_ethnicity_white-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_ethnicity_white-ckd_hist-aki
@@ -5173,28 +3545,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_vax-sub_ethnicity_white-gen-aki.csv
 
-  make_model_input-cohort_vax-sub_ethnicity_white-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_vax-sub_ethnicity_white-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_vax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_vax-sub_ethnicity_white-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_vax-sub_ethnicity_white-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_ethnicity_white-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_ethnicity_white-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_vax-sub_ethnicity_white-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_vax-sub_ethnicity_white-ckd_hist-ckd.csv
-
   make_model_input-cohort_vax-sub_ethnicity_white-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_ethnicity_white-gen-ckd
     needs:
@@ -5238,28 +3588,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_vax-sub_ethnicity_white-ckd_hist-esrd.csv
-
-  make_model_input-cohort_vax-sub_ethnicity_white-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_vax-sub_ethnicity_white-gen-esrd
-    needs:
-    - stage1_data_cleaning_vax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_vax-sub_ethnicity_white-gen-esrd.rds
-
-  cox_ipw-cohort_vax-sub_ethnicity_white-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_ethnicity_white-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_ethnicity_white-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_vax-sub_ethnicity_white-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_vax-sub_ethnicity_white-gen-esrd.csv
 
   make_model_input-cohort_prevax-sub_sex_female-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_sex_female-ckd_hist-aki
@@ -5305,28 +3633,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_prevax-sub_sex_female-gen-aki.csv
 
-  make_model_input-cohort_prevax-sub_sex_female-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_sex_female-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_prevax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_prevax-sub_sex_female-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_prevax-sub_sex_female-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_sex_female-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
-      --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-sub_sex_female-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_prevax-sub_sex_female-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_prevax-sub_sex_female-ckd_hist-ckd.csv
-
   make_model_input-cohort_prevax-sub_sex_female-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_sex_female-gen-ckd
     needs:
@@ -5370,28 +3676,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_prevax-sub_sex_female-ckd_hist-esrd.csv
-
-  make_model_input-cohort_prevax-sub_sex_female-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_sex_female-gen-esrd
-    needs:
-    - stage1_data_cleaning_prevax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_prevax-sub_sex_female-gen-esrd.rds
-
-  cox_ipw-cohort_prevax-sub_sex_female-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_sex_female-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
-      --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-sub_sex_female-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_prevax-sub_sex_female-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_prevax-sub_sex_female-gen-esrd.csv
 
   make_model_input-cohort_unvax-sub_sex_female-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_sex_female-ckd_hist-aki
@@ -5437,28 +3721,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_unvax-sub_sex_female-gen-aki.csv
 
-  make_model_input-cohort_unvax-sub_sex_female-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_sex_female-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_unvax-sub_sex_female-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_unvax-sub_sex_female-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_sex_female-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_sex_female-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_unvax-sub_sex_female-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_unvax-sub_sex_female-ckd_hist-ckd.csv
-
   make_model_input-cohort_unvax-sub_sex_female-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_sex_female-gen-ckd
     needs:
@@ -5502,28 +3764,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_unvax-sub_sex_female-ckd_hist-esrd.csv
-
-  make_model_input-cohort_unvax-sub_sex_female-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_sex_female-gen-esrd
-    needs:
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_unvax-sub_sex_female-gen-esrd.rds
-
-  cox_ipw-cohort_unvax-sub_sex_female-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_sex_female-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_sex_female-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_unvax-sub_sex_female-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_unvax-sub_sex_female-gen-esrd.csv
 
   make_model_input-cohort_vax-sub_sex_female-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_sex_female-ckd_hist-aki
@@ -5569,28 +3809,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_vax-sub_sex_female-gen-aki.csv
 
-  make_model_input-cohort_vax-sub_sex_female-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_vax-sub_sex_female-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_vax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_vax-sub_sex_female-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_vax-sub_sex_female-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_sex_female-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_sex_female-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_vax-sub_sex_female-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_vax-sub_sex_female-ckd_hist-ckd.csv
-
   make_model_input-cohort_vax-sub_sex_female-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_sex_female-gen-ckd
     needs:
@@ -5634,28 +3852,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_vax-sub_sex_female-ckd_hist-esrd.csv
-
-  make_model_input-cohort_vax-sub_sex_female-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_vax-sub_sex_female-gen-esrd
-    needs:
-    - stage1_data_cleaning_vax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_vax-sub_sex_female-gen-esrd.rds
-
-  cox_ipw-cohort_vax-sub_sex_female-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_sex_female-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_sex_female-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_vax-sub_sex_female-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_vax-sub_sex_female-gen-esrd.csv
 
   make_model_input-cohort_prevax-sub_sex_male-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_sex_male-ckd_hist-aki
@@ -5701,28 +3897,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_prevax-sub_sex_male-gen-aki.csv
 
-  make_model_input-cohort_prevax-sub_sex_male-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_sex_male-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_prevax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_prevax-sub_sex_male-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_prevax-sub_sex_male-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_sex_male-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
-      --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-sub_sex_male-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_prevax-sub_sex_male-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_prevax-sub_sex_male-ckd_hist-ckd.csv
-
   make_model_input-cohort_prevax-sub_sex_male-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_sex_male-gen-ckd
     needs:
@@ -5766,28 +3940,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_prevax-sub_sex_male-ckd_hist-esrd.csv
-
-  make_model_input-cohort_prevax-sub_sex_male-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_sex_male-gen-esrd
-    needs:
-    - stage1_data_cleaning_prevax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_prevax-sub_sex_male-gen-esrd.rds
-
-  cox_ipw-cohort_prevax-sub_sex_male-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_prevax-sub_sex_male-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
-      --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-sub_sex_male-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_prevax-sub_sex_male-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_prevax-sub_sex_male-gen-esrd.csv
 
   make_model_input-cohort_unvax-sub_sex_male-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_sex_male-ckd_hist-aki
@@ -5833,28 +3985,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_unvax-sub_sex_male-gen-aki.csv
 
-  make_model_input-cohort_unvax-sub_sex_male-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_sex_male-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_unvax-sub_sex_male-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_unvax-sub_sex_male-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_sex_male-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_sex_male-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_unvax-sub_sex_male-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_unvax-sub_sex_male-ckd_hist-ckd.csv
-
   make_model_input-cohort_unvax-sub_sex_male-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_sex_male-gen-ckd
     needs:
@@ -5898,28 +4028,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_unvax-sub_sex_male-ckd_hist-esrd.csv
-
-  make_model_input-cohort_unvax-sub_sex_male-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_sex_male-gen-esrd
-    needs:
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_unvax-sub_sex_male-gen-esrd.rds
-
-  cox_ipw-cohort_unvax-sub_sex_male-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_unvax-sub_sex_male-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_sex_male-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_unvax-sub_sex_male-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_unvax-sub_sex_male-gen-esrd.csv
 
   make_model_input-cohort_vax-sub_sex_male-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_sex_male-ckd_hist-aki
@@ -5965,28 +4073,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_vax-sub_sex_male-gen-aki.csv
 
-  make_model_input-cohort_vax-sub_sex_male-ckd_hist-ckd:
-    run: r:latest analysis/model/make_model_input.R cohort_vax-sub_sex_male-ckd_hist-ckd
-    needs:
-    - stage1_data_cleaning_vax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_vax-sub_sex_male-ckd_hist-ckd.rds
-
-  cox_ipw-cohort_vax-sub_sex_male-ckd_hist-ckd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_sex_male-ckd_hist-ckd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_sex_male-ckd_hist-ckd.csv
-    needs:
-    - make_model_input-cohort_vax-sub_sex_male-ckd_hist-ckd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_vax-sub_sex_male-ckd_hist-ckd.csv
-
   make_model_input-cohort_vax-sub_sex_male-gen-ckd:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_sex_male-gen-ckd
     needs:
@@ -6030,28 +4116,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_vax-sub_sex_male-ckd_hist-esrd.csv
-
-  make_model_input-cohort_vax-sub_sex_male-gen-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_vax-sub_sex_male-gen-esrd
-    needs:
-    - stage1_data_cleaning_vax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_vax-sub_sex_male-gen-esrd.rds
-
-  cox_ipw-cohort_vax-sub_sex_male-gen-esrd:
-    run: cox-ipw:v0.0.20 --df_input=model_input-cohort_vax-sub_sex_male-gen-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=NULL
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_chronic_kidney_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_sex_male-gen-esrd.csv
-    needs:
-    - make_model_input-cohort_vax-sub_sex_male-gen-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_vax-sub_sex_male-gen-esrd.csv
 
   make_model_output:
     run: r:latest analysis/model/make_model_output.R
