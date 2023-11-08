@@ -58,7 +58,7 @@ df$cov_cat_age_group <- ifelse(df$cov_num_age>=90, "90+", df$cov_cat_age_group)
 #using na.omit so that NAs don't make their way into the subsets
 print("Filter data")
 
-df_ckd <- na.omit(df[df$sub_bin_ckd ==1,c("patient_id",
+df_ckd <- na.omit(df[df$sub_bin_ckd =="ckd_hist",c("patient_id",
                   "exposed",
                   "cov_cat_sex",
                   "cov_cat_age_group",
@@ -68,7 +68,7 @@ df_ckd <- na.omit(df[df$sub_bin_ckd ==1,c("patient_id",
                   "cov_cat_region",
                   "cov_bin_carehome_status")]) 
 
-df_gen <- na.omit(df[df$sub_bin_ckd== 0,c("patient_id",
+df_gen <- na.omit(df[df$sub_bin_ckd== "gen",c("patient_id",
                               "exposed",
                               "cov_cat_sex",
                               "cov_cat_age_group",
