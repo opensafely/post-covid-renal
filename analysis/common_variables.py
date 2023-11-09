@@ -295,6 +295,19 @@ def generate_common_variables(index_date_variable,exposure_end_date_variable,out
         },
     ),
 
+    tmp_out_date_dialysis_opcs = patients.admitted_to_hospital(
+        with_these_procedures=dialysis_opcs,
+        returning="date_admitted",
+        between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
+        date_format="YYYY-MM-DD",
+        find_first_match_in_period=True,
+        return_expectations={
+            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"},
+            "rate": "uniform",
+            "incidence": 0.1,
+        },
+    ),
+
     tmp_out_date_dialysis_death=patients.with_these_codes_on_death_certificate(
         dialysis_icd10,
         returning="date_of_death",
@@ -334,6 +347,19 @@ def generate_common_variables(index_date_variable,exposure_end_date_variable,out
         },
     ),
 
+    tmp_out_date_kidtrans_opcs = patients.admitted_to_hospital(
+        with_these_procedures=kidtrans_opcs,
+        returning="date_admitted",
+        between=[f"{index_date_variable}",f"{outcome_end_date_variable}"],
+        date_format="YYYY-MM-DD",
+        find_first_match_in_period=True,
+        return_expectations={
+            "date": {"earliest": study_dates["pandemic_start"], "latest" : "today"},
+            "rate": "uniform",
+            "incidence": 0.1,
+        },
+    ),
+
     tmp_out_date_kidtrans_death=patients.with_these_codes_on_death_certificate(
         kidtrans_icd10,
         returning="date_of_death",
@@ -349,8 +375,8 @@ def generate_common_variables(index_date_variable,exposure_end_date_variable,out
 
     out_date_esrd = patients.minimum_of(
         "tmp_out_date_esrd_snomed","tmp_out_date_esrd_hes","tmp_out_date_esrd_death",
-        "tmp_out_date_dialysis_snomed","tmp_out_date_dialysis_hes","tmp_out_date_dialysis_death",
-        "tmp_out_date_kidtrans_snomed","tmp_out_date_kidtrans_hes","tmp_out_date_kidtrans_death",
+        "tmp_out_date_dialysis_snomed","tmp_out_date_dialysis_hes","tmp_out_date_dialysis_opcs","tmp_out_date_dialysis_death",
+        "tmp_out_date_kidtrans_snomed","tmp_out_date_kidtrans_hes","tmp_out_date_kidtrans_opcs","tmp_out_date_kidtrans_death",
     ), 
 
     tmp_out_date_ckd34_snomed = patients.with_these_clinical_events(
