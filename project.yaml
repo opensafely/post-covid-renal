@@ -259,8 +259,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-main-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-main-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_prevax-main-ckd_hist-aki
     outputs:
@@ -281,8 +280,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-main-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-main-gen-aki.csv
     needs:
     - make_model_input-cohort_prevax-main-gen-aki
     outputs:
@@ -303,8 +301,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-main-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-main-gen-ckd.csv
     needs:
     - make_model_input-cohort_prevax-main-gen-ckd
     outputs:
@@ -325,8 +322,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-main-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-main-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_prevax-main-ckd_hist-esrd
     outputs:
@@ -347,8 +343,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-main-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-main-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_unvax-main-ckd_hist-aki
     outputs:
@@ -369,8 +364,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-main-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-main-gen-aki.csv
     needs:
     - make_model_input-cohort_unvax-main-gen-aki
     outputs:
@@ -391,8 +385,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-main-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-main-gen-ckd.csv
     needs:
     - make_model_input-cohort_unvax-main-gen-ckd
     outputs:
@@ -413,8 +406,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-main-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-main-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_unvax-main-ckd_hist-esrd
     outputs:
@@ -435,8 +427,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-main-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-main-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_vax-main-ckd_hist-aki
     outputs:
@@ -457,8 +448,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-main-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-main-gen-aki.csv
     needs:
     - make_model_input-cohort_vax-main-gen-aki
     outputs:
@@ -479,8 +469,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-main-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-main-gen-ckd.csv
     needs:
     - make_model_input-cohort_vax-main-gen-ckd
     outputs:
@@ -501,8 +490,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-main-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-main-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_vax-main-ckd_hist-esrd
     outputs:
@@ -523,8 +511,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-sub_age_18_39-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_prevax-sub_age_18_39-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_prevax-sub_age_18_39-ckd_hist-aki
     outputs:
@@ -545,8 +532,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-sub_age_18_39-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_prevax-sub_age_18_39-gen-aki.csv
     needs:
     - make_model_input-cohort_prevax-sub_age_18_39-gen-aki
     outputs:
@@ -567,8 +553,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-sub_age_18_39-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_prevax-sub_age_18_39-gen-ckd.csv
     needs:
     - make_model_input-cohort_prevax-sub_age_18_39-gen-ckd
     outputs:
@@ -589,8 +574,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-sub_age_18_39-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_prevax-sub_age_18_39-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_prevax-sub_age_18_39-ckd_hist-esrd
     outputs:
@@ -611,8 +595,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_age_18_39-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_unvax-sub_age_18_39-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_unvax-sub_age_18_39-ckd_hist-aki
     outputs:
@@ -633,8 +616,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_age_18_39-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_unvax-sub_age_18_39-gen-aki.csv
     needs:
     - make_model_input-cohort_unvax-sub_age_18_39-gen-aki
     outputs:
@@ -655,8 +637,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_age_18_39-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_unvax-sub_age_18_39-gen-ckd.csv
     needs:
     - make_model_input-cohort_unvax-sub_age_18_39-gen-ckd
     outputs:
@@ -677,8 +658,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_age_18_39-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_unvax-sub_age_18_39-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_unvax-sub_age_18_39-ckd_hist-esrd
     outputs:
@@ -699,8 +679,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_age_18_39-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_vax-sub_age_18_39-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_vax-sub_age_18_39-ckd_hist-aki
     outputs:
@@ -721,8 +700,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_age_18_39-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_vax-sub_age_18_39-gen-aki.csv
     needs:
     - make_model_input-cohort_vax-sub_age_18_39-gen-aki
     outputs:
@@ -743,8 +721,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_age_18_39-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_vax-sub_age_18_39-gen-ckd.csv
     needs:
     - make_model_input-cohort_vax-sub_age_18_39-gen-ckd
     outputs:
@@ -765,8 +742,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_age_18_39-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_vax-sub_age_18_39-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_vax-sub_age_18_39-ckd_hist-esrd
     outputs:
@@ -787,8 +763,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-sub_age_40_59-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_prevax-sub_age_40_59-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_prevax-sub_age_40_59-ckd_hist-aki
     outputs:
@@ -809,8 +784,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-sub_age_40_59-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_prevax-sub_age_40_59-gen-aki.csv
     needs:
     - make_model_input-cohort_prevax-sub_age_40_59-gen-aki
     outputs:
@@ -831,8 +805,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-sub_age_40_59-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_prevax-sub_age_40_59-gen-ckd.csv
     needs:
     - make_model_input-cohort_prevax-sub_age_40_59-gen-ckd
     outputs:
@@ -853,8 +826,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-sub_age_40_59-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_prevax-sub_age_40_59-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_prevax-sub_age_40_59-ckd_hist-esrd
     outputs:
@@ -875,8 +847,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_age_40_59-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_unvax-sub_age_40_59-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_unvax-sub_age_40_59-ckd_hist-aki
     outputs:
@@ -897,8 +868,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_age_40_59-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_unvax-sub_age_40_59-gen-aki.csv
     needs:
     - make_model_input-cohort_unvax-sub_age_40_59-gen-aki
     outputs:
@@ -919,8 +889,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_age_40_59-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_unvax-sub_age_40_59-gen-ckd.csv
     needs:
     - make_model_input-cohort_unvax-sub_age_40_59-gen-ckd
     outputs:
@@ -941,8 +910,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_age_40_59-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_unvax-sub_age_40_59-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_unvax-sub_age_40_59-ckd_hist-esrd
     outputs:
@@ -963,8 +931,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_age_40_59-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_vax-sub_age_40_59-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_vax-sub_age_40_59-ckd_hist-aki
     outputs:
@@ -985,8 +952,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_age_40_59-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_vax-sub_age_40_59-gen-aki.csv
     needs:
     - make_model_input-cohort_vax-sub_age_40_59-gen-aki
     outputs:
@@ -1007,8 +973,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_age_40_59-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_vax-sub_age_40_59-gen-ckd.csv
     needs:
     - make_model_input-cohort_vax-sub_age_40_59-gen-ckd
     outputs:
@@ -1029,8 +994,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_age_40_59-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_vax-sub_age_40_59-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_vax-sub_age_40_59-ckd_hist-esrd
     outputs:
@@ -1051,8 +1015,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-sub_age_60_79-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_prevax-sub_age_60_79-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_prevax-sub_age_60_79-ckd_hist-aki
     outputs:
@@ -1073,8 +1036,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-sub_age_60_79-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_prevax-sub_age_60_79-gen-aki.csv
     needs:
     - make_model_input-cohort_prevax-sub_age_60_79-gen-aki
     outputs:
@@ -1095,8 +1057,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-sub_age_60_79-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_prevax-sub_age_60_79-gen-ckd.csv
     needs:
     - make_model_input-cohort_prevax-sub_age_60_79-gen-ckd
     outputs:
@@ -1117,8 +1078,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-sub_age_60_79-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_prevax-sub_age_60_79-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_prevax-sub_age_60_79-ckd_hist-esrd
     outputs:
@@ -1139,8 +1099,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_age_60_79-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_unvax-sub_age_60_79-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_unvax-sub_age_60_79-ckd_hist-aki
     outputs:
@@ -1161,8 +1120,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_age_60_79-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_unvax-sub_age_60_79-gen-aki.csv
     needs:
     - make_model_input-cohort_unvax-sub_age_60_79-gen-aki
     outputs:
@@ -1183,8 +1141,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_age_60_79-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_unvax-sub_age_60_79-gen-ckd.csv
     needs:
     - make_model_input-cohort_unvax-sub_age_60_79-gen-ckd
     outputs:
@@ -1205,8 +1162,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_age_60_79-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_unvax-sub_age_60_79-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_unvax-sub_age_60_79-ckd_hist-esrd
     outputs:
@@ -1227,8 +1183,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_age_60_79-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_vax-sub_age_60_79-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_vax-sub_age_60_79-ckd_hist-aki
     outputs:
@@ -1249,8 +1204,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_age_60_79-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_vax-sub_age_60_79-gen-aki.csv
     needs:
     - make_model_input-cohort_vax-sub_age_60_79-gen-aki
     outputs:
@@ -1271,8 +1225,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_age_60_79-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_vax-sub_age_60_79-gen-ckd.csv
     needs:
     - make_model_input-cohort_vax-sub_age_60_79-gen-ckd
     outputs:
@@ -1293,8 +1246,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_age_60_79-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_vax-sub_age_60_79-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_vax-sub_age_60_79-ckd_hist-esrd
     outputs:
@@ -1315,8 +1267,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-sub_age_80_110-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_prevax-sub_age_80_110-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_prevax-sub_age_80_110-ckd_hist-aki
     outputs:
@@ -1337,8 +1288,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-sub_age_80_110-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_prevax-sub_age_80_110-gen-aki.csv
     needs:
     - make_model_input-cohort_prevax-sub_age_80_110-gen-aki
     outputs:
@@ -1359,8 +1309,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-sub_age_80_110-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_prevax-sub_age_80_110-gen-ckd.csv
     needs:
     - make_model_input-cohort_prevax-sub_age_80_110-gen-ckd
     outputs:
@@ -1381,8 +1330,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-sub_age_80_110-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_prevax-sub_age_80_110-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_prevax-sub_age_80_110-ckd_hist-esrd
     outputs:
@@ -1403,8 +1351,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_age_80_110-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_unvax-sub_age_80_110-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_unvax-sub_age_80_110-ckd_hist-aki
     outputs:
@@ -1425,8 +1372,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_age_80_110-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_unvax-sub_age_80_110-gen-aki.csv
     needs:
     - make_model_input-cohort_unvax-sub_age_80_110-gen-aki
     outputs:
@@ -1447,8 +1393,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_age_80_110-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_unvax-sub_age_80_110-gen-ckd.csv
     needs:
     - make_model_input-cohort_unvax-sub_age_80_110-gen-ckd
     outputs:
@@ -1469,8 +1414,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_age_80_110-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_unvax-sub_age_80_110-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_unvax-sub_age_80_110-ckd_hist-esrd
     outputs:
@@ -1491,8 +1435,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_age_80_110-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_vax-sub_age_80_110-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_vax-sub_age_80_110-ckd_hist-aki
     outputs:
@@ -1513,8 +1456,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_age_80_110-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_vax-sub_age_80_110-gen-aki.csv
     needs:
     - make_model_input-cohort_vax-sub_age_80_110-gen-aki
     outputs:
@@ -1535,8 +1477,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_age_80_110-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_vax-sub_age_80_110-gen-ckd.csv
     needs:
     - make_model_input-cohort_vax-sub_age_80_110-gen-ckd
     outputs:
@@ -1557,8 +1498,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_age_80_110-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=FALSE --df_output=model_output-cohort_vax-sub_age_80_110-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_vax-sub_age_80_110-ckd_hist-esrd
     outputs:
@@ -1579,8 +1519,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_covid_history-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_covid_history-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_unvax-sub_covid_history-ckd_hist-aki
     outputs:
@@ -1601,8 +1540,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_covid_history-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_covid_history-gen-aki.csv
     needs:
     - make_model_input-cohort_unvax-sub_covid_history-gen-aki
     outputs:
@@ -1623,8 +1561,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_covid_history-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_covid_history-gen-ckd.csv
     needs:
     - make_model_input-cohort_unvax-sub_covid_history-gen-ckd
     outputs:
@@ -1645,8 +1582,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_covid_history-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_covid_history-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_unvax-sub_covid_history-ckd_hist-esrd
     outputs:
@@ -1667,8 +1603,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_covid_history-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_covid_history-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_vax-sub_covid_history-ckd_hist-aki
     outputs:
@@ -1689,8 +1624,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_covid_history-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_covid_history-gen-aki.csv
     needs:
     - make_model_input-cohort_vax-sub_covid_history-gen-aki
     outputs:
@@ -1711,8 +1645,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_covid_history-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_covid_history-gen-ckd.csv
     needs:
     - make_model_input-cohort_vax-sub_covid_history-gen-ckd
     outputs:
@@ -1733,8 +1666,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_covid_history-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_covid_history-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_vax-sub_covid_history-ckd_hist-esrd
     outputs:
@@ -1755,8 +1687,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-sub_covid_hospitalised-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_covid_hospitalised-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_prevax-sub_covid_hospitalised-ckd_hist-aki
     outputs:
@@ -1777,8 +1708,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-sub_covid_hospitalised-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_covid_hospitalised-gen-aki.csv
     needs:
     - make_model_input-cohort_prevax-sub_covid_hospitalised-gen-aki
     outputs:
@@ -1799,8 +1729,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-sub_covid_hospitalised-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_covid_hospitalised-gen-ckd.csv
     needs:
     - make_model_input-cohort_prevax-sub_covid_hospitalised-gen-ckd
     outputs:
@@ -1821,8 +1750,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-sub_covid_hospitalised-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_covid_hospitalised-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_prevax-sub_covid_hospitalised-ckd_hist-esrd
     outputs:
@@ -1843,8 +1771,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_covid_hospitalised-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_covid_hospitalised-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_unvax-sub_covid_hospitalised-ckd_hist-aki
     outputs:
@@ -1865,8 +1792,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_covid_hospitalised-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_covid_hospitalised-gen-aki.csv
     needs:
     - make_model_input-cohort_unvax-sub_covid_hospitalised-gen-aki
     outputs:
@@ -1887,8 +1813,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_covid_hospitalised-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_covid_hospitalised-gen-ckd.csv
     needs:
     - make_model_input-cohort_unvax-sub_covid_hospitalised-gen-ckd
     outputs:
@@ -1909,8 +1834,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_covid_hospitalised-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_covid_hospitalised-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_unvax-sub_covid_hospitalised-ckd_hist-esrd
     outputs:
@@ -1931,8 +1855,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_covid_hospitalised-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_covid_hospitalised-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_vax-sub_covid_hospitalised-ckd_hist-aki
     outputs:
@@ -1953,8 +1876,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_covid_hospitalised-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_covid_hospitalised-gen-aki.csv
     needs:
     - make_model_input-cohort_vax-sub_covid_hospitalised-gen-aki
     outputs:
@@ -1975,8 +1897,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_covid_hospitalised-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_covid_hospitalised-gen-ckd.csv
     needs:
     - make_model_input-cohort_vax-sub_covid_hospitalised-gen-ckd
     outputs:
@@ -1997,8 +1918,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_covid_hospitalised-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_covid_hospitalised-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_vax-sub_covid_hospitalised-ckd_hist-esrd
     outputs:
@@ -2019,8 +1939,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-sub_covid_nonhospitalised-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_covid_nonhospitalised-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_prevax-sub_covid_nonhospitalised-ckd_hist-aki
     outputs:
@@ -2041,8 +1960,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-sub_covid_nonhospitalised-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_covid_nonhospitalised-gen-aki.csv
     needs:
     - make_model_input-cohort_prevax-sub_covid_nonhospitalised-gen-aki
     outputs:
@@ -2063,8 +1981,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-sub_covid_nonhospitalised-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_covid_nonhospitalised-gen-ckd.csv
     needs:
     - make_model_input-cohort_prevax-sub_covid_nonhospitalised-gen-ckd
     outputs:
@@ -2085,8 +2002,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-sub_covid_nonhospitalised-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_covid_nonhospitalised-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_prevax-sub_covid_nonhospitalised-ckd_hist-esrd
     outputs:
@@ -2107,8 +2023,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_covid_nonhospitalised-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_covid_nonhospitalised-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_unvax-sub_covid_nonhospitalised-ckd_hist-aki
     outputs:
@@ -2129,8 +2044,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_covid_nonhospitalised-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_covid_nonhospitalised-gen-aki.csv
     needs:
     - make_model_input-cohort_unvax-sub_covid_nonhospitalised-gen-aki
     outputs:
@@ -2151,8 +2065,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_covid_nonhospitalised-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_covid_nonhospitalised-gen-ckd.csv
     needs:
     - make_model_input-cohort_unvax-sub_covid_nonhospitalised-gen-ckd
     outputs:
@@ -2173,8 +2086,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_covid_nonhospitalised-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_covid_nonhospitalised-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_unvax-sub_covid_nonhospitalised-ckd_hist-esrd
     outputs:
@@ -2195,8 +2107,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_covid_nonhospitalised-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_covid_nonhospitalised-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_vax-sub_covid_nonhospitalised-ckd_hist-aki
     outputs:
@@ -2217,8 +2128,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_covid_nonhospitalised-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_covid_nonhospitalised-gen-aki.csv
     needs:
     - make_model_input-cohort_vax-sub_covid_nonhospitalised-gen-aki
     outputs:
@@ -2239,8 +2149,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_covid_nonhospitalised-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_covid_nonhospitalised-gen-ckd.csv
     needs:
     - make_model_input-cohort_vax-sub_covid_nonhospitalised-gen-ckd
     outputs:
@@ -2261,8 +2170,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_covid_nonhospitalised-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_covid_nonhospitalised-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_vax-sub_covid_nonhospitalised-ckd_hist-esrd
     outputs:
@@ -2283,8 +2191,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-sub_ethnicity_asian-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_ethnicity_asian-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_prevax-sub_ethnicity_asian-ckd_hist-aki
     outputs:
@@ -2305,8 +2212,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-sub_ethnicity_asian-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_ethnicity_asian-gen-aki.csv
     needs:
     - make_model_input-cohort_prevax-sub_ethnicity_asian-gen-aki
     outputs:
@@ -2327,8 +2233,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-sub_ethnicity_asian-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_ethnicity_asian-gen-ckd.csv
     needs:
     - make_model_input-cohort_prevax-sub_ethnicity_asian-gen-ckd
     outputs:
@@ -2349,8 +2254,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-sub_ethnicity_asian-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_ethnicity_asian-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_prevax-sub_ethnicity_asian-ckd_hist-esrd
     outputs:
@@ -2371,8 +2275,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_ethnicity_asian-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_ethnicity_asian-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_unvax-sub_ethnicity_asian-ckd_hist-aki
     outputs:
@@ -2393,8 +2296,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_ethnicity_asian-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_ethnicity_asian-gen-aki.csv
     needs:
     - make_model_input-cohort_unvax-sub_ethnicity_asian-gen-aki
     outputs:
@@ -2415,8 +2317,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_ethnicity_asian-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_ethnicity_asian-gen-ckd.csv
     needs:
     - make_model_input-cohort_unvax-sub_ethnicity_asian-gen-ckd
     outputs:
@@ -2437,8 +2338,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_ethnicity_asian-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_ethnicity_asian-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_unvax-sub_ethnicity_asian-ckd_hist-esrd
     outputs:
@@ -2459,8 +2359,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_ethnicity_asian-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_ethnicity_asian-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_vax-sub_ethnicity_asian-ckd_hist-aki
     outputs:
@@ -2481,8 +2380,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_ethnicity_asian-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_ethnicity_asian-gen-aki.csv
     needs:
     - make_model_input-cohort_vax-sub_ethnicity_asian-gen-aki
     outputs:
@@ -2503,8 +2401,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_ethnicity_asian-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_ethnicity_asian-gen-ckd.csv
     needs:
     - make_model_input-cohort_vax-sub_ethnicity_asian-gen-ckd
     outputs:
@@ -2525,8 +2422,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_ethnicity_asian-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_ethnicity_asian-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_vax-sub_ethnicity_asian-ckd_hist-esrd
     outputs:
@@ -2547,8 +2443,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-sub_ethnicity_black-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_ethnicity_black-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_prevax-sub_ethnicity_black-ckd_hist-aki
     outputs:
@@ -2569,8 +2464,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-sub_ethnicity_black-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_ethnicity_black-gen-aki.csv
     needs:
     - make_model_input-cohort_prevax-sub_ethnicity_black-gen-aki
     outputs:
@@ -2591,8 +2485,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-sub_ethnicity_black-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_ethnicity_black-gen-ckd.csv
     needs:
     - make_model_input-cohort_prevax-sub_ethnicity_black-gen-ckd
     outputs:
@@ -2613,8 +2506,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-sub_ethnicity_black-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_ethnicity_black-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_prevax-sub_ethnicity_black-ckd_hist-esrd
     outputs:
@@ -2635,8 +2527,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_ethnicity_black-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_ethnicity_black-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_unvax-sub_ethnicity_black-ckd_hist-aki
     outputs:
@@ -2657,8 +2548,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_ethnicity_black-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_ethnicity_black-gen-aki.csv
     needs:
     - make_model_input-cohort_unvax-sub_ethnicity_black-gen-aki
     outputs:
@@ -2679,8 +2569,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_ethnicity_black-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_ethnicity_black-gen-ckd.csv
     needs:
     - make_model_input-cohort_unvax-sub_ethnicity_black-gen-ckd
     outputs:
@@ -2701,8 +2590,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_ethnicity_black-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_ethnicity_black-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_unvax-sub_ethnicity_black-ckd_hist-esrd
     outputs:
@@ -2723,8 +2611,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_ethnicity_black-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_ethnicity_black-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_vax-sub_ethnicity_black-ckd_hist-aki
     outputs:
@@ -2745,8 +2632,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_ethnicity_black-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_ethnicity_black-gen-aki.csv
     needs:
     - make_model_input-cohort_vax-sub_ethnicity_black-gen-aki
     outputs:
@@ -2767,8 +2653,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_ethnicity_black-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_ethnicity_black-gen-ckd.csv
     needs:
     - make_model_input-cohort_vax-sub_ethnicity_black-gen-ckd
     outputs:
@@ -2789,8 +2674,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_ethnicity_black-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_ethnicity_black-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_vax-sub_ethnicity_black-ckd_hist-esrd
     outputs:
@@ -2811,8 +2695,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-sub_ethnicity_mixed-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_ethnicity_mixed-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_prevax-sub_ethnicity_mixed-ckd_hist-aki
     outputs:
@@ -2833,8 +2716,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-sub_ethnicity_mixed-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_ethnicity_mixed-gen-aki.csv
     needs:
     - make_model_input-cohort_prevax-sub_ethnicity_mixed-gen-aki
     outputs:
@@ -2855,8 +2737,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-sub_ethnicity_mixed-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_ethnicity_mixed-gen-ckd.csv
     needs:
     - make_model_input-cohort_prevax-sub_ethnicity_mixed-gen-ckd
     outputs:
@@ -2877,8 +2758,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-sub_ethnicity_mixed-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_ethnicity_mixed-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_prevax-sub_ethnicity_mixed-ckd_hist-esrd
     outputs:
@@ -2899,8 +2779,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_ethnicity_mixed-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_ethnicity_mixed-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_unvax-sub_ethnicity_mixed-ckd_hist-aki
     outputs:
@@ -2921,8 +2800,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_ethnicity_mixed-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_ethnicity_mixed-gen-aki.csv
     needs:
     - make_model_input-cohort_unvax-sub_ethnicity_mixed-gen-aki
     outputs:
@@ -2943,8 +2821,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_ethnicity_mixed-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_ethnicity_mixed-gen-ckd.csv
     needs:
     - make_model_input-cohort_unvax-sub_ethnicity_mixed-gen-ckd
     outputs:
@@ -2965,8 +2842,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_ethnicity_mixed-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_ethnicity_mixed-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_unvax-sub_ethnicity_mixed-ckd_hist-esrd
     outputs:
@@ -2987,8 +2863,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_ethnicity_mixed-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_ethnicity_mixed-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_vax-sub_ethnicity_mixed-ckd_hist-aki
     outputs:
@@ -3009,8 +2884,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_ethnicity_mixed-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_ethnicity_mixed-gen-aki.csv
     needs:
     - make_model_input-cohort_vax-sub_ethnicity_mixed-gen-aki
     outputs:
@@ -3031,8 +2905,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_ethnicity_mixed-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_ethnicity_mixed-gen-ckd.csv
     needs:
     - make_model_input-cohort_vax-sub_ethnicity_mixed-gen-ckd
     outputs:
@@ -3053,8 +2926,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_ethnicity_mixed-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_ethnicity_mixed-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_vax-sub_ethnicity_mixed-ckd_hist-esrd
     outputs:
@@ -3075,8 +2947,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-sub_ethnicity_other-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_ethnicity_other-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_prevax-sub_ethnicity_other-ckd_hist-aki
     outputs:
@@ -3097,8 +2968,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-sub_ethnicity_other-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_ethnicity_other-gen-aki.csv
     needs:
     - make_model_input-cohort_prevax-sub_ethnicity_other-gen-aki
     outputs:
@@ -3119,8 +2989,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-sub_ethnicity_other-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_ethnicity_other-gen-ckd.csv
     needs:
     - make_model_input-cohort_prevax-sub_ethnicity_other-gen-ckd
     outputs:
@@ -3141,8 +3010,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-sub_ethnicity_other-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_ethnicity_other-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_prevax-sub_ethnicity_other-ckd_hist-esrd
     outputs:
@@ -3163,8 +3031,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_ethnicity_other-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_ethnicity_other-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_unvax-sub_ethnicity_other-ckd_hist-aki
     outputs:
@@ -3185,8 +3052,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_ethnicity_other-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_ethnicity_other-gen-aki.csv
     needs:
     - make_model_input-cohort_unvax-sub_ethnicity_other-gen-aki
     outputs:
@@ -3207,8 +3073,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_ethnicity_other-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_ethnicity_other-gen-ckd.csv
     needs:
     - make_model_input-cohort_unvax-sub_ethnicity_other-gen-ckd
     outputs:
@@ -3229,8 +3094,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_ethnicity_other-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_ethnicity_other-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_unvax-sub_ethnicity_other-ckd_hist-esrd
     outputs:
@@ -3251,8 +3115,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_ethnicity_other-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_ethnicity_other-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_vax-sub_ethnicity_other-ckd_hist-aki
     outputs:
@@ -3273,8 +3136,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_ethnicity_other-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_ethnicity_other-gen-aki.csv
     needs:
     - make_model_input-cohort_vax-sub_ethnicity_other-gen-aki
     outputs:
@@ -3295,8 +3157,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_ethnicity_other-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_ethnicity_other-gen-ckd.csv
     needs:
     - make_model_input-cohort_vax-sub_ethnicity_other-gen-ckd
     outputs:
@@ -3317,8 +3178,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_ethnicity_other-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_ethnicity_other-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_vax-sub_ethnicity_other-ckd_hist-esrd
     outputs:
@@ -3339,8 +3199,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-sub_ethnicity_white-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_ethnicity_white-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_prevax-sub_ethnicity_white-ckd_hist-aki
     outputs:
@@ -3361,8 +3220,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-sub_ethnicity_white-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_ethnicity_white-gen-aki.csv
     needs:
     - make_model_input-cohort_prevax-sub_ethnicity_white-gen-aki
     outputs:
@@ -3383,8 +3241,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-sub_ethnicity_white-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_ethnicity_white-gen-ckd.csv
     needs:
     - make_model_input-cohort_prevax-sub_ethnicity_white-gen-ckd
     outputs:
@@ -3405,8 +3262,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-sub_ethnicity_white-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_ethnicity_white-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_prevax-sub_ethnicity_white-ckd_hist-esrd
     outputs:
@@ -3427,8 +3283,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_ethnicity_white-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_ethnicity_white-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_unvax-sub_ethnicity_white-ckd_hist-aki
     outputs:
@@ -3449,8 +3304,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_ethnicity_white-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_ethnicity_white-gen-aki.csv
     needs:
     - make_model_input-cohort_unvax-sub_ethnicity_white-gen-aki
     outputs:
@@ -3471,8 +3325,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_ethnicity_white-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_ethnicity_white-gen-ckd.csv
     needs:
     - make_model_input-cohort_unvax-sub_ethnicity_white-gen-ckd
     outputs:
@@ -3493,8 +3346,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_ethnicity_white-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_ethnicity_white-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_unvax-sub_ethnicity_white-ckd_hist-esrd
     outputs:
@@ -3515,8 +3367,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_ethnicity_white-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_ethnicity_white-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_vax-sub_ethnicity_white-ckd_hist-aki
     outputs:
@@ -3537,8 +3388,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_ethnicity_white-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_ethnicity_white-gen-aki.csv
     needs:
     - make_model_input-cohort_vax-sub_ethnicity_white-gen-aki
     outputs:
@@ -3559,8 +3409,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_ethnicity_white-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_ethnicity_white-gen-ckd.csv
     needs:
     - make_model_input-cohort_vax-sub_ethnicity_white-gen-ckd
     outputs:
@@ -3581,8 +3430,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_ethnicity_white-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_ethnicity_white-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_vax-sub_ethnicity_white-ckd_hist-esrd
     outputs:
@@ -3603,8 +3451,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-sub_sex_female-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_sex_female-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_prevax-sub_sex_female-ckd_hist-aki
     outputs:
@@ -3625,8 +3472,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-sub_sex_female-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_sex_female-gen-aki.csv
     needs:
     - make_model_input-cohort_prevax-sub_sex_female-gen-aki
     outputs:
@@ -3647,8 +3493,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-sub_sex_female-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_sex_female-gen-ckd.csv
     needs:
     - make_model_input-cohort_prevax-sub_sex_female-gen-ckd
     outputs:
@@ -3669,8 +3514,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-sub_sex_female-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_sex_female-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_prevax-sub_sex_female-ckd_hist-esrd
     outputs:
@@ -3691,8 +3535,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_sex_female-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_sex_female-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_unvax-sub_sex_female-ckd_hist-aki
     outputs:
@@ -3713,8 +3556,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_sex_female-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_sex_female-gen-aki.csv
     needs:
     - make_model_input-cohort_unvax-sub_sex_female-gen-aki
     outputs:
@@ -3735,8 +3577,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_sex_female-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_sex_female-gen-ckd.csv
     needs:
     - make_model_input-cohort_unvax-sub_sex_female-gen-ckd
     outputs:
@@ -3757,8 +3598,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_sex_female-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_sex_female-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_unvax-sub_sex_female-ckd_hist-esrd
     outputs:
@@ -3779,8 +3619,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_sex_female-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_sex_female-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_vax-sub_sex_female-ckd_hist-aki
     outputs:
@@ -3801,8 +3640,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_sex_female-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_sex_female-gen-aki.csv
     needs:
     - make_model_input-cohort_vax-sub_sex_female-gen-aki
     outputs:
@@ -3823,8 +3661,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_sex_female-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_sex_female-gen-ckd.csv
     needs:
     - make_model_input-cohort_vax-sub_sex_female-gen-ckd
     outputs:
@@ -3845,8 +3682,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_sex_female-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_sex_female-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_vax-sub_sex_female-ckd_hist-esrd
     outputs:
@@ -3867,8 +3703,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-sub_sex_male-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_sex_male-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_prevax-sub_sex_male-ckd_hist-aki
     outputs:
@@ -3889,8 +3724,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-sub_sex_male-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_sex_male-gen-aki.csv
     needs:
     - make_model_input-cohort_prevax-sub_sex_male-gen-aki
     outputs:
@@ -3911,8 +3745,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_prevax-sub_sex_male-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_sex_male-gen-ckd.csv
     needs:
     - make_model_input-cohort_prevax-sub_sex_male-gen-ckd
     outputs:
@@ -3933,8 +3766,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
       --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_prevax-sub_sex_male-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_sex_male-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_prevax-sub_sex_male-ckd_hist-esrd
     outputs:
@@ -3955,8 +3787,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_sex_male-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_sex_male-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_unvax-sub_sex_male-ckd_hist-aki
     outputs:
@@ -3977,8 +3808,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_sex_male-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_sex_male-gen-aki.csv
     needs:
     - make_model_input-cohort_unvax-sub_sex_male-gen-aki
     outputs:
@@ -3999,8 +3829,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_unvax-sub_sex_male-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_sex_male-gen-ckd.csv
     needs:
     - make_model_input-cohort_unvax-sub_sex_male-gen-ckd
     outputs:
@@ -4021,8 +3850,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_unvax-sub_sex_male-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_sex_male-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_unvax-sub_sex_male-ckd_hist-esrd
     outputs:
@@ -4043,8 +3871,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_sex_male-ckd_hist-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_sex_male-ckd_hist-aki.csv
     needs:
     - make_model_input-cohort_vax-sub_sex_male-ckd_hist-aki
     outputs:
@@ -4065,8 +3892,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_sex_male-gen-aki.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_sex_male-gen-aki.csv
     needs:
     - make_model_input-cohort_vax-sub_sex_male-gen-aki
     outputs:
@@ -4087,8 +3913,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=gen
-      --df_output=model_output-cohort_vax-sub_sex_male-gen-ckd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_sex_male-gen-ckd.csv
     needs:
     - make_model_input-cohort_vax-sub_sex_male-gen-ckd
     outputs:
@@ -4109,8 +3934,7 @@ actions:
       --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch
       --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
       --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE -- ckd_group=ckd_hist
-      --df_output=model_output-cohort_vax-sub_sex_male-ckd_hist-esrd.csv
+      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_vax-sub_sex_male-ckd_hist-esrd.csv
     needs:
     - make_model_input-cohort_vax-sub_sex_male-ckd_hist-esrd
     outputs:
