@@ -68,6 +68,22 @@ input <- input %>%
   mutate(cov_cat_region = replace_na(cov_cat_region, "Missing")) %>%
   mutate(cov_cat_region = as.factor(cov_cat_region))
 
+#Create CKD cohort flag --------------------------------------------------------
+# multiplying by 1 makes it a binary and not a logical operator 
+
+input$sub_bin_ckd = input$sub_bin_ckd * 1
+
+sum(is.na(input$sub_bin_ckd))
+
+#make it into a factor - use factor to force factorisation and ignore NA values 
+
+input$sub_bin_ckd = factor(input$sub_bin_ckd, levels = c("0", "1"), labels = c("gen","ckd_hist"))
+
+#make sure variable name matches to YAML etc 
+
+input$ckd_group = input$sub_bin_ckd
+
+
 # Set reference levels for factors ---------------------------------------------
 print('Set reference levels for factors')
 
