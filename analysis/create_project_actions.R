@@ -420,7 +420,6 @@ as.yaml(project_list, indent=2) %>%
   writeLines("project.yaml")
   print("YAML file printed!")
 
-  
-  # Return number of actions -----------------------------------------------------
-  
-  print(paste0("YAML created with ",length(actions_list)," actions."))
+# Return number of actions -----------------------------------------------------
+
+print(paste0("YAML created with ",length(actions_list)," actions."))
