@@ -60,8 +60,7 @@ for (i in 1:nrow(active_analyses)) {
   # Restrict to required variables -----------------------------------------------
   print('Restrict to required variables')
   
-  input$ckd_group = input$sub_bin_ckd
-  input = filter(input, ckd_group == active_analyses$ckd_group[i])
+  input = filter(input, sub_bin_ckd == active_analyses$ckd_group[i])
   
   input <- input[,unique(c("patient_id",
                            "index_date",
