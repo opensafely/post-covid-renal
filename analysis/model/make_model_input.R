@@ -75,8 +75,7 @@ for (i in 1:nrow(active_analyses)) {
                            "sub_bin_covid19_confirmed_history",
                            "cov_cat_sex",
                            "cov_num_age",
-                           "cov_cat_ethnicity",
-                           "ckd_group"
+                           "cov_cat_ethnicity"
                            ))]
   
   print (paste0("nrow after restrict to required variables : ",nrow(input)))
