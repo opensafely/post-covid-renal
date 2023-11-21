@@ -92,7 +92,7 @@
                             strata = strata,
                             covariate_sex = covariate_sex,
                             covariate_age = covariate_age,
-                            covariate_other = all_covars,
+                            covariate_other = "cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch;cov_bin_aki",
                             cox_start = cox_start,
                             cox_stop = cox_stop,
                             study_start = ifelse(c=="prevax", prevax_start, vax_unvax_start),
