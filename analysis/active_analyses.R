@@ -1,5 +1,6 @@
 
     library(jsonlite)
+    library(dplyr)
 
     # Create output directory ------------------------------------------------------
     fs::dir_create(here::here("lib"))
