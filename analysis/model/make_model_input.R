@@ -50,6 +50,7 @@ print('Filter active_analyses to model inputs to be prepared')
 
 active_analyses <- active_analyses[active_analyses$name %in% prepare,]
 print (paste0("nrow active_analyses prep: ",nrow(active_analyses)))
+print (paste0("values in ckd_group:",unique(active_analyses$ckd_group)))
 
 for (i in 1:nrow(active_analyses)) {
   
@@ -60,10 +61,12 @@ for (i in 1:nrow(active_analyses)) {
   input <- dplyr::as_tibble(readr::read_rds(paste0("output/input_",active_analyses$cohort[i],"_stage1.rds")))
   print (paste0("nrow after read : ",nrow(input)))
   print(summary(input$cov_num_age))
+  
   # Restrict to required variables -----------------------------------------------
   print('Restrict to required variables')
   
   input$sub_bin_ckd_char = as.character(input$sub_bin_ckd)
+  print (paste0("values in sub_bin_ckd:",unique(input$sub_bin_ckd_char)))
   
   input = filter(input, sub_bin_ckd_char == active_analyses$ckd_group[i])
   
