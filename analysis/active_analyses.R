@@ -453,18 +453,19 @@
     #(df2 - ckd history population and ckd outcome)
     #(df3 - general population and esrd outcome)
     
-    df2= filter(df, outcome == "out_date_ckd" & ckd_group == "ckd_hist")
-    df3= filter(df, outcome == "out_date_esrd" & ckd_group == "gen")
+    #df2= filter(df, outcome == "out_date_ckd" & ckd_group == "ckd_hist")
+    #df3= filter(df, outcome == "out_date_esrd" & ckd_group == "gen")
     
     #create a new dataframe using 'anti-join' to only keep the observations
     #that don't match in the original dataframe
     
-    df4=dplyr::anti_join(df,df2) #keep those from df that don't match those in df2
-    df5=dplyr::anti_join(df4,df3) #keep those from df4 that don't match those in df3
+    #df4=dplyr::anti_join(df,df2) #keep those from df that don't match those in df2
+    #df5=dplyr::anti_join(df4,df3) #keep those from df4 that don't match those in df3
+    
     
     #to save changing further code, consolidate df4 into df
     
-    df = df5
+    #df = df5
     
     #remove unneeded dfs
     
