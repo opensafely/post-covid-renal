@@ -69,6 +69,7 @@ for (i in 1:nrow(active_analyses)) {
   print (paste0("values in sub_bin_ckd:",unique(input$sub_bin_ckd_char)))
   
   input = filter(input, sub_bin_ckd_char == active_analyses$ckd_group[i])
+  print (paste0("nrow input after filter: ",nrow(input)))
   
   input <- input[,unique(c("patient_id",
                            "index_date",
