@@ -460,15 +460,15 @@
     #that don't match in the original dataframe
     
     df4=dplyr::anti_join(df,df2) #keep those from df that don't match those in df2
-    df4=dplyr::anti_join(df4,df3) #keep those from df4 that don't match those in df3
+    df5=dplyr::anti_join(df4,df3) #keep those from df4 that don't match those in df3
     
     #to save changing further code, consolidate df4 into df
     
-    df = df4
+    df = df5
     
     #remove unneeded dfs
     
-    rm(df2,df3,df4)
+    #rm(df2,df3,df4, df5)
     
     # Check names are unique and save active analyses list -------------------------
 
