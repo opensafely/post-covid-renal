@@ -32,6 +32,7 @@ if(length(args)==0){
 print('Load active analyses')
 
 active_analyses <- readr::read_rds("lib/active_analyses.rds")
+print (paste0("nrow after active_analyses read : ",nrow(active_analyses)))
 
 # Identify model inputs to be prepared -----------------------------------------
 print('Identify model inputs to be prepared')
@@ -48,6 +49,8 @@ if (name=="all") {
 print('Filter active_analyses to model inputs to be prepared')
 
 active_analyses <- active_analyses[active_analyses$name %in% prepare,]
+print (paste0("nrow active_analyses prep: ",nrow(active_analyses)))
+
 for (i in 1:nrow(active_analyses)) {
   
   # Load data --------------------------------------------------------------------
