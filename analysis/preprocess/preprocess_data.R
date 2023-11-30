@@ -49,6 +49,8 @@ col_classes <- setNames(
 
 df <-  readr::read_csv(input_path,col_types = col_classes )
 
+df$cov_num_bmi_date_measured <-NULL#This column is not needed
+
 message(paste0("Dataset has been read successfully with N = ", nrow(df), " rows"))
 print("type of columns:\n")
 
