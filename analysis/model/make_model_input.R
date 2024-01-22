@@ -65,10 +65,9 @@ for (i in 1:nrow(active_analyses)) {
   # Restrict to required variables -----------------------------------------------
   print('Restrict to required variables')
   
-  input$sub_bin_ckd_char = as.character(input$sub_bin_ckd)
-  print (paste0("values in sub_bin_ckd:",unique(input$sub_bin_ckd_char)))
+  print (paste0("values in sub_bin_ckd:",unique(input$sub_bin_ckd)))
   
-  input = filter(input, sub_bin_ckd_char == active_analyses$ckd_group[i])
+  input = filter(input, input$sub_bin_ckd == active_analyses$ckd_group[i])
   print (paste0("nrow input after filter: ",nrow(input)))
   
   input <- input[,unique(c("patient_id",
