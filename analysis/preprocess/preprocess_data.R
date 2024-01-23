@@ -74,6 +74,9 @@ df <- df %>%
          across(contains('_cat'), ~ as.factor(.)),
          across(contains('_bin'), ~ as.logical(.)))
 
+# specifically format sub_bin_ckd as a factor
+
+df$sub_bin_ckd = factor(df$sub_bin_ckd, levels = c(TRUE, FALSE), labels = c("gen","ckd_hist"))
 
 # Overwrite vaccination information for dummy data and vax cohort only --
 

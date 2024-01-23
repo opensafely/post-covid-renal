@@ -45,8 +45,8 @@
     covariate_threshold <- 5L
 
     ##Dates
-    
-    study_dates <- fromJSON("output/study_dates.json")
+
+    study_dates <- fromJSON("output/study_dates.json")    
     
     prevax_start <- "2020-01-01"
     prevax_stop<- "2021-12-14"
@@ -469,7 +469,7 @@
     
     #remove unneeded dfs
     
-    #rm(df2,df3,df4, df5)
+    rm(df2,df3,df4,df5)
     
     # Check names are unique and save active analyses list -------------------------
 
