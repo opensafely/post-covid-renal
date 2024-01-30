@@ -3941,6 +3941,212 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_vax-sub_sex_male-ckd_hist-esrd.csv
 
+  ## Table 2 - prevax 
+
+  table2_prevax:
+    run: r:latest analysis/descriptives/table2.R prevax
+    needs:
+    - make_model_input-cohort_prevax-main-ckd_hist-aki
+    - make_model_input-cohort_prevax-main-gen-aki
+    - make_model_input-cohort_prevax-main-gen-ckd
+    - make_model_input-cohort_prevax-main-ckd_hist-esrd
+    - make_model_input-cohort_prevax-sub_age_18_39-ckd_hist-aki
+    - make_model_input-cohort_prevax-sub_age_18_39-gen-aki
+    - make_model_input-cohort_prevax-sub_age_18_39-gen-ckd
+    - make_model_input-cohort_prevax-sub_age_18_39-ckd_hist-esrd
+    - make_model_input-cohort_prevax-sub_age_40_59-ckd_hist-aki
+    - make_model_input-cohort_prevax-sub_age_40_59-gen-aki
+    - make_model_input-cohort_prevax-sub_age_40_59-gen-ckd
+    - make_model_input-cohort_prevax-sub_age_40_59-ckd_hist-esrd
+    - make_model_input-cohort_prevax-sub_age_60_79-ckd_hist-aki
+    - make_model_input-cohort_prevax-sub_age_60_79-gen-aki
+    - make_model_input-cohort_prevax-sub_age_60_79-gen-ckd
+    - make_model_input-cohort_prevax-sub_age_60_79-ckd_hist-esrd
+    - make_model_input-cohort_prevax-sub_age_80_110-ckd_hist-aki
+    - make_model_input-cohort_prevax-sub_age_80_110-gen-aki
+    - make_model_input-cohort_prevax-sub_age_80_110-gen-ckd
+    - make_model_input-cohort_prevax-sub_age_80_110-ckd_hist-esrd
+    - make_model_input-cohort_prevax-sub_covid_hospitalised-ckd_hist-aki
+    - make_model_input-cohort_prevax-sub_covid_hospitalised-gen-aki
+    - make_model_input-cohort_prevax-sub_covid_hospitalised-gen-ckd
+    - make_model_input-cohort_prevax-sub_covid_hospitalised-ckd_hist-esrd
+    - make_model_input-cohort_prevax-sub_covid_nonhospitalised-ckd_hist-aki
+    - make_model_input-cohort_prevax-sub_covid_nonhospitalised-gen-aki
+    - make_model_input-cohort_prevax-sub_covid_nonhospitalised-gen-ckd
+    - make_model_input-cohort_prevax-sub_covid_nonhospitalised-ckd_hist-esrd
+    - make_model_input-cohort_prevax-sub_ethnicity_asian-ckd_hist-aki
+    - make_model_input-cohort_prevax-sub_ethnicity_asian-gen-aki
+    - make_model_input-cohort_prevax-sub_ethnicity_asian-gen-ckd
+    - make_model_input-cohort_prevax-sub_ethnicity_asian-ckd_hist-esrd
+    - make_model_input-cohort_prevax-sub_ethnicity_black-ckd_hist-aki
+    - make_model_input-cohort_prevax-sub_ethnicity_black-gen-aki
+    - make_model_input-cohort_prevax-sub_ethnicity_black-gen-ckd
+    - make_model_input-cohort_prevax-sub_ethnicity_black-ckd_hist-esrd
+    - make_model_input-cohort_prevax-sub_ethnicity_mixed-ckd_hist-aki
+    - make_model_input-cohort_prevax-sub_ethnicity_mixed-gen-aki
+    - make_model_input-cohort_prevax-sub_ethnicity_mixed-gen-ckd
+    - make_model_input-cohort_prevax-sub_ethnicity_mixed-ckd_hist-esrd
+    - make_model_input-cohort_prevax-sub_ethnicity_other-ckd_hist-aki
+    - make_model_input-cohort_prevax-sub_ethnicity_other-gen-aki
+    - make_model_input-cohort_prevax-sub_ethnicity_other-gen-ckd
+    - make_model_input-cohort_prevax-sub_ethnicity_other-ckd_hist-esrd
+    - make_model_input-cohort_prevax-sub_ethnicity_white-ckd_hist-aki
+    - make_model_input-cohort_prevax-sub_ethnicity_white-gen-aki
+    - make_model_input-cohort_prevax-sub_ethnicity_white-gen-ckd
+    - make_model_input-cohort_prevax-sub_ethnicity_white-ckd_hist-esrd
+    - make_model_input-cohort_prevax-sub_sex_female-ckd_hist-aki
+    - make_model_input-cohort_prevax-sub_sex_female-gen-aki
+    - make_model_input-cohort_prevax-sub_sex_female-gen-ckd
+    - make_model_input-cohort_prevax-sub_sex_female-ckd_hist-esrd
+    - make_model_input-cohort_prevax-sub_sex_male-ckd_hist-aki
+    - make_model_input-cohort_prevax-sub_sex_male-gen-aki
+    - make_model_input-cohort_prevax-sub_sex_male-gen-ckd
+    - make_model_input-cohort_prevax-sub_sex_male-ckd_hist-esrd
+    outputs:
+      moderately_sensitive:
+        table2: output/table2_prevax.csv
+        table2_rounded: output/table2_prevax_rounded.csv
+
+  ## Table 2 - unvax 
+
+  table2_unvax:
+    run: r:latest analysis/descriptives/table2.R unvax
+    needs:
+    - make_model_input-cohort_unvax-main-ckd_hist-aki
+    - make_model_input-cohort_unvax-main-gen-aki
+    - make_model_input-cohort_unvax-main-gen-ckd
+    - make_model_input-cohort_unvax-main-ckd_hist-esrd
+    - make_model_input-cohort_unvax-sub_age_18_39-ckd_hist-aki
+    - make_model_input-cohort_unvax-sub_age_18_39-gen-aki
+    - make_model_input-cohort_unvax-sub_age_18_39-gen-ckd
+    - make_model_input-cohort_unvax-sub_age_18_39-ckd_hist-esrd
+    - make_model_input-cohort_unvax-sub_age_40_59-ckd_hist-aki
+    - make_model_input-cohort_unvax-sub_age_40_59-gen-aki
+    - make_model_input-cohort_unvax-sub_age_40_59-gen-ckd
+    - make_model_input-cohort_unvax-sub_age_40_59-ckd_hist-esrd
+    - make_model_input-cohort_unvax-sub_age_60_79-ckd_hist-aki
+    - make_model_input-cohort_unvax-sub_age_60_79-gen-aki
+    - make_model_input-cohort_unvax-sub_age_60_79-gen-ckd
+    - make_model_input-cohort_unvax-sub_age_60_79-ckd_hist-esrd
+    - make_model_input-cohort_unvax-sub_age_80_110-ckd_hist-aki
+    - make_model_input-cohort_unvax-sub_age_80_110-gen-aki
+    - make_model_input-cohort_unvax-sub_age_80_110-gen-ckd
+    - make_model_input-cohort_unvax-sub_age_80_110-ckd_hist-esrd
+    - make_model_input-cohort_unvax-sub_covid_history-ckd_hist-aki
+    - make_model_input-cohort_unvax-sub_covid_history-gen-aki
+    - make_model_input-cohort_unvax-sub_covid_history-gen-ckd
+    - make_model_input-cohort_unvax-sub_covid_history-ckd_hist-esrd
+    - make_model_input-cohort_unvax-sub_covid_hospitalised-ckd_hist-aki
+    - make_model_input-cohort_unvax-sub_covid_hospitalised-gen-aki
+    - make_model_input-cohort_unvax-sub_covid_hospitalised-gen-ckd
+    - make_model_input-cohort_unvax-sub_covid_hospitalised-ckd_hist-esrd
+    - make_model_input-cohort_unvax-sub_covid_nonhospitalised-ckd_hist-aki
+    - make_model_input-cohort_unvax-sub_covid_nonhospitalised-gen-aki
+    - make_model_input-cohort_unvax-sub_covid_nonhospitalised-gen-ckd
+    - make_model_input-cohort_unvax-sub_covid_nonhospitalised-ckd_hist-esrd
+    - make_model_input-cohort_unvax-sub_ethnicity_asian-ckd_hist-aki
+    - make_model_input-cohort_unvax-sub_ethnicity_asian-gen-aki
+    - make_model_input-cohort_unvax-sub_ethnicity_asian-gen-ckd
+    - make_model_input-cohort_unvax-sub_ethnicity_asian-ckd_hist-esrd
+    - make_model_input-cohort_unvax-sub_ethnicity_black-ckd_hist-aki
+    - make_model_input-cohort_unvax-sub_ethnicity_black-gen-aki
+    - make_model_input-cohort_unvax-sub_ethnicity_black-gen-ckd
+    - make_model_input-cohort_unvax-sub_ethnicity_black-ckd_hist-esrd
+    - make_model_input-cohort_unvax-sub_ethnicity_mixed-ckd_hist-aki
+    - make_model_input-cohort_unvax-sub_ethnicity_mixed-gen-aki
+    - make_model_input-cohort_unvax-sub_ethnicity_mixed-gen-ckd
+    - make_model_input-cohort_unvax-sub_ethnicity_mixed-ckd_hist-esrd
+    - make_model_input-cohort_unvax-sub_ethnicity_other-ckd_hist-aki
+    - make_model_input-cohort_unvax-sub_ethnicity_other-gen-aki
+    - make_model_input-cohort_unvax-sub_ethnicity_other-gen-ckd
+    - make_model_input-cohort_unvax-sub_ethnicity_other-ckd_hist-esrd
+    - make_model_input-cohort_unvax-sub_ethnicity_white-ckd_hist-aki
+    - make_model_input-cohort_unvax-sub_ethnicity_white-gen-aki
+    - make_model_input-cohort_unvax-sub_ethnicity_white-gen-ckd
+    - make_model_input-cohort_unvax-sub_ethnicity_white-ckd_hist-esrd
+    - make_model_input-cohort_unvax-sub_sex_female-ckd_hist-aki
+    - make_model_input-cohort_unvax-sub_sex_female-gen-aki
+    - make_model_input-cohort_unvax-sub_sex_female-gen-ckd
+    - make_model_input-cohort_unvax-sub_sex_female-ckd_hist-esrd
+    - make_model_input-cohort_unvax-sub_sex_male-ckd_hist-aki
+    - make_model_input-cohort_unvax-sub_sex_male-gen-aki
+    - make_model_input-cohort_unvax-sub_sex_male-gen-ckd
+    - make_model_input-cohort_unvax-sub_sex_male-ckd_hist-esrd
+    outputs:
+      moderately_sensitive:
+        table2: output/table2_unvax.csv
+        table2_rounded: output/table2_unvax_rounded.csv
+
+  ## Table 2 - vax 
+
+  table2_vax:
+    run: r:latest analysis/descriptives/table2.R vax
+    needs:
+    - make_model_input-cohort_vax-main-ckd_hist-aki
+    - make_model_input-cohort_vax-main-gen-aki
+    - make_model_input-cohort_vax-main-gen-ckd
+    - make_model_input-cohort_vax-main-ckd_hist-esrd
+    - make_model_input-cohort_vax-sub_age_18_39-ckd_hist-aki
+    - make_model_input-cohort_vax-sub_age_18_39-gen-aki
+    - make_model_input-cohort_vax-sub_age_18_39-gen-ckd
+    - make_model_input-cohort_vax-sub_age_18_39-ckd_hist-esrd
+    - make_model_input-cohort_vax-sub_age_40_59-ckd_hist-aki
+    - make_model_input-cohort_vax-sub_age_40_59-gen-aki
+    - make_model_input-cohort_vax-sub_age_40_59-gen-ckd
+    - make_model_input-cohort_vax-sub_age_40_59-ckd_hist-esrd
+    - make_model_input-cohort_vax-sub_age_60_79-ckd_hist-aki
+    - make_model_input-cohort_vax-sub_age_60_79-gen-aki
+    - make_model_input-cohort_vax-sub_age_60_79-gen-ckd
+    - make_model_input-cohort_vax-sub_age_60_79-ckd_hist-esrd
+    - make_model_input-cohort_vax-sub_age_80_110-ckd_hist-aki
+    - make_model_input-cohort_vax-sub_age_80_110-gen-aki
+    - make_model_input-cohort_vax-sub_age_80_110-gen-ckd
+    - make_model_input-cohort_vax-sub_age_80_110-ckd_hist-esrd
+    - make_model_input-cohort_vax-sub_covid_history-ckd_hist-aki
+    - make_model_input-cohort_vax-sub_covid_history-gen-aki
+    - make_model_input-cohort_vax-sub_covid_history-gen-ckd
+    - make_model_input-cohort_vax-sub_covid_history-ckd_hist-esrd
+    - make_model_input-cohort_vax-sub_covid_hospitalised-ckd_hist-aki
+    - make_model_input-cohort_vax-sub_covid_hospitalised-gen-aki
+    - make_model_input-cohort_vax-sub_covid_hospitalised-gen-ckd
+    - make_model_input-cohort_vax-sub_covid_hospitalised-ckd_hist-esrd
+    - make_model_input-cohort_vax-sub_covid_nonhospitalised-ckd_hist-aki
+    - make_model_input-cohort_vax-sub_covid_nonhospitalised-gen-aki
+    - make_model_input-cohort_vax-sub_covid_nonhospitalised-gen-ckd
+    - make_model_input-cohort_vax-sub_covid_nonhospitalised-ckd_hist-esrd
+    - make_model_input-cohort_vax-sub_ethnicity_asian-ckd_hist-aki
+    - make_model_input-cohort_vax-sub_ethnicity_asian-gen-aki
+    - make_model_input-cohort_vax-sub_ethnicity_asian-gen-ckd
+    - make_model_input-cohort_vax-sub_ethnicity_asian-ckd_hist-esrd
+    - make_model_input-cohort_vax-sub_ethnicity_black-ckd_hist-aki
+    - make_model_input-cohort_vax-sub_ethnicity_black-gen-aki
+    - make_model_input-cohort_vax-sub_ethnicity_black-gen-ckd
+    - make_model_input-cohort_vax-sub_ethnicity_black-ckd_hist-esrd
+    - make_model_input-cohort_vax-sub_ethnicity_mixed-ckd_hist-aki
+    - make_model_input-cohort_vax-sub_ethnicity_mixed-gen-aki
+    - make_model_input-cohort_vax-sub_ethnicity_mixed-gen-ckd
+    - make_model_input-cohort_vax-sub_ethnicity_mixed-ckd_hist-esrd
+    - make_model_input-cohort_vax-sub_ethnicity_other-ckd_hist-aki
+    - make_model_input-cohort_vax-sub_ethnicity_other-gen-aki
+    - make_model_input-cohort_vax-sub_ethnicity_other-gen-ckd
+    - make_model_input-cohort_vax-sub_ethnicity_other-ckd_hist-esrd
+    - make_model_input-cohort_vax-sub_ethnicity_white-ckd_hist-aki
+    - make_model_input-cohort_vax-sub_ethnicity_white-gen-aki
+    - make_model_input-cohort_vax-sub_ethnicity_white-gen-ckd
+    - make_model_input-cohort_vax-sub_ethnicity_white-ckd_hist-esrd
+    - make_model_input-cohort_vax-sub_sex_female-ckd_hist-aki
+    - make_model_input-cohort_vax-sub_sex_female-gen-aki
+    - make_model_input-cohort_vax-sub_sex_female-gen-ckd
+    - make_model_input-cohort_vax-sub_sex_female-ckd_hist-esrd
+    - make_model_input-cohort_vax-sub_sex_male-ckd_hist-aki
+    - make_model_input-cohort_vax-sub_sex_male-gen-aki
+    - make_model_input-cohort_vax-sub_sex_male-gen-ckd
+    - make_model_input-cohort_vax-sub_sex_male-ckd_hist-esrd
+    outputs:
+      moderately_sensitive:
+        table2: output/table2_vax.csv
+        table2_rounded: output/table2_vax_rounded.csv
+
   make_model_output:
     run: r:latest analysis/model/make_model_output.R
     needs:

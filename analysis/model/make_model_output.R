@@ -19,12 +19,10 @@ files <- list.files("output", pattern = "model_output-")
 print('Combine model outputs')
 
 df <- NULL
-symptoms<- c("nausea", "vomiting", "bloody_stools", "abdominal_paindiscomfort", "abdominal_distension", "diarrhoea")
 
 for (i in files) {
   
-  ## Load model output if it is not a symptom
-  if (!any(str_detect(i, symptoms))) {
+  ## Load model output
   
   tmp <- readr::read_csv(paste0("output/",i))
   
@@ -67,15 +65,15 @@ for (i in files) {
   
   df <- plyr::rbind.fill(df,tmp)
 }
-}
+
 
 # Add details from active analyses ---------------------------------------------
 print('Add details from active analyses')
 
-df[,c("exposure","outcome")] <- NULL
+df[,c("exposure","outcome","ckd_group")] <- NULL
 
 df <- merge(df, 
-            active_analyses[,c("name","cohort","outcome","analysis")], 
+            active_analyses[,c("name","cohort","outcome","ckd_group","analysis")], 
             by = "name", all.x = TRUE)
 
 df$outcome <- gsub("out_date_","",df$outcome)
@@ -116,7 +114,7 @@ df$outcome_time_median <- ifelse(df$name %in% redact[redact$action==TRUE,]$name,
 # Save model output ------------------------------------------------------------
 print('Save model output')
 
-df <- df[,c("name","cohort","outcome","analysis","error","model","term",
+df <- df[,c("name","cohort","outcome","ckd_group","analysis","error","model","term",
             "lnhr","se_lnhr","hr","conf_low","conf_high",
             "N_total","N_exposed","N_events","person_time_total",
             "outcome_time_median","strata_warning","surv_formula")]
