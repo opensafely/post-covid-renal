@@ -374,14 +374,14 @@ actions_list <- splice(
    ),
    
   # ## Table 2 -------------------------------------------------------------------
-  # 
-  # splice(
-  #   unlist(lapply(unique(active_analyses$cohort), 
-  #                 function(x) table2(cohort = x)), 
-  #          recursive = FALSE
-  #   )
-  # ),
-  # 
+   
+   splice(
+    unlist(lapply(unique(active_analyses$cohort), 
+                   function(x) table2(cohort = x)), 
+            recursive = FALSE
+     )
+   ),
+   
   ## Venn data -----------------------------------------------------------------
   
  # splice(
