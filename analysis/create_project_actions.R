@@ -145,7 +145,7 @@ stage1_data_cleaning <- function(cohort){
       needs = list("vax_eligibility_inputs",glue("preprocess_data_{cohort}")),
       moderately_sensitive = list(
         consort = glue("output/consort_{cohort}.csv"),
-        consort_rounded = glue("output/consort_{cohort}_rounded.csv")
+        consort_midpoint6 = glue("output/consort_{cohort}_midpoint6.csv")
       ),
       highly_sensitive = list(
         cohort = glue("output/input_{cohort}_stage1.rds")
@@ -197,8 +197,8 @@ table1 <- function(cohort){
       moderately_sensitive = list(
         table1a = glue("output/table1_{cohort}_histckd.csv"),
         table1b = glue("output/table1_{cohort}_gen.csv"),
-        table1a_rounded = glue("output/table1_{cohort}_histckd_rounded.csv"),
-        table1b_rounded = glue("output/table1_{cohort}_gen_rounded.csv")
+        table1a_midpoint6 = glue("output/table1_{cohort}_histckd_midpoint6.csv"),
+        table1b_midpoint6 = glue("output/table1_{cohort}_gen_midpoint6.csv")
       )
     )
   )
@@ -218,7 +218,7 @@ table2 <- function(cohort){
       needs = c(as.list(paste0("make_model_input-",table2_names))),
       moderately_sensitive = list(
         table2 = glue("output/table2_{cohort}.csv"),
-        table2_rounded = glue("output/table2_{cohort}_rounded.csv")
+        table2_midpoint6 = glue("output/table2_{cohort}_midpoint6.csv")
       )
     )
   )
@@ -241,7 +241,7 @@ table2 <- function(cohort){
     #            as.list(paste0(glue("make_model_input-cohort_{cohort}-main-"),venn_ckd_groups,"-",venn_outcomes))),
   #    moderately_sensitive = list(
   #      table2 = glue("output/venn_{ckd_group}_{cohort}.csv"),
-   #     table2_rounded = glue("output/venn_{ckd_group}_{cohort}_rounded.csv")
+   #     table2_midpoint6 = glue("output/venn_{ckd_group}_{cohort}_midpoint6.csv")
   #    )
  #   )
  # )

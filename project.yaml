@@ -174,7 +174,7 @@ actions:
     outputs:
       moderately_sensitive:
         consort: output/consort_prevax.csv
-        consort_rounded: output/consort_prevax_rounded.csv
+        consort_midpoint6: output/consort_prevax_midpoint6.csv
       highly_sensitive:
         cohort: output/input_prevax_stage1.rds
 
@@ -188,7 +188,7 @@ actions:
     outputs:
       moderately_sensitive:
         consort: output/consort_unvax.csv
-        consort_rounded: output/consort_unvax_rounded.csv
+        consort_midpoint6: output/consort_unvax_midpoint6.csv
       highly_sensitive:
         cohort: output/input_unvax_stage1.rds
 
@@ -202,7 +202,7 @@ actions:
     outputs:
       moderately_sensitive:
         consort: output/consort_vax.csv
-        consort_rounded: output/consort_vax_rounded.csv
+        consort_midpoint6: output/consort_vax_midpoint6.csv
       highly_sensitive:
         cohort: output/input_vax_stage1.rds
 
@@ -216,8 +216,8 @@ actions:
       moderately_sensitive:
         table1a: output/table1_prevax_histckd.csv
         table1b: output/table1_prevax_gen.csv
-        table1a_rounded: output/table1_prevax_histckd_rounded.csv
-        table1b_rounded: output/table1_prevax_gen_rounded.csv
+        table1a_midpoint6: output/table1_prevax_histckd_midpoint6.csv
+        table1b_midpoint6: output/table1_prevax_gen_midpoint6.csv
 
   ## Table 1 - unvax 
 
@@ -229,8 +229,8 @@ actions:
       moderately_sensitive:
         table1a: output/table1_unvax_histckd.csv
         table1b: output/table1_unvax_gen.csv
-        table1a_rounded: output/table1_unvax_histckd_rounded.csv
-        table1b_rounded: output/table1_unvax_gen_rounded.csv
+        table1a_midpoint6: output/table1_unvax_histckd_midpoint6.csv
+        table1b_midpoint6: output/table1_unvax_gen_midpoint6.csv
 
   ## Table 1 - vax 
 
@@ -242,8 +242,8 @@ actions:
       moderately_sensitive:
         table1a: output/table1_vax_histckd.csv
         table1b: output/table1_vax_gen.csv
-        table1a_rounded: output/table1_vax_histckd_rounded.csv
-        table1b_rounded: output/table1_vax_gen_rounded.csv
+        table1a_midpoint6: output/table1_vax_histckd_midpoint6.csv
+        table1b_midpoint6: output/table1_vax_gen_midpoint6.csv
 
   make_model_input-cohort_prevax-main-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_prevax-main-ckd_hist-aki
@@ -4005,7 +4005,7 @@ actions:
     outputs:
       moderately_sensitive:
         table2: output/table2_prevax.csv
-        table2_rounded: output/table2_prevax_rounded.csv
+        table2_midpoint6: output/table2_prevax_midpoint6.csv
 
   ## Table 2 - unvax 
 
@@ -4075,7 +4075,7 @@ actions:
     outputs:
       moderately_sensitive:
         table2: output/table2_unvax.csv
-        table2_rounded: output/table2_unvax_rounded.csv
+        table2_midpoint6: output/table2_unvax_midpoint6.csv
 
   ## Table 2 - vax 
 
@@ -4145,7 +4145,7 @@ actions:
     outputs:
       moderately_sensitive:
         table2: output/table2_vax.csv
-        table2_rounded: output/table2_vax_rounded.csv
+        table2_midpoint6: output/table2_vax_midpoint6.csv
 
   make_model_output:
     run: r:latest analysis/model/make_model_output.R
