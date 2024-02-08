@@ -1736,27 +1736,6 @@ actions:
       moderately_sensitive:
         model_output: output/model_output-cohort_prevax-sub_covid_hospitalised-gen-ckd.csv
 
-  make_model_input-cohort_prevax-sub_covid_hospitalised-ckd_hist-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_prevax-sub_covid_hospitalised-ckd_hist-esrd
-    needs:
-    - stage1_data_cleaning_prevax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_prevax-sub_covid_hospitalised-ckd_hist-esrd.rds
-
-  cox_ipw-cohort_prevax-sub_covid_hospitalised-ckd_hist-esrd:
-    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_prevax-sub_covid_hospitalised-ckd_hist-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch;cov_bin_aki
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2020-01-01
-      --study_stop=2021-12-14 --cut_points=28;197;365;714 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_prevax-sub_covid_hospitalised-ckd_hist-esrd.csv
-    needs:
-    - make_model_input-cohort_prevax-sub_covid_hospitalised-ckd_hist-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_prevax-sub_covid_hospitalised-ckd_hist-esrd.csv
-
   make_model_input-cohort_unvax-sub_covid_hospitalised-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_hospitalised-ckd_hist-aki
     needs:
@@ -1819,27 +1798,6 @@ actions:
     outputs:
       moderately_sensitive:
         model_output: output/model_output-cohort_unvax-sub_covid_hospitalised-gen-ckd.csv
-
-  make_model_input-cohort_unvax-sub_covid_hospitalised-ckd_hist-esrd:
-    run: r:latest analysis/model/make_model_input.R cohort_unvax-sub_covid_hospitalised-ckd_hist-esrd
-    needs:
-    - stage1_data_cleaning_unvax
-    outputs:
-      highly_sensitive:
-        model_input: output/model_input-cohort_unvax-sub_covid_hospitalised-ckd_hist-esrd.rds
-
-  cox_ipw-cohort_unvax-sub_covid_hospitalised-ckd_hist-esrd:
-    run: cox-ipw:v0.0.30 --df_input=model_input-cohort_unvax-sub_covid_hospitalised-ckd_hist-esrd.rds
-      --ipw=TRUE --exposure=exp_date --outcome=out_date --strata=cov_cat_region --covariate_sex=cov_cat_sex
-      --covariate_age=cov_num_age --covariate_other=cov_cat_ethnicity;cov_cat_deprivation;cov_cat_smoking_status;cov_bin_carehome_status;cov_num_consulation_rate;cov_bin_healthcare_worker;cov_bin_dementia;cov_bin_liver_disease;cov_bin_cancer;cov_bin_hypertension;cov_bin_diabetes;cov_bin_obesity;cov_bin_chronic_obstructive_pulmonary_disease;cov_bin_ami;cov_bin_stroke_isch;cov_bin_aki
-      --cox_start=index_date --cox_stop=end_date_outcome --study_start=2021-06-01
-      --study_stop=2021-12-14 --cut_points=28;197 --controls_per_case=20 --total_event_threshold=50
-      --episode_event_threshold=5 --covariate_threshold=5 --age_spline=TRUE --df_output=model_output-cohort_unvax-sub_covid_hospitalised-ckd_hist-esrd.csv
-    needs:
-    - make_model_input-cohort_unvax-sub_covid_hospitalised-ckd_hist-esrd
-    outputs:
-      moderately_sensitive:
-        model_output: output/model_output-cohort_unvax-sub_covid_hospitalised-ckd_hist-esrd.csv
 
   make_model_input-cohort_vax-sub_covid_hospitalised-ckd_hist-aki:
     run: r:latest analysis/model/make_model_input.R cohort_vax-sub_covid_hospitalised-ckd_hist-aki
@@ -3969,7 +3927,6 @@ actions:
     - make_model_input-cohort_prevax-sub_covid_hospitalised-ckd_hist-aki
     - make_model_input-cohort_prevax-sub_covid_hospitalised-gen-aki
     - make_model_input-cohort_prevax-sub_covid_hospitalised-gen-ckd
-    - make_model_input-cohort_prevax-sub_covid_hospitalised-ckd_hist-esrd
     - make_model_input-cohort_prevax-sub_covid_nonhospitalised-ckd_hist-aki
     - make_model_input-cohort_prevax-sub_covid_nonhospitalised-gen-aki
     - make_model_input-cohort_prevax-sub_covid_nonhospitalised-gen-ckd
@@ -4039,7 +3996,6 @@ actions:
     - make_model_input-cohort_unvax-sub_covid_hospitalised-ckd_hist-aki
     - make_model_input-cohort_unvax-sub_covid_hospitalised-gen-aki
     - make_model_input-cohort_unvax-sub_covid_hospitalised-gen-ckd
-    - make_model_input-cohort_unvax-sub_covid_hospitalised-ckd_hist-esrd
     - make_model_input-cohort_unvax-sub_covid_nonhospitalised-ckd_hist-aki
     - make_model_input-cohort_unvax-sub_covid_nonhospitalised-gen-aki
     - make_model_input-cohort_unvax-sub_covid_nonhospitalised-gen-ckd
