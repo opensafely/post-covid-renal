@@ -4140,14 +4140,12 @@ actions:
     - cox_ipw-cohort_unvax-sub_covid_nonhospitalised-gen-ckd
     - cox_ipw-cohort_unvax-sub_covid_history-gen-ckd
     - cox_ipw-cohort_prevax-main-ckd_hist-esrd
-    - cox_ipw-cohort_prevax-sub_covid_hospitalised-ckd_hist-esrd
     - cox_ipw-cohort_prevax-sub_covid_nonhospitalised-ckd_hist-esrd
     - cox_ipw-cohort_vax-main-ckd_hist-esrd
     - cox_ipw-cohort_vax-sub_covid_hospitalised-ckd_hist-esrd
     - cox_ipw-cohort_vax-sub_covid_nonhospitalised-ckd_hist-esrd
     - cox_ipw-cohort_vax-sub_covid_history-ckd_hist-esrd
     - cox_ipw-cohort_unvax-main-ckd_hist-esrd
-    - cox_ipw-cohort_unvax-sub_covid_hospitalised-ckd_hist-esrd
     - cox_ipw-cohort_unvax-sub_covid_nonhospitalised-ckd_hist-esrd
     - cox_ipw-cohort_unvax-sub_covid_history-ckd_hist-esrd
     outputs:
