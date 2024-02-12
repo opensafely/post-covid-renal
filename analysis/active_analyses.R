@@ -447,6 +447,12 @@
                       df$analysis, "-", df$ckd_group, "-",
                       gsub("out_date_","",df$outcome))
 
+    ## Remove the two models that did not work due to low counts prior to the outcome matching below
+    
+    df <- df %>%
+          filter(name!="cohort_unvax-sub_covid_hospitalised-ckd_hist-esrd") %>%
+          filter(name!= "cohort_prevax-sub_covid_hospitalised-ckd_hist-esrd")
+    
     ## Remove models where the CKD population doesn't match the outcome
     
     #create two dataframes with the unwanted models 
