@@ -250,7 +250,7 @@ consort[nrow(consort)+1,] <- c("Inclusion criteria: Six months follow up prior t
 print('Inclusion criteria: Active registration')
 
 input <- input %>%
-  filter(is.na(dereg_date))
+  filter(is.na(deregistration_date) | (!is.na(deregistration_date) & deregistration_date>=index_date)) 
 consort[nrow(consort)+1,] <- c("Inclusion criteria: Active registration",
                                nrow(input))
 
