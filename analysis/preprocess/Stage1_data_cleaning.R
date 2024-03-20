@@ -250,7 +250,7 @@ consort[nrow(consort)+1,] <- c("Inclusion criteria: Six months follow up prior t
 print('Inclusion criteria: Active registration')
 
 input <- input %>%
-  filter(is.na(dereg_date))
+  filter(is.na(deregistration_date) | (!is.na(deregistration_date) & deregistration_date>=index_date)) 
 consort[nrow(consort)+1,] <- c("Inclusion criteria: Active registration",
                                nrow(input))
 
@@ -388,7 +388,7 @@ consort$removed <- dplyr::lag(consort$N, default = dplyr::first(consort$N)) - co
 print('Save rounded consort data ')
 
 write.csv(consort, 
-          file = paste0("output/consort_",cohort, "_rounded.csv"), 
+          file = paste0("output/consort_",cohort, "_midpoint6.csv"), 
           row.names=F)
 
 # Save stage 1 dataset ---------------------------------------------------------
