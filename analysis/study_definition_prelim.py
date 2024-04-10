@@ -244,5 +244,4 @@ study = StudyDefinition(
 
         **jcvi_variables,
         
-    
 )
