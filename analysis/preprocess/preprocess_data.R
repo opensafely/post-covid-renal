@@ -140,6 +140,8 @@ df1 <- df%>% select(patient_id,starts_with("index_date"),
                      contains("cov_"), # Covariates
                      contains("qa_"), #quality assurance
                      contains("step"), # diabetes steps
+                     contains("death_date"), #death date
+                     contains("deregistration_date"), #dereg date
                      contains("vax_date_eligible"), # Vaccination eligibility
                      contains("vax_date_"), # Vaccination dates and vax type 
                      contains("vax_cat_")# Vaccination products
