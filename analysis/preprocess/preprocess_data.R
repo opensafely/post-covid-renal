@@ -49,7 +49,7 @@ col_classes <- setNames(
 df <-  readr::read_csv(input_path,col_types = col_classes )
 
 df$cov_num_bmi_date_measured <-NULL#This column is not needed
-df$patient_id <- as.numeric(df$patient_id)
+df$patient_id <- as.character(df$patient_id)
 
 message(paste0("Dataset has been read successfully with N = ", nrow(df), " rows"))
 print("type of columns:\n")
@@ -57,7 +57,7 @@ print("type of columns:\n")
 #Add death_date from prelim data
 prelim_data <- read_csv("output/index_dates.csv.gz") %>%
   select(c(patient_id,death_date,deregistration_date))
-prelim_data$patient_id <- as.numeric(prelim_data$patient_id) 
+prelim_data$patient_id <- as.character(prelim_data$patient_id) 
 prelim_data$death_date <- as.Date(prelim_data$death_date) 
 prelim_data$deregistration_date <- as.Date(prelim_data$deregistration_date) 
 
