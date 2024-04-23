@@ -7,7 +7,6 @@ library(lubridate)
 library(data.table)
 library(readr)
 
-# Specify command arguments ----------------------------------------------------
 args <- commandArgs(trailingOnly=TRUE)
 print(length(args))
 if(length(args)==0){
@@ -50,16 +49,21 @@ col_classes <- setNames(
 df <-  readr::read_csv(input_path,col_types = col_classes )
 
 df$cov_num_bmi_date_measured <-NULL#This column is not needed
+df$patient_id <- as.character(df$patient_id)
 
 message(paste0("Dataset has been read successfully with N = ", nrow(df), " rows"))
 print("type of columns:\n")
 
 #Add death_date from prelim data
 prelim_data <- read_csv("output/index_dates.csv.gz") %>%
-  select(c(patient_id,death_date))
+  select(c(patient_id,death_date,deregistration_date))
+prelim_data$patient_id <- as.character(prelim_data$patient_id) 
+prelim_data$death_date <- as.Date(prelim_data$death_date) 
+prelim_data$deregistration_date <- as.Date(prelim_data$deregistration_date) 
+
 df <- df %>% inner_join(prelim_data,by="patient_id")
 
-message("Death date added!")
+message("Death & deregistration dates added!")
 
 
 # Format columns ---------------------------------------------------------------
@@ -136,6 +140,8 @@ df1 <- df%>% select(patient_id,starts_with("index_date"),
                      contains("cov_"), # Covariates
                      contains("qa_"), #quality assurance
                      contains("step"), # diabetes steps
+                     contains("death_date"), #death date
+                     contains("deregistration_date"), #dereg date
                      contains("vax_date_eligible"), # Vaccination eligibility
                      contains("vax_date_"), # Vaccination dates and vax type 
                      contains("vax_cat_")# Vaccination products
@@ -144,15 +150,6 @@ df1 <- df%>% select(patient_id,starts_with("index_date"),
 
 df1[,colnames(df)[grepl("tmp_",colnames(df))]] <- NULL
 
-prelim_data <- read_csv("output/index_dates.csv.gz") 
-prelim_data <- prelim_data[,c("patient_id","death_date","deregistration_date")] 
-prelim_data$patient_id <- as.character(prelim_data$patient_id) 
-prelim_data$death_date <- as.Date(prelim_data$death_date) 
-prelim_data$deregistration_date <- as.Date(prelim_data$deregistration_date) 
-
-df1 <- df1 %>% inner_join(prelim_data,by="patient_id") 
-
-message("Death and deregistration dates added!") 
 
 # Repo specific preprocessing 
 

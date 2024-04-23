@@ -1,0 +1,164 @@
+code,term
+1048451000000103,Acute kidney injury due to acute tubular necrosis due to hypovolaemia
+1048481000000109,Acute kidney injury due to acute tubular necrosis due to circulatory failure
+1048491000000106,Acute kidney injury due to acute tubular necrosis due to sepsis
+1048501000000100,Acute kidney injury due to acute tubular necrosis with histological evidence
+1048511000000103,Acute kidney injury due to acute tubular necrosis due to hypovolaemia with histological evidence
+1048521000000109,Acute kidney injury due to acute tubular necrosis due to sepsis with histological evidence
+1048541000000102,Acute kidney injury due to acute tubular necrosis due to circulatory failure with histological evidence
+1144960002,Acute tubular necrosis due to ischemia and caused by toxin
+1144961003,Acute tubular necrosis caused by toxin
+1177174007,Acute kidney injury following administration of contrast media
+11800851000119104,Laceration of right kidney
+11800891000119109,Laceration of left kidney
+11801171000119107,Contusion of right kidney
+11801251000119105,Contusion of left kidney
+11801411000119105,Traumatic injury of right kidney
+11801451000119106,Traumatic injury of left kidney
+12202461000119106,Anuria following procedure
+12202501000119106,Oliguria following procedure
+12245621000119102,Acute renal failure following procedure
+129561000119108,Pre-renal acute kidney injury
+129721000119106,Acute renal failure on dialysis
+13010001,Acute renal failure following labor AND/OR delivery
+139460001,Anuria
+139461002,Oliguria
+140031000119103,Acute nontraumatic kidney injury
+14343001,Acute pyelitis with renal medullary necrosis
+145681000119101,Acute renal failure due to tubular necrosis
+14669001,Acute renal failure syndrome
+14853005,Abortion with acute renal failure
+155855008,Acute renal failure
+157666004,Traumatic anuria &/or crush syndrome
+158477003,[D]Oliguria and anuria
+158478008,[D]Oliguria
+158479000,[D]Anuria
+158482005,[D]Oliguria and anuria NOS
+17380002,Failed attempted abortion with acute renal failure
+197652001,Other acute renal failure
+197653006,Acute renal failure NOS
+197769007,Acute pyelonephritis with medullary necrosis
+198525004,[X]Other acute renal failure
+198842004,Oliguria following abortive pregnancy
+198843009,Acute renal failure following abortive pregnancy
+200116000,Post-delivery acute renal failure unspecified
+200117009,Post-delivery acute renal failure - delivered with postnatal problem
+200118004,Post-delivery acute renal failure with postnatal problem
+200119007,Post-delivery acute renal failure NOS
+207180001,[D]Oliguria and anuria
+207181002,[D]Oliguria
+207182009,[D]Anuria
+207185006,[D]Oliguria and anuria NOS
+212376001,(Renal failure: [following crush syndrome] or [after crushing]) or (traumatic anuria - crush syndrome)
+212378000,Acute renal failure due to rhabdomyolysis
+213231008,Hepatorenal syndrome as a complication of care
+213238002,Oliguria as a complication of care
+21334005,Failed attempted abortion with oliguria
+22846003,Hepatorenal syndrome following delivery
+236424009,Acute renal impairment
+236426006,Postoperative acute tubular necrosis
+236427002,Post-traumatic acute tubular necrosis
+236428007,Acute kidney injury due to nephrotoxicity
+236431008,Traumatic anuria - crush syndrome
+236432001,Pulmonary renal syndrome
+236433006,Acute-on-chronic renal failure
+23697004,Crush syndrome
+240317003,Kidney injury due to birth trauma
+2472002,Anuria
+269257004,Acute renal failure due to crush syndrome
+270494003,Acute papillary necrosis
+270918008,Traumatic anuria &/or crush syndrome
+271845002,Oliguria and anuria
+271846001,Deficient urine secretion
+271848000,Suppressed urine secretion
+298015003,Acute renal papillary necrosis with renal failure
+29908007,Oliguria following molar AND/OR ectopic pregnancy
+301814009,Post-renal renal failure
+307309005,Transient acute renal failure
+31005002,Hepatorenal syndrome due to a procedure
+32144005,Traumatic anuria
+33561005,Illegal abortion with acute renal failure
+35455006,Acute tubular necrosis
+36225005,Acute renal failure due to procedure
+36473002,Legal abortion with oliguria
+368951000119105,Acute kidney injury caused by contrast agent
+381011000000105,Acute renal failure due to urinary obstruction
+3999002,Acute pyelitis without renal medullary necrosis
+411781000000107,[X]Other acute renal failure
+414591000000100,[D]Oliguria and anuria NOS
+422593004,Acute renal failure caused by angiotensin-converting-enzyme inhibitor
+423533009,Acute renal failure due to ischemia
+426301000000103,[D]Oliguria and anuria NOS
+429224003,Acute renal failure due to acute cortical necrosis
+429489008,Acute renal failure due to obstruction
+430535006,Acute renal failure with oliguria
+438783006,Acute postoperative renal failure
+444794000,Acute necrosis of cortex of kidney
+491361000000101,Acute renal failure due to urinary obstruction 
+49809007,Abortion with oliguria
+498921000000102,[D]Oliguria and anuria
+498931000000100,[D]Oliguria
+498941000000109,[D]Anuria
+51292008,Hepatorenal syndrome
+52342006,Legal abortion with acute renal failure
+57469000,Miscarriage with acute renal failure
+605761000000101,Post-delivery acute renal failure unspecified
+609455009,Induced termination of pregnancy complicated by acute renal failure
+609472002,Induced termination of pregnancy complicated by acute renal failure with oliguria
+609512008,Induced termination of pregnancy complicated by oliguria
+610521000000107,Other acute renal failure
+610531000000109,Acute renal failure NOS
+6134000,Illegal abortion with oliguria
+62216007,Familial arthrogryposis-cholestatic hepatorenal syndrome
+683511000000107,Post-delivery acute renal failure NOS
+71909003,Acute renal failure following molar AND/OR ectopic pregnancy
+722095005,Acute kidney injury due to circulatory failure
+722096006,Acute kidney injury due to hypovolemia
+722278006,Acute kidney injury due to sepsis
+72613009,Miscarriage with oliguria
+726541005,Acute kidney injury due to trauma
+733137002,Acute kidney failure stage 1
+733138007,Acute kidney failure stage 2
+733139004,Acute kidney failure stage 3
+733839001,Postpartum acute renal failure
+7448003,Acute pyonephrosis with renal medullary necrosis
+825971000000108,Acute renal failure due to angiotensin-converting-enzyme inhibitor
+830851000000101,Acute renal failure due to angiotensin-converting-enzyme inhibitor
+83128009,Oliguria
+840371000000100,Acute renal failure induced by aminoglycoside
+840381000000103,Acute renal failure due to aminoglycoside 
+840431000000109,Acute renal failure induced by cisplatin
+840441000000100,Acute renal failure induced by cisplatin 
+840451000000102,Acute renal failure induced by cyclosporin A
+840461000000104,Acute renal failure induced by cyclosporin A 
+840471000000106,Acute renal failure induced by non-steroidal anti-inflammatory drug
+840481000000108,Acute renal failure induced by non-steroidal anti-inflammatory 
+841961000000100,Acute renal failure due to non-traumatic rhabdomyolysis
+841971000000107,Acute renal failure due to non-traumatic rhabdomyolysis 
+842511000000101,Acute renal failure induced by animal toxin
+842521000000107,Acute renal failure induced by animal toxin 
+842531000000109,Acute renal failure induced by plant toxin
+842541000000100,Acute renal failure induced by plant toxin 
+842551000000102,Acute renal failure induced by heavy metal
+842561000000104,Acute renal failure induced by heavy metal 
+844631000000104,Acute renal failure induced by poison
+844641000000108,Acute renal failure induced by poison 
+844701000000103,Acute renal failure induced by radiographic contrast media
+844711000000101,Acute renal failure induced by radiographic contrast media 
+844741000000100,Acute renal failure induced by solvent
+844751000000102,Acute renal failure induced by solvent 
+847851000000101,Acute renal failure due to traumatic rhabdomyolysis
+847861000000103,Acute renal failure due to non-traumatic rhabdomyolysis
+851931000000107,Acute kidney injury stage 1
+851941000000103,Acute kidney injury stage 2
+851951000000100,Acute kidney injury stage 3
+857561000000103,Nephrotoxic acute renal failure
+867581000000100,Acute kidney injury stage 1
+867591000000103,Acute kidney injury stage 1 
+867601000000109,Acute kidney injury stage 2
+867611000000106,Acute kidney injury stage 2 
+867621000000100,Acute kidney injury stage 3
+867631000000103,Acute kidney injury stage 3 
+870589006,Acute kidney injury due to disease caused by severe acute respiratory syndrome coronavirus 2
+88380005,Acute milk alkali syndrome
+89486006,Oliguria OR anuria due to procedure
