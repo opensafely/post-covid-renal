@@ -1,5 +1,7 @@
+source("analysis/specify_paths.R")
+
 # Load data --------------------------------------------------------------------
-df <-read.csv("FILEPATH/model_output_midpoint6.csv")
+df <-read.csv(path_model_output)
 
 df <- df[!is.na(df$hr),]
 
