@@ -2,10 +2,9 @@
 aki,AKI,,
 ckd,CKD,,
 esrd,ESRD,,
-ckd_hist,No history of CKD,,
-gen,history of CKD,,
-ami,AKI,,
-prevax,Pre-vaccine availability (Jan 1 2020 - Jun 18 2021),,
+ckd_hist,History of CKD,,
+gen,No history of CKD,,
+prevax,Pre-vaccination (Jan 1 2020 - Dec 14 2021),,
 vax,Vaccinated (Jun 1 2021 - Dec 14 2021),,
 unvax,Unvaccinated (Jun 1 2021 - Dec 14 2021),,
 main,All COVID-19,main,1
