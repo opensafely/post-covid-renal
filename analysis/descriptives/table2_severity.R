@@ -1,3 +1,14 @@
+# Load libraries ----
+
+library(magrittr)
+library(tidyverse)
+library(purrr)
+library(data.table)
+library(svglite)
+library(VennDiagram)
+library(grid)
+library(gridExtra)
+
 # Load data --------------------------------------------------------------------
 print("Load data")
 
@@ -5,7 +16,6 @@ df <- readr::read_csv(path_model_output,
                       show_col_types = FALSE)
 
 colnames(df) <- gsub("_midpoint6","",colnames(df))
-df$analysis <- gsub("day0_","",df$analysis)
 
 #get/fix CKD groups
 
@@ -13,11 +23,25 @@ df$tmp <- str_split_fixed(df$name, "-",4)[,3]
 df$population <- ""
 df$population <- ifelse(df$tmp=="ckd_hist","gen",df$population)
 df$population <- ifelse(df$tmp=="gen","ckd_hist",df$population)
-df[,c("tmp","name")] <- NULL
+#df[,c("tmp","name")] <- NULL
+
+#remove results with no person time therefore unusable
+
+df<- df[!is.na(df$person_time_total),]
+
+#keep only max adj model data so we only have one of each
+
+df <- df[df$model=="mdl_max_adj",]
+
+#combine all of the days together to match expected formatting
+
+df<- df %>%
+    group_by(outcome, analysis, cohort, population) %>%
+    summarise(N_event_tot = sum(N_events), N_person_time_tot = sum(person_time_total), N_totals = sum(N_total))
+
 
 # Keep totals ------------------------------------------------------------------
 print("Keep totals")
-
 
 totals <- unique(df[df$analysis=="main",c("cohort","population", "N_total")])
 
@@ -30,10 +54,13 @@ colnames(totals) <- paste0("event_personyears_",colnames(totals))
 totals$outcome_label <- "N"
 
 # Filter data ------------------------------------------------------------------
+
+
+
 ##this filtering step doesn't seem to work, and it may be the issue?
 #print("Filter data")
 
-#df <- df[df$analysis %in% c("main","sub_covid_hospitalised","sub_covid_nonhospitalised"),]
+df <- df[df$analysis %in% c("main","sub_covid_hospitalised","sub_covid_nonhospitalised"),]
 
 #df$events <- ifelse(df$analysis=="main", df$unexposed_events, df$exposed_events)
 #df$person_days <- ifelse(df$analysis=="main", df$unexposed_person_days, df$exposed_person_days)
@@ -58,8 +85,8 @@ df$covid19_severity <- factor(df$covid19_severity, levels = c("No COVID-19","Hos
 # Add other columns ------------------------------------------------------------
 print("Add other columns")
 
-df$event_personyears <- paste0(df$N_events,"/", round((df$person_time_total/365.25)))
-df$incidencerate <- round(df$N_events/((df$person_time_total/365.25)/100000))
+df$event_personyears <- paste0(df$N_event_tot,"/", round((df$N_person_time_tot/365.25)))
+df$incidencerate <- round(df$N_event_tot/((df$N_person_time_tot/365.25)/100000))
 
 # Pivot table ------------------------------------------------------------------
 print("Pivot table")
