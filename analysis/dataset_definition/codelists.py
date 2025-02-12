@@ -247,7 +247,7 @@ chd_primis = codelist_from_csv(
 #ckd35_primis = codelist_from_csv(
    # "codelists/primis-covid19-vacc-uptake-ckd35.csv",
    # column="code"
-)
+#)
 
 ## Chronic Liver disease codes
 cld_primis = codelist_from_csv(
