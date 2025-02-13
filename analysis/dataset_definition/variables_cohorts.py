@@ -225,56 +225,56 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         tmp_exp_date_covid19_confirmed_death=tmp_exp_date_covid19_confirmed_death,       
         exp_date_covid19_confirmed=exp_date_covid19_confirmed,
 
-# Outcomes---------------------------------------------------------------------------------------------------
+# # Outcomes---------------------------------------------------------------------------------------------------
 
-    ## ---First recording of the outcome in during the study period
+#     ## ---First recording of the outcome in during the study period
 
-      ### Pneumonia
-        out_date_pneumonia= (
-            first_matching_event_clinical_snomed_between(
-            pneumonia_snomed, index_date, end_date_out
-            )
-        .date
-        ),
+#       ### Pneumonia
+#         out_date_pneumonia= (
+#             first_matching_event_clinical_snomed_between(
+#             pneumonia_snomed, index_date, end_date_out
+#             )
+#         .date
+#         ),
 
-      ### Asthma
-        out_date_asthma= (
-            first_matching_event_clinical_snomed_between(
-            asthma_snomed, index_date, end_date_out
-            )
-        .date
-        ),
+#       ### Asthma
+#         out_date_asthma= (
+#             first_matching_event_clinical_snomed_between(
+#             asthma_snomed, index_date, end_date_out
+#             )
+#         .date
+#         ),
 
-      ### COPD
-        out_date_copd= (
-            first_matching_event_clinical_ctv3_between(
-            copd_ctv3, index_date, end_date_out
-            )
-        .date
-        ),
+#       ### COPD
+#         out_date_copd= (
+#             first_matching_event_clinical_ctv3_between(
+#             copd_ctv3, index_date, end_date_out
+#             )
+#         .date
+#         ),
 
-      ### Pulmonary Fibrosis
-        out_date_pulmonary_fibrosis= (
-            first_matching_event_clinical_snomed_between(
-            pulmonary_fibrosis_snomed, index_date, end_date_out
-            )
-        .date
-        ),
+#       ### Pulmonary Fibrosis
+#         out_date_pulmonary_fibrosis= (
+#             first_matching_event_clinical_snomed_between(
+#             pulmonary_fibrosis_snomed, index_date, end_date_out
+#             )
+#         .date
+#         ),
 
-# DEFINE EXISTING RESPIRATORY CONDITION COHORT --------------------------------------------------------------
-        sub_bin_asthma_recent_snomed= (
-            first_matching_event_clinical_ctv3_between(
-            copd_ctv3, index_date-days(730), index_date-days(1)
-            )
-        .exists_for_patient()        
-        ),
-# COPD diagnosed ever----------------------------------------------------------------------------------------       
-        sub_bin_copd_ctv3=(
-            last_matching_event_clinical_ctv3_before(
-            copd_ctv3, index_date
-            )    
-        .exists_for_patient()       
-        ),
+# # DEFINE EXISTING RESPIRATORY CONDITION COHORT --------------------------------------------------------------
+#         sub_bin_asthma_recent_snomed= (
+#             first_matching_event_clinical_ctv3_between(
+#             copd_ctv3, index_date-days(730), index_date-days(1)
+#             )
+#         .exists_for_patient()        
+#         ),
+# # COPD diagnosed ever----------------------------------------------------------------------------------------       
+#         sub_bin_copd_ctv3=(
+#             last_matching_event_clinical_ctv3_before(
+#             copd_ctv3, index_date
+#             )    
+#         .exists_for_patient()       
+#         ),
 
 # Covariates-------------------------------------------------------------------------------------------------  
 
@@ -479,29 +479,29 @@ def generate_variables(index_date, end_date_exp, end_date_out):
             ).exists_for_patient())
         ),
 
-      ## Pneumonia
-        cov_bin_history_pneumonia_snomed= (
-            last_matching_event_clinical_snomed_before(
-            pneumonia_snomed, index_date
-            )
-        .exists_for_patient()
-        ),
+    #   ## Pneumonia
+    #     cov_bin_history_pneumonia_snomed= (
+    #         last_matching_event_clinical_snomed_before(
+    #         pneumonia_snomed, index_date
+    #         )
+    #     .exists_for_patient()
+    #     ),
 
-      ## Asthma
-        cov_bin_history_asthma_snomed= (
-            last_matching_event_clinical_snomed_before(
-            asthma_snomed, index_date
-            )
-        .exists_for_patient()
-        ),
+    #   ## Asthma
+    #     cov_bin_history_asthma_snomed= (
+    #         last_matching_event_clinical_snomed_before(
+    #         asthma_snomed, index_date
+    #         )
+    #     .exists_for_patient()
+    #     ),
 
-      ## Pulmonary Fibrosis
-        cov_bin_history_pulmonary_fibrosis_snomed= (
-            last_matching_event_clinical_snomed_before(
-            pulmonary_fibrosis_snomed, index_date
-            )
-        .exists_for_patient()
-        ),
+    #   ## Pulmonary Fibrosis
+    #     cov_bin_history_pulmonary_fibrosis_snomed= (
+    #         last_matching_event_clinical_snomed_before(
+    #         pulmonary_fibrosis_snomed, index_date
+    #         )
+    #     .exists_for_patient()
+    #     ),
 
         ## Ischaemic stroke
         cov_bin_stroke_isch=(

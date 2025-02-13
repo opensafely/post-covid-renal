@@ -450,80 +450,67 @@ ckd_icd10 = codelist_from_csv(
 
 aki_snomed = codelist_from_csv(
     "codelists/bristol-acute-kidney-injury-snomed.csv",
-    system="snomed",
-    column="code",
+    column="code"
 )
 
 aki_icd10 = codelist_from_csv(
     "codelists/user-viyaasan-acute-kidney-injury.csv",
-    system="icd10",
-    column="code",
+    column="code"
 )
 
 esrd_snomed = codelist_from_csv(
     "codelists/user-S_Walter-end-stage-renal-disease.csv",
-    system="snomed",
-    column="code",
+    column="code"
 )
 
 esrd_icd10 = codelist_from_csv(
     "codelists/user-S_Walter-end-stage-renal-disease-icd10.csv",
-    system="icd10",
-    column="code",
+    column="code"
 )
 
 dialysis_snomed = codelist_from_csv(
     "codelists/user-S_Walter-renal-dialysis.csv",
-    system="snomed",
-    column="code",
+    column="code"
 )
 
 dialysis_icd10 = codelist_from_csv(
     "codelists/user-viyaasan-dialysis.csv",
-    system="icd10",
-    column="code",
+    column="code"
 )
 
 dialysis_opcs = codelist_from_csv(
     "codelists/user-viyaasan-dialysis-opcs-4.csv",
-    system="opcs4",
-    column="code",
+    column="code"
 )
 
 kidtrans_snomed = codelist_from_csv(
     "codelists/user-S_Walter-renal-transplant.csv",
-    system="snomed",
-    column="code",
+    column="code"
 )
 
 kidtrans_icd10 = codelist_from_csv(
     "codelists/user-S_Walter-renal-transplant.csv",
-    system="icd10",
-    column="code",
+    column="code"
 )
 
 kidtrans_opcs = codelist_from_csv(
     "codelists/user-viyaasan-kidney-transplant-opcs-4.csv",
-    system="opcs4",
-    column="code",
+    column="code"
 )
 
 ckd34_snomed = codelist_from_csv(
     "codelists/bristol-chronic-kidney-disease-stages3to4.csv",
-    system="snomed",
-    column="code",
+    column="code"
 )
 
 ckd34_icd10 = codelist_from_csv(
     "codelists/user-S_Walter-chronic-kidney-disease-stages3to4-icd10.csv",
-    system="icd10",
-    column="code",
+    column="code"
 )
 
 creatinine_snomed = codelist_from_csv(
     "codelists/user-bangzheng-creatinine-value.csv",
-    system="snomed",
-    column="code",
+    column="code"
 )
 
 # Renal outcomes
