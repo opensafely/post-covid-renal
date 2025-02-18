@@ -2,9 +2,8 @@ from ehrql import (
     days,
     case,
     when,
-    minimum_of
+    minimum_of,
 )
-
 # Bring table definitions from the TPP backend 
 from ehrql.tables.tpp import ( 
     patients, 
@@ -21,10 +20,10 @@ from ehrql.tables.tpp import (
 # Codelists from codelists.py (which pulls all variables from the codelist folder)
 from codelists import *
 
+
 # Call functions from variable_helper_functions
 from variable_helper_functions import (
     ever_matching_event_clinical_ctv3_before,
-    first_matching_event_clinical_ctv3_between,
     first_matching_event_clinical_snomed_between,
     first_matching_event_apc_between,
     matching_death_between,
@@ -32,12 +31,14 @@ from variable_helper_functions import (
     last_matching_event_clinical_snomed_before,
     last_matching_med_dmd_before,
     last_matching_event_apc_before,
-    matching_death_before,
     filter_codes_by_category,
 )
 
-# Define generate variables function
+
 def generate_variables(index_date, end_date_exp, end_date_out):  
+
+    ## Define individual variables first 
+    ## Then define a dictionary with all exposures, outcomes, covariates, and other variables
 
     ## Inclusion/exclusion criteria------------------------------------------------------------------------
 
@@ -49,6 +50,30 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     ### Alive on the index date
     inex_bin_alive = (((patients.date_of_death.is_null()) | (patients.date_of_death.is_after(index_date))) & 
     ((ons_deaths.date.is_null()) | (ons_deaths.date.is_after(index_date))))
+
+    ### Project specific: No history of ESRD
+    # Based on no history of kidney transplant, no history of dialysis, no coded ESRD
+
+    inex_ever_esrd = (
+        (last_matching_event_clinical_snomed_before(
+            esrd_snomed, index_date
+        ).exists_for_patient()) |
+        (last_matching_event_apc_before(
+            esrd_icd10, index_date
+        ).exists_for_patient())
+        (last_matching_event_clinical_snomed_before(
+            dialysis_snomed, index_date
+        ).exists_for_patient()) |
+        (last_matching_event_apc_before(
+            dialysis_icd10, index_date
+        ).exists_for_patient())
+        (last_matching_event_clinical_snomed_before(
+            kidtrans_snomed, index_date
+        ).exists_for_patient()) |
+        (last_matching_event_apc_before(
+            kidtrans_icd10, index_date
+        ).exists_for_patient())
+    )
 
     ## Censoring criteria----------------------------------------------------------------------------------
 
@@ -63,7 +88,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
 
     ## Exposures-------------------------------------------------------------------------------------------
 
-    ### COVID-19
+    ### Covid
     tmp_exp_date_covid_sgss = (
         sgss_covid_all_tests.where(
             sgss_covid_all_tests.specimen_taken_date.is_on_or_between(index_date, end_date_exp)
@@ -73,6 +98,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         .first_for_patient()
         .specimen_taken_date
     )
+
     tmp_exp_date_covid_gp = (
         clinical_events.where(
             (clinical_events.ctv3_code.is_in(
@@ -85,6 +111,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         .first_for_patient()
         .date
     )
+
     tmp_exp_date_covid_apc = (
         apcs.where(
             ((apcs.primary_diagnosis.is_in(covid_codes)) | 
@@ -95,19 +122,23 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         .first_for_patient()
         .admission_date
     )
+
     tmp_exp_covid_death = matching_death_between(covid_codes, index_date, end_date_exp)
+
     tmp_exp_date_death = ons_deaths.date
+
     tmp_exp_date_covid_death = case(
         when(tmp_exp_covid_death).then(tmp_exp_date_death)
     )
     
-    exp_date_covid = minimum_of(
+    exp_date_covid=minimum_of(
         tmp_exp_date_covid_sgss, 
         tmp_exp_date_covid_gp,
         tmp_exp_date_covid_apc,
         tmp_exp_date_covid_death
     )
 
+    
     ## Quality assurance-----------------------------------------------------------------------------------
 
     ### Prostate cancer
@@ -132,6 +163,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     qa_bin_hrtcocp = last_matching_med_dmd_before(
         cocp_dmd + hrt_dmd, index_date
     ).exists_for_patient()
+
 
     ## Outcomes--------------------------------------------------------------------------------------------
 
@@ -302,15 +334,16 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         ).exists_for_patient())
     )
 
-    ### Chronic kidney disease (CKD)
-    cov_bin_ckd = (
-        (last_matching_event_clinical_snomed_before(
-            ckd_snomed, index_date
-        ).exists_for_patient()) |
-        (last_matching_event_apc_before(
-            ckd_icd10, index_date
-        ).exists_for_patient())
-    )
+    # Commented out as this is a project specific covariate
+    # ### Chronic kidney disease (CKD)
+    # cov_bin_ckd = (
+    #     (last_matching_event_clinical_snomed_before(
+    #         ckd_snomed, index_date
+    #     ).exists_for_patient()) |
+    #     (last_matching_event_apc_before(
+    #         ckd_icd10, index_date
+    #     ).exists_for_patient())
+    # )
 
     ### Cancer
     cov_bin_cancer = (
@@ -322,7 +355,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         ).exists_for_patient())
     )
 
-    ### Hypertension
+    ### Hypertension (Also used for high vascular risk covariate)
     cov_bin_hypertension = (
         (last_matching_event_clinical_snomed_before(
             hypertension_snomed, index_date
@@ -335,7 +368,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         ).exists_for_patient())
     )
 
-    ### Diabetes 
+    ### Diabetes (Also used for high vascular risk covariate) 
     cov_bin_diabetes = (
         (last_matching_event_clinical_snomed_before(
             diabetes_snomed, index_date
@@ -400,33 +433,13 @@ def generate_variables(index_date, end_date_exp, end_date_out):
 
     ## Project specific covariates-------------------------------------------------------------------------
 
-    ### Pneumonia
-    cov_bin_pneumonia = (
+    ### History of CKD (any stage)
+    cov_bin_ckd = (
         (last_matching_event_clinical_snomed_before(
-            pneumonia_snomed, index_date
+            ckd_snomed, index_date
         ).exists_for_patient()) |
         (last_matching_event_apc_before(
-            pneumonia_icd10, index_date
-        ).exists_for_patient())
-    )
-
-    ### Asthma
-    cov_bin_asthma = (
-        (last_matching_event_clinical_snomed_before(
-            asthma_snomed, index_date
-        ).exists_for_patient()) |
-        (last_matching_event_apc_before(
-            asthma_icd10, index_date
-        ).exists_for_patient())
-    )
-
-    ### Pulmonary Fibrosis (PF)
-    cov_bin_pf = (
-        (last_matching_event_clinical_snomed_before(
-            pulmonary_fibrosis_snomed, index_date
-        ).exists_for_patient()) |
-        (last_matching_event_apc_before(
-            pulmonary_fibrosis_icd10, index_date
+            ckd_icd10, index_date
         ).exists_for_patient())
     )
 
@@ -486,80 +499,84 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         when(exp_date_covid.is_null()).then("no_infection")
     )
 
-    ### Asthma diagnosed in the past 2 years
-    sub_bin_asthma_recent=(
-        (first_matching_event_clinical_snomed_between(
-            asthma_snomed, index_date-days(730), index_date-days(1)
-        ).exists_for_patient()) |
-        (first_matching_event_apc_between(
-            asthma_icd10, index_date-days(730), index_date-days(1)
-        ).exists_for_patient())
-    )
+# Start of Dictionary-----------------------------------------------------------------------------------------
 
-    ### COPD diagnosed ever     
-    sub_bin_copd_ever = cov_bin_copd
-
-    ## Define dictionary of variables to be written into dataset-------------------------------------------
+    ## Combine the variables into the final dictionary
     dynamic_variables = dict(
-        ### Inclusion/exclusion criteria
+
+# Inclusion/exclusion criteria--------------------------------------------------------------------------------
         inex_bin_6m_reg = inex_bin_6m_reg,
-        inex_bin_alive = inex_bin_alive,
-        ### Censoring criteria
+        inex_bin_alive  = inex_bin_alive,
+
+    # History of End Stage Renal Disease 
+        inex_ever_esrd  = inex_ever_esrd, 
+
+# Censoring criteria------------------------------------------------------------------------------------------
         cens_date_dereg = cens_date_dereg,
-        ### Exposures
+
+# Exposures---------------------------------------------------------------------------------------------------
         exp_date_covid = exp_date_covid,
-        ### Quality assurance
+
+# Quality assurance-------------------------------------------------------------------------------------------
         qa_bin_prostate_cancer = qa_bin_prostate_cancer,
-        qa_bin_pregnancy = qa_bin_pregnancy,
-        qa_num_birth_year = qa_num_birth_year,
-        qa_bin_hrtcocp = qa_bin_hrtcocp,
-        ### Outcomes (including tmp_* for Venn diagrams)
-        tmp_out_date_pneumonia_gp = tmp_out_date_pneumonia_gp,
-        tmp_out_date_pneumonia_apc = tmp_out_date_pneumonia_apc,
-        tmp_out_date_pneumonia_death = tmp_out_date_pneumonia_death,
-        out_date_pneumonia = out_date_pneumonia,
-        tmp_out_date_asthma_gp = tmp_out_date_asthma_gp,
-        tmp_out_date_asthma_apc = tmp_out_date_asthma_apc,
-        tmp_out_date_asthma_death = tmp_out_date_asthma_death,
-        out_date_asthma = out_date_asthma,
-        tmp_out_date_copd_gp = tmp_out_date_copd_gp,
-        tmp_out_date_copd_apc = tmp_out_date_copd_apc,
-        tmp_out_date_copd_death = tmp_out_date_copd_death,
-        out_date_copd = out_date_copd,
-        tmp_out_date_pf_gp = tmp_out_date_pf_gp,
-        tmp_out_date_pf_apc = tmp_out_date_pf_apc,
-        tmp_out_date_pf_death = tmp_out_date_pf_death,
-        out_date_pf = out_date_pf,
-        ### Strata
+        qa_bin_pregnancy       = qa_bin_pregnancy,
+        qa_num_birth_year      = qa_num_birth_year,
+        qa_bin_hrtcocp         = qa_bin_hrtcocp,
+
+# Outcomes----------------------------------------------------------------------------------------------------
+
+        ### ---First recording of the outcome in during the study period
+        out_date_aki         = out_date_aki,        # Acute Kidney Injury
+        out_date_ckd         = out_date_ckd,        # Chronic Kidney Disease (but not ESRD)
+        out_date_esrd        = out_date_esrd,       # End Stage Renal Disease
+
+        ## Tmp GP
+        tmp_out_date_aki_gp         = tmp_out_date_aki_gp,        # Acute Kidney Injury
+        tmp_out_date_ckd_gp         = tmp_out_date_ckd_gp,        # Chronic Kidney Disease (but not ESRD)
+        tmp_out_date_esrd_gp        = tmp_out_date_esrd_gp,       # End Stage Renal Disease
+
+        ## Tmp APC
+        tmp_out_date_aki_apc     = tmp_out_date_aki_apc,     # Acute Kidney Injury
+        tmp_out_date_ckd_apc     = tmp_out_date_ckd_apc,     # Chronic Kidney Disease (but not ESRD)
+        tmp_out_date_esrd_apc    = tmp_out_date_esrd_apc,    # End Stage Renal Disease
+
+        ## Tmp Death 
+        tmp_out_date_aki_death    = tmp_out_date_aki_death,   # Acute Kidney Injury
+        tmp_out_date_ckd_death    = tmp_out_date_ckd_death,   # Chronic Kidney Disease (but not ESRD)
+        tmp_out_date_esrd_death   = tmp_out_date_esrd_death,  # End Stage Renal Disease
+
+
+### Strata----------------------------------------------------------------------------------------------------
         strat_cat_region = strat_cat_region,
-        ### Core covariates
-        cov_num_age = cov_num_age,
-        cov_cat_sex = cov_cat_sex,
-        cov_cat_ethnicity = cov_cat_ethnicity,
-        cov_cat_imd = cov_cat_imd,
-        cov_cat_smoking = cov_cat_smoking,
-        cov_bin_carehome = cov_bin_carehome,
-        cov_num_consrate2019 = cov_num_consrate2019,
-        cov_bin_hcworker = cov_bin_hcworker,
+
+### Core covariates-------------------------------------------------------------------------------------------
+        cov_num_age           = cov_num_age,
+        cov_cat_sex           = cov_cat_sex,
+
+        cov_bin_ami           = cov_bin_ami,
+        cov_bin_cancer        = cov_bin_cancer,
+        cov_bin_carehome      = cov_bin_carehome,
+        #cov_bin_ckd           = cov_bin_ckd,
+        cov_num_consrate2019  = cov_num_consrate2019,
+        cov_bin_copd          = cov_bin_copd,
         cov_bin_dementia = cov_bin_dementia,
+        cov_bin_depression    = cov_bin_depression,
+        cov_bin_diabetes      = cov_bin_diabetes,
+        cov_cat_ethnicity     = cov_cat_ethnicity,
+        cov_bin_hcworker      = cov_bin_hcworker,
+        cov_bin_hypertension  = cov_bin_hypertension,
+        cov_cat_imd           = cov_cat_imd,
         cov_bin_liver_disease = cov_bin_liver_disease,
-        cov_bin_ckd = cov_bin_ckd,
-        cov_bin_cancer = cov_bin_cancer,
-        cov_bin_hypertension = cov_bin_hypertension,
-        cov_bin_diabetes = cov_bin_diabetes,
-        cov_bin_obesity = cov_bin_obesity,
-        cov_bin_copd = cov_bin_copd,
-        cov_bin_ami = cov_bin_ami,
-        cov_bin_stroke_isch = cov_bin_stroke_isch,
-        cov_bin_depression = cov_bin_depression,
-        ### Project specific covariates
-        cov_bin_pneumonia = cov_bin_pneumonia,
-        cov_bin_asthma = cov_bin_asthma,
-        cov_bin_pf = cov_bin_pf,
-        ### Subgroups
-        sub_bin_covidhistory = sub_bin_covidhistory,
-        sub_cat_covidhospital = sub_cat_covidhospital,
-        sub_bin_asthma_recent = sub_bin_asthma_recent,
-        sub_bin_copd_ever = sub_bin_copd_ever
+        cov_bin_obesity       = cov_bin_obesity,
+        cov_cat_smoking       = cov_cat_smoking,
+        cov_bin_stroke_isch   = cov_bin_stroke_isch,
+
+### Project specific covariates----------------------------------------------------------------------------------
+        cov_bin_ckd            = cov_bin_ckd,
+        
+### Subgroups-----------------------------------------------------------------------------------------------------
+        sub_bin_covidhistory  = sub_bin_covidhistory,
+        sub_cat_covidhospital = sub_cat_covidhospital
     ) 
+    
     return dynamic_variables
