@@ -25,13 +25,13 @@ dataset.configure_dummy_data(population_size=1000)
 
 from variables_dates import study_dates
 
-# Extracting all variables from the study_dates dictionary
+# Extracting all relevant variables from the study_dates dictionary
 
-pandemic_start = study_dates["pandemic_start"]  # rough start date for pandemic in UK
-delta_date = study_dates["delta_date"]
-omicron_date = study_dates["omicron_date"]
-all_eligible = study_dates["all_eligible"]  # all 18+ are eligible for vax on this date (protocol)
-lcd_date = study_dates["lcd_date"] # last import date
+pandemic_start     = study_dates["pandemic_start"]  # rough start date for pandemic in UK
+delta_date         = study_dates["delta_date"]
+omicron_date       = study_dates["omicron_date"]
+all_eligible       = study_dates["all_eligible"]    # all 18+ are eligible for vax on this date (protocol)
+lcd_date           = study_dates["lcd_date"]        # last collection date for linked data (APCS; ONS_Deaths; SGSS_*)
 
 # Import preliminary date variables (death date, vax dates)
 
