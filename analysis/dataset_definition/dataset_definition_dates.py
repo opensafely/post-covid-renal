@@ -25,7 +25,7 @@ dataset.configure_dummy_data(population_size=1000)
 
 from variables_dates import study_dates
 
-# Extracting all relevant variables from the study_dates dictionary
+# Extracting all relevant dates from the study_dates dictionary
 
 pandemic_start     = study_dates["pandemic_start"]  # rough start date for pandemic in UK
 delta_date         = study_dates["delta_date"]

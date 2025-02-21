@@ -67,11 +67,17 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         (last_matching_event_apc_before(
             dialysis_icd10, index_date
         ).exists_for_patient())
+        (last_matching_event_apc_before(
+            dialysis_opcs, index_date
+        ).exists_for_patient())
         (last_matching_event_clinical_snomed_before(
             kidtrans_snomed, index_date
         ).exists_for_patient()) |
         (last_matching_event_apc_before(
             kidtrans_icd10, index_date
+        ).exists_for_patient())
+        (last_matching_event_apc_before(
+            kidtrans_opcs, index_date
         ).exists_for_patient())
     )
 
