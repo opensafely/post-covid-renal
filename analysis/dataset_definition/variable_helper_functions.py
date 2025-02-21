@@ -60,6 +60,11 @@ def last_matching_event_apc_before(codelist, start_date, only_prim_diagnoses=Fal
         query = query.where(apcs.all_diagnoses.contains_any_of(codelist))
     return query.sort_by(apcs.admission_date).last_for_patient()
 
+def last_matching_procedure_apc_before(codelist, start_date, where=True):
+    query = apcs.where(where).where(apcs.admission_date.is_before(start_date))
+    query = query.where(apcs.all_procedures.contains_any_of(codelist))
+    return query.sort_by(apcs.admission_date).last_for_patient()
+
 # helper function
 def any_of(conditions):
     return reduce(operator.or_, conditions)
