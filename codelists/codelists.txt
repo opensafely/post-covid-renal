@@ -76,7 +76,7 @@ user/elsie_horne/ckd_snomed/25d9dcd5
 user/elsie_horne/ckd_icd10/0cca69a0
 user/elsie_horne/cancer_snomed/23271cdf
 user/elsie_horne/cancer_icd10/55460349
-user/elsie_horne/copd_snomed/419c1000
+opensafely/current-copd/2020-05-06 
 user/elsie_horne/copd_icd10/5aab8335
 user/elsie_horne/diabetes_snomed/43881c67
 user/elsie_horne/diabetes_icd10/2a78a932
@@ -106,6 +106,7 @@ user/elsie_horne/hrt_dmd/19196799
 
 #Renal
 bristol/acute-kidney-injury-snomed/6593d4d2
+bristol/kidney-transplant-opcs-4/038e731b/
 user/viyaasan/acute-kidney-injury/27ec1897
 user/S_Walter/end-stage-renal-disease/2af4a040
 user/S_Walter/end-stage-renal-disease-icd10/1f62ecd9
@@ -116,5 +117,4 @@ user/viyaasan/dialysis/4c8d3f33
 user/bangzheng/creatinine-value/7d319079
 bristol/chronic-kidney-disease-stages3to4/11e52d0b
 user/S_Walter/chronic-kidney-disease-stages3to4-icd10/065379a4
-user/viyaasan/kidney-transplant-opcs-4/18d788ae
 user/viyaasan/dialysis-opcs-4/6b023254
