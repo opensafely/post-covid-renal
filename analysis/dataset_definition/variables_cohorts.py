@@ -32,6 +32,7 @@ from variable_helper_functions import (
     last_matching_med_dmd_before,
     last_matching_event_apc_before,
     last_matching_procedure_apc_before,
+    last_matching_procedure_opa_before,
     filter_codes_by_category,
 )
 
@@ -72,6 +73,9 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         (last_matching_procedure_apc_before(
            dialysis_opcs, index_date
         ).exists_for_patient()) |
+        (last_matching_procedure_opa_before(
+           dialysis_opcs, index_date
+        ).exists_for_patient()) |
         (last_matching_event_clinical_snomed_before(
             kidtrans_snomed, index_date
         ).exists_for_patient()) |
@@ -79,6 +83,9 @@ def generate_variables(index_date, end_date_exp, end_date_out):
             kidtrans_icd10, index_date
         ).exists_for_patient()) |
         (last_matching_procedure_apc_before(
+            kidtrans_opcs, index_date
+        ).exists_for_patient()) |
+        (last_matching_procedure_opa_before(
             kidtrans_opcs, index_date
         ).exists_for_patient()) 
     )

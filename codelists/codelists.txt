@@ -106,6 +106,7 @@ user/elsie_horne/hrt_dmd/19196799
 
 #Renal
 bristol/acute-kidney-injury-snomed/6593d4d2
+bristol/kidney-transplant-opcs-4/038e731b/
 user/viyaasan/acute-kidney-injury/27ec1897
 user/S_Walter/end-stage-renal-disease/2af4a040
 user/S_Walter/end-stage-renal-disease-icd10/1f62ecd9
@@ -116,5 +117,4 @@ user/viyaasan/dialysis/4c8d3f33
 user/bangzheng/creatinine-value/7d319079
 bristol/chronic-kidney-disease-stages3to4/11e52d0b
 user/S_Walter/chronic-kidney-disease-stages3to4-icd10/065379a4
-user/viyaasan/kidney-transplant-opcs-4/18d788ae
 user/viyaasan/dialysis-opcs-4/6b023254

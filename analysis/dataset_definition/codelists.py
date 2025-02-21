@@ -505,7 +505,7 @@ kidtrans_icd10 = codelist_from_csv(
 )
 
 kidtrans_opcs = codelist_from_csv(
-    "codelists/user-viyaasan-kidney-transplant-opcs-4.csv",
+    "codelists/bristol-kidney-transplant-opcs-4.csv",
     column="code"
 )
 

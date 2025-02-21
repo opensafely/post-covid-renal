@@ -9,6 +9,7 @@ from ehrql.tables.tpp import (
     # vaccinations,
     # sgss_covid_all_tests,
     apcs, 
+    opa_proc,
     # ec, 
     clinical_events, 
     medications, 
@@ -64,6 +65,11 @@ def last_matching_procedure_apc_before(codelist, start_date, where=True):
     query = apcs.where(where).where(apcs.admission_date.is_before(start_date))
     query = query.where(apcs.all_procedures.contains_any_of(codelist))
     return query.sort_by(apcs.admission_date).last_for_patient()
+
+def last_matching_procedure_opa_before(codelist, start_date, where=True):
+    query = opa_proc.where(where).where(opa_proc.appointment_date.is_before(start_date))
+    query = opa_proc.where(opa_proc.primary_procedure_code.is_in(codelist))
+    return query.sort_by(opa_proc.appointment_date).last_for_patient()
 
 # helper function
 def any_of(conditions):
