@@ -53,32 +53,33 @@ def generate_variables(index_date, end_date_exp, end_date_out):
 
     ### Project specific: No history of ESRD
     # Based on no history of kidney transplant, no history of dialysis, no coded ESRD
+    # OPCS codes will likely need a new helper function
 
     inex_ever_esrd = (
         (last_matching_event_clinical_snomed_before(
             esrd_snomed, index_date
         ).exists_for_patient()) |
-        (last_matching_event_apc_before(
+       (last_matching_event_apc_before(
             esrd_icd10, index_date
-        ).exists_for_patient())
+        ).exists_for_patient()) |
         (last_matching_event_clinical_snomed_before(
             dialysis_snomed, index_date
         ).exists_for_patient()) |
         (last_matching_event_apc_before(
             dialysis_icd10, index_date
-        ).exists_for_patient())
-        (last_matching_event_apc_before(
-            dialysis_opcs, index_date
-        ).exists_for_patient())
+        ).exists_for_patient())  |
+      #  (last_matching_event_apc_before(
+     #      dialysis_opcs, index_date
+      #  ).exists_for_patient()) |
         (last_matching_event_clinical_snomed_before(
             kidtrans_snomed, index_date
         ).exists_for_patient()) |
         (last_matching_event_apc_before(
             kidtrans_icd10, index_date
-        ).exists_for_patient())
-        (last_matching_event_apc_before(
-            kidtrans_opcs, index_date
-        ).exists_for_patient())
+        ).exists_for_patient()) #|
+       # (last_matching_event_apc_before(
+       #     kidtrans_opcs, index_date
+      #  ).exists_for_patient()) 
     )
 
     ## Censoring criteria----------------------------------------------------------------------------------

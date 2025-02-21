@@ -76,7 +76,7 @@ user/elsie_horne/ckd_snomed/25d9dcd5
 user/elsie_horne/ckd_icd10/0cca69a0
 user/elsie_horne/cancer_snomed/23271cdf
 user/elsie_horne/cancer_icd10/55460349
-user/elsie_horne/copd_snomed/419c1000
+opensafely/current-copd/2020-05-06 
 user/elsie_horne/copd_icd10/5aab8335
 user/elsie_horne/diabetes_snomed/43881c67
 user/elsie_horne/diabetes_icd10/2a78a932

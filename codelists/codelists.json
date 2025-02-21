@@ -384,11 +384,11 @@
       "downloaded_at": "2025-02-11 15:39:46.880006Z",
       "sha": "e7d60dcd0d942c6db6095390c5befcf623cb4b36"
     },
-    "user-elsie_horne-copd_snomed.csv": {
-      "id": "user/elsie_horne/copd_snomed/419c1000",
-      "url": "https://www.opencodelists.org/codelist/user/elsie_horne/copd_snomed/419c1000/",
-      "downloaded_at": "2025-02-11 15:39:47.046994Z",
-      "sha": "8621c69b3c52fd62b4ed4811411037eb9a2c9bb1"
+    "opensafely-current-copd.csv": {
+      "id": "opensafely/current-copd/2020-05-06",
+      "url": "https://www.opencodelists.org/codelist/opensafely/current-copd/2020-05-06/",
+      "downloaded_at": "2025-02-21 15:43:28.515321Z",
+      "sha": "bab838b50e256ceef8b9d2f6ca1132491e522bda"
     },
     "user-elsie_horne-copd_icd10.csv": {
       "id": "user/elsie_horne/copd_icd10/5aab8335",
