@@ -65,22 +65,25 @@ core_covars <- c(
 
 ## Define project-specific covariates (specific to respiratory project) ----
 project_covars <- c(
-  "cov_bin_history_ckd"
+  "sub_bin_ckd"
 )
 # Combine covariates into a single vector ----
 all_covars <- c(core_covars, project_covars)
 
 ## Combine covariates into a single string for analysis ----
-preex_FALSE_covars <- paste0(all_covars[!all_covars %in% c("cov_bin_history_ckd")], collapse = ";")
+preex_FALSE_covars <- paste0(all_covars[!all_covars %in% c("sub_bin_ckd")], collapse = ";")
 all_covars <- paste0(c(core_covars, project_covars), collapse = ";")
 
 # Specify cohorts ----
 
 cohorts <- c("vax","unvax","prevax")
 
+cohorts <- c("vax","unvax","prevax")
+
 # Specify outcomes ----
 
-outcomes_preex <- c("out_date_ckd_hist"                    )
+outcomes_preex <- c("out_date_aki",
+                    "out_date_esrd")
 
 outcomes_all <- c("out_date_aki",
                   "out_date_ckd",
