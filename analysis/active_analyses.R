@@ -380,7 +380,7 @@ for (c in cohorts) {
                            age_spline = TRUE,
                            analysis = paste0("sub_ethnicity_mixed","_",p))
       
-      ## analysis: sub_ethnicity_asian ----
+      ## analysis: sub_ethnicity_south_asian ----
       df[nrow(df)+1,] <- c(cohort = c,
                            exposure = exposure, 
                            outcome = i,
@@ -399,7 +399,7 @@ for (c in cohorts) {
                            episode_event_threshold = episode_event_threshold,
                            covariate_threshold = covariate_threshold,
                            age_spline = TRUE,
-                           analysis = paste0("sub_ethnicity_asian","_",p))
+                           analysis = paste0("sub_ethnicity_south_asian","_",p))
       
       ## analysis: sub_ethnicity_other ----
       df[nrow(df)+1,] <- c(cohort = c,
