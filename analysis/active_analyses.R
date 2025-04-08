@@ -25,6 +25,7 @@ df <- data.frame(cohort = character(),
                  episode_event_threshold = numeric(),
                  covariate_threshold = numeric(),
                  age_spline = logical(),
+                 ckd_group = character(),
                  analysis = character(),
                  stringsAsFactors = FALSE)
 
@@ -63,27 +64,23 @@ core_covars <- c(
   "cov_bin_chronic_kidney_disease", "cov_bin_cancer", "cov_bin_hypertension", "cov_bin_diabetes", "cov_bin_depression", "cov_bin_history_copd"
 )
 
-## Define project-specific covariates (specific to respiratory project) ----
+## Define project-specific covariates (specific to renal project) ----
 project_covars <- c(
-  "sub_bin_ckd"
+  "cov_bin_aki"
 )
-# Combine covariates into a single vector ----
-all_covars <- c(core_covars, project_covars)
 
 ## Combine covariates into a single string for analysis ----
-preex_FALSE_covars <- paste0(all_covars[!all_covars %in% c("sub_bin_ckd")], collapse = ";")
 all_covars <- paste0(c(core_covars, project_covars), collapse = ";")
 
 # Specify cohorts ----
 
 cohorts <- c("vax","unvax","prevax")
 
-cohorts <- c("vax","unvax","prevax")
+# Specify CKD population groups ----
+
+ckd_groups <- c("nohist", "hist")
 
 # Specify outcomes ----
-
-outcomes_preex <- c("out_date_aki",
-                    "out_date_esrd")
 
 outcomes_all <- c("out_date_aki",
                   "out_date_ckd",
@@ -93,15 +90,13 @@ outcomes_all <- c("out_date_aki",
 
 for (c in cohorts) {
   
+  # For each CKD population group ----
+  
+  for (ck in ckd_groups) {
+  
   # For each outcome ----
   
-  for (i in outcomes_all) {
-    
-    # For pre-existing CKD  -------------------------------------------
-    
-    preex <- if (i %in% outcomes_preex) "preex_FALSE" else c("preex_FALSE", "preex_TRUE")
-    
-    for (p in preex) {
+    for (i in outcomes_all) {
       
       # Define analyses ----
       
@@ -113,7 +108,7 @@ for (c in cohorts) {
                            strata = strata,
                            covariate_sex = covariate_sex,
                            covariate_age = covariate_age,
-                           covariate_other = ifelse(p=="preex_FALSE", preex_FALSE_covars, all_covars),
+                           covariate_other = all_covars,
                            cox_start = cox_start,
                            cox_stop = cox_stop,
                            study_start = ifelse(c=="prevax", prevax_start, vax_unvax_start),
@@ -124,7 +119,8 @@ for (c in cohorts) {
                            episode_event_threshold = episode_event_threshold,
                            covariate_threshold = covariate_threshold,
                            age_spline = TRUE,
-                           analysis = paste0("main","_",p))
+                           ckd_group = ck,
+                           analysis = paste0("main","_",ck))
       
       ## analysis: sub_covid_hospitalised ----
       df[nrow(df)+1,] <- c(cohort = c,
@@ -134,7 +130,7 @@ for (c in cohorts) {
                            strata = strata,
                            covariate_sex = covariate_sex,
                            covariate_age = covariate_age,
-                           covariate_other = ifelse(p=="preex_FALSE", preex_FALSE_covars, all_covars),
+                           covariate_other = all_covars,
                            cox_start = cox_start,
                            cox_stop = cox_stop,
                            study_start = ifelse(c=="prevax", prevax_start, vax_unvax_start),
@@ -145,7 +141,8 @@ for (c in cohorts) {
                            episode_event_threshold = episode_event_threshold,
                            covariate_threshold = covariate_threshold,
                            age_spline = TRUE,
-                           analysis = paste0("sub_covid_hospitalised","_",p))
+                           ckd_group = ck,
+                           analysis = paste0("sub_covid_hospitalised","_",ck))
       
       ## analysis: sub_covid_nonhospitalised ----
       df[nrow(df)+1,] <- c(cohort = c,
@@ -155,7 +152,7 @@ for (c in cohorts) {
                            strata = strata,
                            covariate_sex = covariate_sex,
                            covariate_age = covariate_age,
-                           covariate_other = ifelse(p=="preex_FALSE", preex_FALSE_covars, all_covars),
+                           covariate_other = all_covars,
                            cox_start = cox_start,
                            cox_stop = cox_stop,
                            study_start = ifelse(c=="prevax", prevax_start, vax_unvax_start),
@@ -166,7 +163,8 @@ for (c in cohorts) {
                            episode_event_threshold = episode_event_threshold,
                            covariate_threshold = covariate_threshold,
                            age_spline = TRUE,
-                           analysis = paste0("sub_covid_nonhospitalised","_",p))    
+                           ckd_group = ck,
+                           analysis = paste0("sub_covid_nonhospitalised","_",ck))    
       
       ## analysis: sub_covid_history ----
       if (c!="prevax") {
@@ -177,7 +175,7 @@ for (c in cohorts) {
                              strata = strata,
                              covariate_sex = covariate_sex,
                              covariate_age = covariate_age,
-                             covariate_other = ifelse(p=="preex_FALSE", preex_FALSE_covars, all_covars),
+                             covariate_other = all_covars,
                              cox_start = cox_start,
                              cox_stop = cox_stop,
                              study_start = vax_unvax_start,
@@ -188,7 +186,8 @@ for (c in cohorts) {
                              episode_event_threshold = episode_event_threshold,
                              covariate_threshold = covariate_threshold,
                              age_spline = TRUE,
-                             analysis = paste0("sub_covid_history","_",p))
+                             ckd_group = ck,
+                             analysis = paste0("sub_covid_history","_",ck))
       }
       
       ## analysis: sub_sex_female ----
@@ -199,7 +198,7 @@ for (c in cohorts) {
                            strata = strata,
                            covariate_sex = "NULL",
                            covariate_age = covariate_age,
-                           covariate_other = ifelse(p=="preex_FALSE", preex_FALSE_covars, all_covars),
+                           covariate_other = all_covars,
                            cox_start = cox_start,
                            cox_stop = cox_stop,
                            study_start = ifelse(c=="prevax", prevax_start, vax_unvax_start),
@@ -210,7 +209,8 @@ for (c in cohorts) {
                            episode_event_threshold = episode_event_threshold,
                            covariate_threshold = covariate_threshold,
                            age_spline = TRUE,
-                           analysis = paste0("sub_sex_female","_",p))
+                           ckd_group = ck,
+                           analysis = paste0("sub_sex_female","_",ck))
       
       ## analysis: sub_sex_male ----
       df[nrow(df)+1,] <- c(cohort = c,
@@ -220,7 +220,7 @@ for (c in cohorts) {
                            strata = strata,
                            covariate_sex = "NULL",
                            covariate_age = covariate_age,
-                           covariate_other = ifelse(p=="preex_FALSE", preex_FALSE_covars, all_covars),
+                           covariate_other = all_covars,
                            cox_start = cox_start,
                            cox_stop = cox_stop,
                            study_start = ifelse(c=="prevax", prevax_start, vax_unvax_start),
@@ -231,7 +231,8 @@ for (c in cohorts) {
                            episode_event_threshold = episode_event_threshold,
                            covariate_threshold = covariate_threshold,
                            age_spline = TRUE,
-                           analysis = paste0("sub_sex_male","_",p))
+                           ckd_group = ck,
+                           analysis = paste0("sub_sex_male","_",ck))
       
       ## analysis: sub_age_18_39 ----
       df[nrow(df)+1,] <- c(cohort = c,
@@ -241,7 +242,7 @@ for (c in cohorts) {
                            strata = strata,
                            covariate_sex = covariate_sex,
                            covariate_age = covariate_age,
-                           covariate_other = ifelse(p=="preex_FALSE", preex_FALSE_covars, all_covars),
+                           covariate_other = all_covars,
                            cox_start = cox_start,
                            cox_stop = cox_stop,
                            study_start = ifelse(c=="prevax", prevax_start, vax_unvax_start),
@@ -252,7 +253,8 @@ for (c in cohorts) {
                            episode_event_threshold = episode_event_threshold,
                            covariate_threshold = covariate_threshold,
                            age_spline = FALSE,
-                           analysis = paste0("sub_age_18_39","_",p))
+                           ckd_group = ck,
+                           analysis = paste0("sub_age_18_39","_",ck))
       
       ## analysis: sub_age_40_59 ----
       df[nrow(df)+1,] <- c(cohort = c,
@@ -262,7 +264,7 @@ for (c in cohorts) {
                            strata = strata,
                            covariate_sex = covariate_sex,
                            covariate_age = covariate_age,
-                           covariate_other = ifelse(p=="preex_FALSE", preex_FALSE_covars, all_covars),
+                           covariate_other = all_covars,
                            cox_start = cox_start,
                            cox_stop = cox_stop,
                            study_start = ifelse(c=="prevax", prevax_start, vax_unvax_start),
@@ -273,7 +275,8 @@ for (c in cohorts) {
                            episode_event_threshold = episode_event_threshold,
                            covariate_threshold = covariate_threshold,
                            age_spline = FALSE,
-                           analysis = paste0("sub_age_40_59","_",p))
+                           ckd_group = ck,
+                           analysis = paste0("sub_age_40_59","_",ck))
       
       ## analysis: sub_age_60_79 ----
       df[nrow(df)+1,] <- c(cohort = c,
@@ -283,7 +286,7 @@ for (c in cohorts) {
                            strata = strata,
                            covariate_sex = covariate_sex,
                            covariate_age = covariate_age,
-                           covariate_other = ifelse(p=="preex_FALSE", preex_FALSE_covars, all_covars),
+                           covariate_other = all_covars,
                            cox_start = cox_start,
                            cox_stop = cox_stop,
                            study_start = ifelse(c=="prevax", prevax_start, vax_unvax_start),
@@ -294,7 +297,8 @@ for (c in cohorts) {
                            episode_event_threshold = episode_event_threshold,
                            covariate_threshold = covariate_threshold,
                            age_spline = FALSE,
-                           analysis = paste0("sub_age_60_79","_",p))
+                           ckd_group = ck,
+                           analysis = paste0("sub_age_60_79","_",ck))
       
       ## analysis: sub_age_80_110 ----
       df[nrow(df)+1,] <- c(cohort = c,
@@ -304,7 +308,7 @@ for (c in cohorts) {
                            strata = strata,
                            covariate_sex = covariate_sex,
                            covariate_age = covariate_age,
-                           covariate_other = ifelse(p=="preex_FALSE", preex_FALSE_covars, all_covars),
+                           covariate_other = all_covars,
                            cox_start = cox_start,
                            cox_stop = cox_stop,
                            study_start = ifelse(c=="prevax", prevax_start, vax_unvax_start),
@@ -315,7 +319,8 @@ for (c in cohorts) {
                            episode_event_threshold = episode_event_threshold,
                            covariate_threshold = covariate_threshold,
                            age_spline = FALSE,
-                           analysis = paste0("sub_age_80_110","_",p))
+                           ckd_group = ck,
+                           analysis = paste0("sub_age_80_110","_",ck))
       
       ## analysis: sub_ethnicity_white ----
       df[nrow(df)+1,] <- c(cohort = c,
@@ -325,7 +330,7 @@ for (c in cohorts) {
                            strata = strata,
                            covariate_sex = covariate_sex,
                            covariate_age = covariate_age,
-                           covariate_other = ifelse(p=="preex_FALSE", gsub("cov_cat_ethnicity;","",preex_FALSE_covars), gsub("cov_cat_ethnicity;","",all_covars)),
+                           covariate_other = gsub("cov_cat_ethnicity;","",all_covars),
                            cox_start = cox_start,
                            cox_stop = cox_stop,
                            study_start = ifelse(c=="prevax", prevax_start, vax_unvax_start),
@@ -336,7 +341,8 @@ for (c in cohorts) {
                            episode_event_threshold = episode_event_threshold,
                            covariate_threshold = covariate_threshold,
                            age_spline = TRUE,
-                           analysis = paste0("sub_ethnicity_white","_",p))
+                           ckd_group = ck,
+                           analysis = paste0("sub_ethnicity_white","_",ck))
       
       ## analysis: sub_ethnicity_black ----
       df[nrow(df)+1,] <- c(cohort = c,
@@ -346,7 +352,7 @@ for (c in cohorts) {
                            strata = strata,
                            covariate_sex = covariate_sex,
                            covariate_age = covariate_age,
-                           covariate_other = ifelse(p=="preex_FALSE", gsub("cov_cat_ethnicity;","",preex_FALSE_covars), gsub("cov_cat_ethnicity;","",all_covars)),
+                           covariate_other = gsub("cov_cat_ethnicity;","",all_covars),
                            cox_start = cox_start,
                            cox_stop = cox_stop,
                            study_start = ifelse(c=="prevax", prevax_start, vax_unvax_start),
@@ -357,7 +363,8 @@ for (c in cohorts) {
                            episode_event_threshold = episode_event_threshold,
                            covariate_threshold = covariate_threshold,
                            age_spline = TRUE,
-                           analysis = paste0("sub_ethnicity_black","_",p))
+                           ckd_group = ck,
+                           analysis = paste0("sub_ethnicity_black","_",ck))
       
       ## analysis: sub_ethnicity_mixed ----
       df[nrow(df)+1,] <- c(cohort = c,
@@ -367,7 +374,7 @@ for (c in cohorts) {
                            strata = strata,
                            covariate_sex = covariate_sex,
                            covariate_age = covariate_age,
-                           covariate_other = ifelse(p=="preex_FALSE", gsub("cov_cat_ethnicity;","",preex_FALSE_covars), gsub("cov_cat_ethnicity;","",all_covars)),
+                           covariate_other = gsub("cov_cat_ethnicity;","",all_covars),
                            cox_start = cox_start,
                            cox_stop = cox_stop,
                            study_start = ifelse(c=="prevax", prevax_start, vax_unvax_start),
@@ -378,9 +385,10 @@ for (c in cohorts) {
                            episode_event_threshold = episode_event_threshold,
                            covariate_threshold = covariate_threshold,
                            age_spline = TRUE,
-                           analysis = paste0("sub_ethnicity_mixed","_",p))
+                           ckd_group = ck,
+                           analysis = paste0("sub_ethnicity_mixed","_",ck))
       
-      ## analysis: sub_ethnicity_south_asian ----
+      ## analysis: sub_ethnicity_asian ----
       df[nrow(df)+1,] <- c(cohort = c,
                            exposure = exposure, 
                            outcome = i,
@@ -388,7 +396,7 @@ for (c in cohorts) {
                            strata = strata,
                            covariate_sex = covariate_sex,
                            covariate_age = covariate_age,
-                           covariate_other = ifelse(p=="preex_FALSE", gsub("cov_cat_ethnicity;","",preex_FALSE_covars), gsub("cov_cat_ethnicity;","",all_covars)),
+                           covariate_other = gsub("cov_cat_ethnicity;","",all_covars),
                            cox_start = cox_start,
                            cox_stop = cox_stop,
                            study_start = ifelse(c=="prevax", prevax_start, vax_unvax_start),
@@ -399,7 +407,8 @@ for (c in cohorts) {
                            episode_event_threshold = episode_event_threshold,
                            covariate_threshold = covariate_threshold,
                            age_spline = TRUE,
-                           analysis = paste0("sub_ethnicity_south_asian","_",p))
+                           ckd_group = ck,
+                           analysis = paste0("sub_ethnicity_asian","_",ck))
       
       ## analysis: sub_ethnicity_other ----
       df[nrow(df)+1,] <- c(cohort = c,
@@ -409,7 +418,7 @@ for (c in cohorts) {
                            strata = strata,
                            covariate_sex = covariate_sex,
                            covariate_age = covariate_age,
-                           covariate_other = ifelse(p=="preex_FALSE", gsub("cov_cat_ethnicity;","",preex_FALSE_covars), gsub("cov_cat_ethnicity;","",all_covars)),
+                           covariate_other = gsub("cov_cat_ethnicity;","",all_covars),
                            cox_start = cox_start,
                            cox_stop = cox_stop,
                            study_start = ifelse(c=="prevax", prevax_start, vax_unvax_start),
@@ -420,9 +429,10 @@ for (c in cohorts) {
                            episode_event_threshold = episode_event_threshold,
                            covariate_threshold = covariate_threshold,
                            age_spline = TRUE,
-                           analysis = paste0("sub_ethnicity_other","_",p))
+                           ckd_group = ck,
+                           analysis = paste0("sub_ethnicity_other","_",ck))
       
-      ## analysis: sub_smoking_never ----
+      ## analysis: cov_bin_aki_f ----
       df[nrow(df)+1,] <- c(cohort = c,
                            exposure = exposure, 
                            outcome = i,
@@ -430,7 +440,7 @@ for (c in cohorts) {
                            strata = strata,
                            covariate_sex = covariate_sex,
                            covariate_age = covariate_age,
-                           covariate_other = ifelse(p=="preex_FALSE", gsub("cov_cat_smoking_status;","",preex_FALSE_covars), gsub("cov_cat_smoking_status;","",all_covars)),
+                           covariate_other = gsub("cov_bin_aki;","",all_covars),
                            cox_start = cox_start,
                            cox_stop = cox_stop,
                            study_start = ifelse(c=="prevax", prevax_start, vax_unvax_start),
@@ -441,9 +451,10 @@ for (c in cohorts) {
                            episode_event_threshold = episode_event_threshold,
                            covariate_threshold = covariate_threshold,
                            age_spline = TRUE,
-                           analysis = paste0("sub_smoking_never","_",p))
+                           ckd_group = ck,
+                           analysis = paste0("sub_aki_none","_",ck))
       
-      ## analysis: sub_smoking_ever ----
+      ## analysis: cov_bin_aki_t ----
       df[nrow(df)+1,] <- c(cohort = c,
                            exposure = exposure, 
                            outcome = i,
@@ -451,7 +462,7 @@ for (c in cohorts) {
                            strata = strata,
                            covariate_sex = covariate_sex,
                            covariate_age = covariate_age,
-                           covariate_other = ifelse(p=="preex_FALSE", gsub("cov_cat_smoking_status;","",preex_FALSE_covars), gsub("cov_cat_smoking_status;","",all_covars)),
+                           covariate_other = gsub("cov_cat_smoking_status;","",all_covars),
                            cox_start = cox_start,
                            cox_stop = cox_stop,
                            study_start = ifelse(c=="prevax", prevax_start, vax_unvax_start),
@@ -462,28 +473,8 @@ for (c in cohorts) {
                            episode_event_threshold = episode_event_threshold,
                            covariate_threshold = covariate_threshold,
                            age_spline = TRUE,
-                           analysis = paste0("sub_smoking_ever","_",p))
-      
-      ## analysis: sub_smoking_current ----
-      df[nrow(df)+1,] <- c(cohort = c,
-                           exposure = exposure, 
-                           outcome = i,
-                           ipw = ipw, 
-                           strata = strata,
-                           covariate_sex = covariate_sex,
-                           covariate_age = covariate_age,
-                           covariate_other = ifelse(p=="preex_FALSE", gsub("cov_cat_smoking_status;","",preex_FALSE_covars), gsub("cov_cat_smoking_status;","",all_covars)),
-                           cox_start = cox_start,
-                           cox_stop = cox_stop,
-                           study_start = ifelse(c=="prevax", prevax_start, vax_unvax_start),
-                           study_stop = study_stop,
-                           cut_points = ifelse(c=="prevax", prevax_cuts, vax_unvax_cuts),
-                           controls_per_case = controls_per_case,
-                           total_event_threshold = total_event_threshold,
-                           episode_event_threshold = episode_event_threshold,
-                           covariate_threshold = covariate_threshold,
-                           age_spline = TRUE,
-                           analysis = paste0("sub_smoking_current","_",p))
+                           ckd_group = ck,
+                           analysis = paste0("sub_aki","_",ck))
       
     }
     
@@ -496,6 +487,11 @@ for (c in cohorts) {
 df$name <- paste0("cohort_",df$cohort, "-", 
                   df$analysis, "-", 
                   gsub("out_date_","",df$outcome))
+
+# Remove models which don't match CKD population groups and outcomes in protocol
+# Specifically History of CKD with CKD outcome and No History of CKD with ESRD outcome
+
+df <- df[!df$outcome == "out_date_esrd" & df$ckd_group == "nohist" | !df$outcome == "out_date_ckd" & df$ckd_group == "hist",]
 
 # Check names are unique and save active analyses list ----
 
