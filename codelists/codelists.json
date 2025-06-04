@@ -24,11 +24,11 @@
       "downloaded_at": "2025-02-11 15:39:37.585073Z",
       "sha": "38dc0c0a34e2b8b376ba72819923f442c30b4946"
     },
-    "opensafely-ethnicity.csv": {
-      "id": "opensafely/ethnicity/2020-04-27",
-      "url": "https://www.opencodelists.org/codelist/opensafely/ethnicity/2020-04-27/",
-      "downloaded_at": "2025-02-11 15:39:37.756611Z",
-      "sha": "3d2f3998b71863a80b24d60f6f4282e14191ae13"
+    "opensafely-ethnicity-snomed-0removed.csv": {
+      "id": "opensafely/ethnicity-snomed-0removed/22911876",
+      "url": "https://www.opencodelists.org/codelist/opensafely/ethnicity-snomed-0removed/22911876/",
+      "downloaded_at": "2025-06-04 14:09:56.590263Z",
+      "sha": "d95a2f826299563aa57f6fa99009e6e13a65151b"
     },
     "primis-covid19-vacc-uptake-eth2001.csv": {
       "id": "primis-covid19-vacc-uptake/eth2001/v1",

@@ -5,7 +5,7 @@ opensafely/covid-identification-in-primary-care-probable-covid-clinical-code/202
 opensafely/covid-identification-in-primary-care-probable-covid-sequelae/2020-07-16
 
 #Ethnicity
-opensafely/ethnicity/2020-04-27
+opensafely/ethnicity-snomed-0removed/22911876
 primis-covid19-vacc-uptake/eth2001/v1
 
 #Smoking
