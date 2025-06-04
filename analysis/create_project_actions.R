@@ -1,6 +1,5 @@
 # Load libraries ---------------------------------------------------------------
 
-
 library(tidyverse)
 library(yaml)
 library(here)
@@ -15,8 +14,39 @@ defaults_list <- list(
   expectations = list(population_size = 5000L)
 )
 
-cohorts <- c("prevax", "vax", "unvax")
-describe <- TRUE # This prints descriptive files for each dataset in the p
+active_analyses <- read_rds("lib/active_analyses.rds")
+active_analyses <- active_analyses[
+  order(
+    active_analyses$analysis,
+    active_analyses$cohort,
+    active_analyses$outcome
+  ),
+]
+cohorts <- unique(active_analyses$cohort)
+analyses <- unique(grep("^main", active_analyses$analysis, value = TRUE))
+subgroups <- unique(str_extract(active_analyses$analysis, "^main|sub_[^_]+"))
+active_age <- active_analyses[grepl("_age_", active_analyses$name), ]$name
+age_str <- paste0(
+  paste0(
+    unique(sub(".*_age_([0-9]+)_([0-9]+).*", "\\1", active_age)),
+    collapse = ";"
+  ),
+  ";",
+  max(
+    as.numeric(unique(sub(".*_age_([0-9]+)_([0-9]+).*", "\\2", active_age))) +
+      1
+  )
+) #create age vector in form "X;XX;XX;XX;XXX"
+
+describe <- TRUE # This prints descriptive files for each dataset in the pipeline
+
+# List of models excluded from model output generation
+# Test first to see which models will be excluded
+
+excluded_models <- c(
+  "cohort_vax-main_preex_FALSE-pneumonia",
+  "cohort_prevax-sub_age_18_39_preex_TRUE-pf"
+)
 
 # Create generic action function -----------------------------------------------
 
@@ -90,16 +120,16 @@ generate_cohort <- function(cohort) {
 
 clean_data <- function(cohort, describe = describe) {
   splice(
-    comment(glue("Clean data - {cohort}, with describe = {describe}")),
+    comment(glue("Generate input_{cohort}_clean, with describe = {describe}")),
     if (isTRUE(describe)) {
       # Action to include describe*.txt files
       action(
-        name = glue("clean_data_{cohort}"),
-        run = glue("r:latest analysis/dataset_clean/dataset_clean.R"),
+        name = glue("generate_input_{cohort}_clean"),
+        run = glue("r:v2 analysis/dataset_clean/dataset_clean.R"),
         arguments = c(c(cohort), c(describe)),
         needs = list(
           "study_dates",
-          glue("generate_cohort_{cohort}")
+          glue("generate_input_{cohort}")
         ),
         moderately_sensitive = list(
           describe_raw = glue("output/describe/{cohort}_raw.txt"),
@@ -107,38 +137,263 @@ clean_data <- function(cohort, describe = describe) {
           describe_preprocessed = glue(
             "output/describe/{cohort}_preprocessed.txt"
           ),
-          flow = glue("output/dataset_clean/flow_{cohort}.csv"),
+          flow = glue("output/dataset_clean/flow-cohort_{cohort}.csv"),
           flow_midpoint6 = glue(
-            "output/dataset_clean/flow_{cohort}_midpoint6.csv"
+            "output/dataset_clean/flow-cohort_{cohort}-midpoint6.csv"
           )
         ),
         highly_sensitive = list(
-          venn = glue("output/dataset_clean/venn_{cohort}.rds"),
+          venn = glue("output/dataset_clean/venn-cohort_{cohort}.rds"),
           cohort_clean = glue("output/dataset_clean/input_{cohort}_clean.rds")
         )
       )
     } else {
       # Action to exclude describe*.txt files
       action(
-        name = glue("clean_data_{cohort}"),
-        run = glue("r:latest analysis/dataset_clean/dataset_clean.R"),
+        name = glue("generate_input_{cohort}_clean"),
+        run = glue("r:v2 analysis/dataset_clean/dataset_clean.R"),
         arguments = c(c(cohort), c(describe)),
         needs = list(
           "study_dates",
-          glue("generate_cohort_{cohort}")
+          glue("generate_input_{cohort}")
         ),
         moderately_sensitive = list(
-          flow = glue("output/dataset_clean/flow_{cohort}.csv"),
+          flow = glue("output/dataset_clean/flow-cohort_{cohort}.csv"),
           flow_midpoint6 = glue(
-            "output/dataset_clean/flow_{cohort}_midpoint6.csv"
+            "output/dataset_clean/flow-cohort_{cohort}-midpoint6.csv"
           )
         ),
         highly_sensitive = list(
-          venn = glue("output/dataset_clean/venn_{cohort}.rds"),
+          venn = glue("output/dataset_clean/venn-cohort_{cohort}.rds"),
           cohort_clean = glue("output/dataset_clean/input_{cohort}_clean.rds")
         )
       )
     }
+  )
+}
+
+# Create function for table1 --------------------------------------------
+
+table1 <- function(cohort, ages = "18;40;60;80", preex = "All") {
+  if (preex == "All" | preex == "") {
+    preex_str <- ""
+  } else {
+    preeex_str <- paste0("-preex_", preex)
+  }
+  splice(
+    comment(glue("Generate table1_cohort_{cohort}{preeex_str}")),
+    action(
+      name = glue("table1-cohort_{cohort}{preeex_str}"),
+      run = "r:v2 analysis/table1/table1.R",
+      arguments = c(c(cohort), c(ages), c(preex)),
+      needs = list(glue("generate_input_{cohort}_clean")),
+      moderately_sensitive = list(
+        table1 = glue(
+          "output/table1/table1-cohort_{cohort}{preeex_str}.csv"
+        ),
+        table1_midpoint6 = glue(
+          "output/table1/table1-cohort_{cohort}{preeex_str}-midpoint6.csv"
+        )
+      )
+    )
+  )
+}
+
+# Create function to make model input and run a model --------------------------
+
+apply_model_function <- function(
+    name,
+    cohort,
+    analysis,
+    ipw,
+    strata,
+    covariate_sex,
+    covariate_age,
+    covariate_other,
+    cox_start,
+    cox_stop,
+    study_start,
+    study_stop,
+    cut_points,
+    controls_per_case,
+    total_event_threshold,
+    episode_event_threshold,
+    covariate_threshold,
+    age_spline
+) {
+  splice(
+    action(
+      name = glue("make_model_input-{name}"),
+      run = glue("r:v2 analysis/model/make_model_input.R {name}"),
+      needs = as.list(glue("generate_input_{cohort}_clean")),
+      highly_sensitive = list(
+        model_input = glue("output/model/model_input-{name}.rds")
+      )
+    ),
+    action(
+      name = glue("cox_ipw-{name}"),
+      run = glue(
+        "cox-ipw:v0.0.37 --df_input=model/model_input-{name}.rds --ipw={ipw} --exposure=exp_date --outcome=out_date --strata={strata} --covariate_sex={covariate_sex} --covariate_age={covariate_age} --covariate_other={covariate_other} --cox_start={cox_start} --cox_stop={cox_stop} --study_start={study_start} --study_stop={study_stop} --cut_points={cut_points} --controls_per_case={controls_per_case} --total_event_threshold={total_event_threshold} --episode_event_threshold={episode_event_threshold} --covariate_threshold={covariate_threshold} --age_spline={age_spline} --save_analysis_ready=FALSE --run_analysis=TRUE --df_output=model/model_output-{name}.csv"
+      ),
+      needs = list(glue("make_model_input-{name}")),
+      moderately_sensitive = list(
+        model_output = glue("output/model/model_output-{name}.csv")
+      )
+    )
+  )
+}
+
+# Create function to make Table 2 ----------------------------------------------
+
+table2 <- function(cohort, subgroup) {
+  table2_names <- gsub(
+    "out_date_",
+    "",
+    unique(
+      active_analyses[
+        active_analyses$cohort ==
+          {
+            cohort
+          },
+      ]$name
+    )
+  )
+  
+  table2_names <- table2_names[
+    grepl("-main", table2_names) |
+      grepl(paste0("-sub_", subgroup), table2_names)
+  ]
+  
+  splice(
+    comment(glue("Generate table2-cohort_{cohort}-sub_{subgroup}")),
+    action(
+      name = glue("table2-cohort_{cohort}-sub_{subgroup}"),
+      run = "r:v2 analysis/table2/table2.R",
+      arguments = c(cohort, subgroup),
+      needs = c(as.list(paste0("make_model_input-", table2_names))),
+      moderately_sensitive = list(
+        table2 = glue(
+          "output/table2/table2-cohort_{cohort}-sub_{subgroup}.csv"
+        ),
+        table2_midpoint6 = glue(
+          "output/table2/table2-cohort_{cohort}-sub_{subgroup}-midpoint6.csv"
+        )
+      )
+    )
+  )
+}
+
+# Create function to make Venn data --------------------------------------------
+
+venn <- function(cohort, analyses = "") {
+  if (analyses == "") {
+    analyses_str <- ""
+    analyses <- "main"
+    analyses_input <- ""
+  } else {
+    analyses_str <- paste0("-", analyses)
+    analyses_input <- analyses
+  }
+  
+  venn_outcomes <- gsub(
+    "cohort_",
+    "",
+    unique(
+      active_analyses[
+        active_analyses$cohort == cohort &
+          grepl(analyses, active_analyses$analysis),
+      ]$name
+    )
+  )
+  
+  splice(
+    comment(glue("Generate venn-cohort_{cohort}{analyses_str}")),
+    action(
+      name = glue("venn-cohort_{cohort}{analyses_str}"),
+      run = "r:v2 analysis/venn/venn.R",
+      arguments = lapply(list(c(cohort, analyses_input)), function(x) {
+        x[x != ""]
+      }),
+      needs = c(
+        as.list(glue("generate_input_{cohort}_clean")),
+        as.list(paste0(
+          glue("make_model_input-cohort_"),
+          venn_outcomes
+        ))
+      ),
+      moderately_sensitive = list(
+        venn = glue("output/venn/venn-cohort_{cohort}{analyses_str}.csv"),
+        venn_midpoint6 = glue(
+          "output/venn/venn-cohort_{cohort}{analyses_str}-midpoint6.csv"
+        )
+      )
+    )
+  )
+}
+
+# Create funtion for making model outputs --------------------------------------
+
+make_model_output <- function(subgroup) {
+  splice(
+    comment(glue("Generate model_output-{subgroup}")),
+    action(
+      name = glue(
+        "make_model_output-{subgroup}"
+      ),
+      run = "r:v2 analysis/make_output/make_model_output.R",
+      arguments = c(subgroup),
+      needs = as.list(c(
+        paste0(
+          "cox_ipw-",
+          active_analyses$name[
+            !(active_analyses$name %in% excluded_models) &
+              str_detect(active_analyses$analysis, subgroup)
+          ]
+        )
+      )),
+      moderately_sensitive = list(
+        model_output = glue("output/make_output/model_output-{subgroup}.csv"),
+        model_output_midpoint6 = glue(
+          "output/make_output/model_output-{subgroup}-midpoint6.csv"
+        )
+      )
+    )
+  )
+}
+
+# Create function for making combined table/venn outputs ------------------------
+
+make_other_output <- function(action_name, cohort, subgroup = "") {
+  cohort_names <- stringr::str_split(as.vector(cohort), ";")[[1]]
+  if (subgroup == "All" | subgroup == "") {
+    sub_str <- ""
+  } else {
+    if (grepl("preex", subgroup)) {
+      sub_str <- paste0("-", subgroup)
+    } else {
+      sub_str <- paste0("-sub_", subgroup)
+    }
+  }
+  
+  splice(
+    comment(glue("Generate make-{action_name}{sub_str}-output")),
+    action(
+      name = glue("make-{action_name}{sub_str}-output"),
+      run = "r:v2 analysis/make_output/make_other_output.R",
+      arguments = c(c(action_name), c(cohort), c(subgroup)),
+      needs = c(as.list(paste0(
+        action_name,
+        "-cohort_",
+        cohort_names,
+        sub_str
+      ))),
+      moderately_sensitive = setNames(
+        list(glue(
+          "output/make_output/{action_name}{sub_str}_output_midpoint6.csv"
+        )),
+        glue("{action_name}_output_midpoint6")
+      )
+    )
   )
 }
 
@@ -160,7 +415,7 @@ actions_list <- splice(
   
   action(
     name = glue("study_dates"),
-    run = "r:latest analysis/study_dates.R",
+    run = "r:v2 analysis/study_dates.R",
     highly_sensitive = list(
       study_dates_json = glue("output/study_dates.json")
     )
@@ -194,9 +449,145 @@ actions_list <- splice(
       lapply(cohorts, function(x) clean_data(cohort = x, describe = describe)),
       recursive = FALSE
     )
+  ),
+  
+  ## Table 1 -------------------------------------------------------------------
+  
+  splice(
+    unlist(
+      lapply(
+        unique(active_analyses$cohort),
+        function(x) table1(cohort = x, ages = age_str, preex = TRUE)
+      ),
+      recursive = FALSE
+    )
+  ),
+  
+  splice(
+    unlist(
+      lapply(
+        unique(active_analyses$cohort),
+        function(x) table1(cohort = x, ages = age_str, preex = FALSE)
+      ),
+      recursive = FALSE
+    )
+  ),
+  
+  splice(
+    make_other_output(
+      action_name = "table1",
+      cohort = paste0(
+        paste0(cohorts, "-preex_FALSE", collapse = ";"),
+        ";",
+        paste0(cohorts, "-preex_TRUE", collapse = ";")
+      ),
+      subgroup = ""
+    )
+  ),
+  
+  ## Run models ----------------------------------------------------------------
+  comment("Run models"),
+  
+  splice(
+    unlist(
+      lapply(
+        1:nrow(active_analyses),
+        function(x)
+          apply_model_function(
+            name = active_analyses$name[x],
+            cohort = active_analyses$cohort[x],
+            analysis = active_analyses$analysis[x],
+            ipw = active_analyses$ipw[x],
+            strata = active_analyses$strata[x],
+            covariate_sex = active_analyses$covariate_sex[x],
+            covariate_age = active_analyses$covariate_age[x],
+            covariate_other = active_analyses$covariate_other[x],
+            cox_start = active_analyses$cox_start[x],
+            cox_stop = active_analyses$cox_stop[x],
+            study_start = active_analyses$study_start[x],
+            study_stop = active_analyses$study_stop[x],
+            cut_points = active_analyses$cut_points[x],
+            controls_per_case = active_analyses$controls_per_case[x],
+            total_event_threshold = active_analyses$total_event_threshold[x],
+            episode_event_threshold = active_analyses$episode_event_threshold[
+              x
+            ],
+            covariate_threshold = active_analyses$covariate_threshold[x],
+            age_spline = active_analyses$age_spline[x]
+          )
+      ),
+      recursive = FALSE
+    )
+  ),
+  
+  ## Table 2 -------------------------------------------------------------------
+  
+  splice(
+    unlist(
+      lapply(
+        cohorts,
+        function(x) table2(cohort = x, subgroup = "covidhospital")
+      ),
+      recursive = FALSE
+    )
+  ),
+  
+  splice(
+    make_other_output(
+      action_name = "table2",
+      cohort = paste0(cohorts, collapse = ";"),
+      subgroup = "covidhospital"
+    )
+  ),
+  
+  ## Venn data -----------------------------------------------------------------
+  
+  splice(
+    unlist(
+      lapply(
+        unique(active_analyses$cohort),
+        function(x) venn(cohort = x)
+      ),
+      recursive = FALSE
+    )
+  ),
+  
+  splice(
+    make_other_output(
+      action_name = "venn",
+      cohort = paste0(cohorts, collapse = ";"),
+      subgroup = ""
+    )
+  ),
+  
+  ## Model output --------------------------------------------------------------
+  
+  splice(
+    unlist(
+      lapply(subgroups, function(x) make_model_output(subgroup = x)),
+      recursive = FALSE
+    )
+  ),
+  
+  ## Make absolute excess risk (AER) input -------------------------------------
+  
+  comment("Make absolute excess risk (AER) input"),
+  
+  action(
+    name = "make_aer_input",
+    run = "r:v2 analysis/make_output/make_aer_input.R main",
+    needs = as.list(paste0(
+      "make_model_input-",
+      active_analyses[grepl("-main", active_analyses$name), ]$name
+    )),
+    moderately_sensitive = list(
+      aer_input = glue("output/make_output/aer_input-main.csv"),
+      aer_input_midpoint6 = glue(
+        "output/make_output/aer_input-main-midpoint6.csv"
+      )
+    )
   )
 )
-
 
 # Combine actions into project list --------------------------------------------
 
