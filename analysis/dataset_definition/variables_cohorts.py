@@ -601,6 +601,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
 
 ### Project specific covariates----------------------------------------------------------------------------------
         cov_bin_ckd            = cov_bin_ckd,
+        cov_bin_aki            = cov_bin_aki, 
         
 ### Subgroups-----------------------------------------------------------------------------------------------------
         sub_bin_covidhistory  = sub_bin_covidhistory,
