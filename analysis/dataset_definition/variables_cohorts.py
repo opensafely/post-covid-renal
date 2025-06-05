@@ -452,7 +452,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     ## Project specific covariates-------------------------------------------------------------------------
 
     ### History of CKD (any stage)
-    cov_bin_ckd = (
+    sub_bin_ckd = (
         (last_matching_event_clinical_snomed_before(
             ckd_snomed, index_date
         ).exists_for_patient()) |
@@ -600,7 +600,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         cov_bin_stroke_isch   = cov_bin_stroke_isch,
 
 ### Project specific covariates----------------------------------------------------------------------------------
-        cov_bin_ckd            = cov_bin_ckd,
+        sub_bin_ckd            = sub_bin_ckd,
         cov_bin_aki            = cov_bin_aki, 
         
 ### Subgroups-----------------------------------------------------------------------------------------------------

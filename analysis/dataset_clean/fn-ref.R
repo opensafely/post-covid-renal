@@ -1,14 +1,13 @@
 # Function to set reference levels for factors
 ref <- function(input) {
-  # Create supporting variable: pre-existing respiratory condition
+  # Create subgroup variable: pre-existing CKD
   print('Create supporting variable ')
   
-  if (all(c("sub_bin_asthma_recent", "sub_bin_copd_ever") %in% names(input))) {
-    input$sup_bin_preex <- (input$sub_bin_asthma_recent |
-                              input$sub_bin_copd_ever)
+  if (all(c("sub_bin_ckd") %in% names(input))) {
+    input$sup_bin_preex <- (input$sub_bin_ckd)
   } else {
     warning(
-      "One or both variables ('sub_bin_asthma_recent', 'sub_bin_copd_ever') are missing. sup_bin_preex will not be created."
+      "One variable ('sub_bin_ckd') is missing. sup_bin_preex will not be created."
     )
   }
   
