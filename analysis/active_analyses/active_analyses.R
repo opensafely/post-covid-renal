@@ -47,11 +47,9 @@ core_covariates <- c(
   "cov_bin_ami",
   "cov_bin_dementia",
   "cov_bin_liver_disease",
-  "cov_bin_ckd",
   "cov_bin_cancer",
   "cov_bin_hypertension",
   "cov_bin_diabetes",
-  "cov_bin_depression",
   "cov_bin_copd",
   "cov_bin_stroke_isch"
 )
