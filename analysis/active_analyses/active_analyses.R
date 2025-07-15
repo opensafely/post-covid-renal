@@ -156,6 +156,13 @@ df$name <- paste0(
   gsub("out_date_", "", df$outcome)
 )
 
+# ESRD requires removal of history of AKI
+df$covariate_other <- ifelse(
+  df$outcome == "out_date_esrd",
+  gsub(";cov_bin_aki", "", df$covariate_other),
+  df$covariate_other
+)
+
 # Check names are unique and save active analyses list ----
 if (!dir.exists("lib")) {
   dir.create("lib")
