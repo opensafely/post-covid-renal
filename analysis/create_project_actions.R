@@ -137,13 +137,13 @@ clean_data <- function(cohort, describe = describe) {
           describe_preprocessed = glue(
             "output/describe/{cohort}_preprocessed.txt"
           ),
-          flow = glue("output/dataset_clean/flow-cohort_{cohort}.csv"),
+          flow = glue("output/dataset_clean/flow_{cohort}.csv"),
           flow_midpoint6 = glue(
-            "output/dataset_clean/flow-cohort_{cohort}-midpoint6.csv"
+            "output/dataset_clean/flow_{cohort}-midpoint6.csv"
           )
         ),
         highly_sensitive = list(
-          venn = glue("output/dataset_clean/venn-cohort_{cohort}.rds"),
+          venn = glue("output/dataset_clean/venn_{cohort}.rds"),
           cohort_clean = glue("output/dataset_clean/input_{cohort}_clean.rds")
         )
       )
@@ -158,13 +158,13 @@ clean_data <- function(cohort, describe = describe) {
           glue("generate_input_{cohort}")
         ),
         moderately_sensitive = list(
-          flow = glue("output/dataset_clean/flow-cohort_{cohort}.csv"),
+          flow = glue("output/dataset_clean/flow_{cohort}.csv"),
           flow_midpoint6 = glue(
-            "output/dataset_clean/flow-cohort_{cohort}-midpoint6.csv"
+            "output/dataset_clean/flow_{cohort}-midpoint6.csv"
           )
         ),
         highly_sensitive = list(
-          venn = glue("output/dataset_clean/venn-cohort_{cohort}.rds"),
+          venn = glue("output/dataset_clean/venn_{cohort}.rds"),
           cohort_clean = glue("output/dataset_clean/input_{cohort}_clean.rds")
         )
       )
