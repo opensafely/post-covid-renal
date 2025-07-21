@@ -30,9 +30,9 @@ actions:
       highly_sensitive:
         dataset: output/dataset_definition/index_dates.csv.gz
 
-  ## Generate cohort - prevax 
+  ## Generate input_prevax 
 
-  generate_cohort_prevax:
+  generate_input_prevax:
     run: ehrql:v1 generate-dataset analysis/dataset_definition/dataset_definition_prevax.py
       --output output/dataset_definition/input_prevax.csv.gz
     needs:
@@ -41,9 +41,9 @@ actions:
       highly_sensitive:
         cohort: output/dataset_definition/input_prevax.csv.gz
 
-  ## Generate cohort - unvax 
+  ## Generate input_unvax 
 
-  generate_cohort_unvax:
+  generate_input_unvax:
     run: ehrql:v1 generate-dataset analysis/dataset_definition/dataset_definition_unvax.py
       --output output/dataset_definition/input_unvax.csv.gz
     needs:
@@ -52,9 +52,9 @@ actions:
       highly_sensitive:
         cohort: output/dataset_definition/input_unvax.csv.gz
 
-  ## Generate cohort - vax 
+  ## Generate input_vax 
 
-  generate_cohort_vax:
+  generate_input_vax:
     run: ehrql:v1 generate-dataset analysis/dataset_definition/dataset_definition_vax.py
       --output output/dataset_definition/input_vax.csv.gz
     needs:

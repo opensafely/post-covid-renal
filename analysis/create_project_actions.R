@@ -102,9 +102,9 @@ convert_comment_actions <- function(yaml.txt) {
 
 generate_cohort <- function(cohort) {
   splice(
-    comment(glue("Generate cohort - {cohort}")),
+    comment(glue("Generate input_{cohort}")),
     action(
-      name = glue("generate_cohort_{cohort}"),
+      name = glue("generate_input_{cohort}"),
       run = glue(
         "ehrql:v1 generate-dataset analysis/dataset_definition/dataset_definition_{cohort}.py --output output/dataset_definition/input_{cohort}.csv.gz"
       ),
