@@ -139,7 +139,7 @@ clean_data <- function(cohort, describe = describe) {
           ),
           flow = glue("output/dataset_clean/flow_{cohort}.csv"),
           flow_midpoint6 = glue(
-            "output/dataset_clean/flow_{cohort}-midpoint6.csv"
+            "output/dataset_clean/flow_{cohort}_midpoint6.csv"
           )
         ),
         highly_sensitive = list(
@@ -160,7 +160,7 @@ clean_data <- function(cohort, describe = describe) {
         moderately_sensitive = list(
           flow = glue("output/dataset_clean/flow_{cohort}.csv"),
           flow_midpoint6 = glue(
-            "output/dataset_clean/flow_{cohort}-midpoint6.csv"
+            "output/dataset_clean/flow_{cohort}_midpoint6.csv"
           )
         ),
         highly_sensitive = list(
