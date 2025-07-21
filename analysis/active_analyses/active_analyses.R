@@ -1,0 +1,175 @@
+library(jsonlite)
+library(dplyr)
+
+# Create output directory ----
+fs::dir_create(here::here("lib"))
+
+# Source common functions ----
+lapply(
+  list.files("analysis/active_analyses/", full.names = TRUE, pattern = "fn-"),
+  source
+)
+
+# Define cohorts ----
+cohorts <- c("vax", "unvax", "prevax")
+
+# Define subgroups ----
+subgroups <- c(
+  "sub_covidhospital_TRUE",
+  "sub_covidhospital_FALSE",
+  "sub_covidhistory",
+  "sub_sex_female",
+  "sub_sex_male",
+  "sub_age_18_39",
+  "sub_age_40_59",
+  "sub_age_60_79",
+  "sub_age_80_110",
+  "sub_ethnicity_white",
+  "sub_ethnicity_black",
+  "sub_ethnicity_mixed",
+  "sub_ethnicity_asian",
+  "sub_ethnicity_other"
+)
+
+# Define preex groups ----
+# Options are: "" (which means none), "_preex_TRUE", "_preex_FALSE"
+preex_groups <- c("_preex_TRUE", "_preex_FALSE")
+
+# Define general covariates ----
+core_covariates <- c(
+  "cov_cat_ethnicity",
+  "cov_cat_imd",
+  "cov_num_consrate2019",
+  "cov_bin_hcworker",
+  "cov_cat_smoking",
+  "cov_bin_carehome",
+  "cov_bin_obesity",
+  "cov_bin_ami",
+  "cov_bin_dementia",
+  "cov_bin_liver_disease",
+  "cov_bin_cancer",
+  "cov_bin_hypertension",
+  "cov_bin_diabetes",
+  "cov_bin_copd",
+  "cov_bin_stroke_isch"
+)
+
+project_covariates <- c("cov_bin_aki")
+
+# Define covariate and outcome combos ----
+
+# For 'all' analyses - in renal we only have t/f so commenting out for now
+#outcomes <- ""
+#covariates <- ""
+
+# For preex=TRUE analyses
+outcomes_preex_TRUE <- c(
+  "out_date_aki",
+  "out_date_esrd"
+)
+
+# For preex=FALSE analyses
+outcomes_preex_FALSE <- c(
+  "out_date_aki",
+  "out_date_ckd"
+)
+
+covariate_other <- paste0(c(core_covariates, project_covariates), collapse = ";")
+
+# Create empty data frame ----
+df <- data.frame(
+  cohort = character(),
+  exposure = character(),
+  outcome = character(),
+  ipw = logical(),
+  strata = character(),
+  covariate_sex = character(),
+  covariate_age = character(),
+  covariate_other = character(),
+  cox_start = character(),
+  cox_stop = character(),
+  study_start = character(),
+  study_stop = character(),
+  cut_points = character(),
+  controls_per_case = numeric(),
+  total_event_threshold = numeric(),
+  episode_event_threshold = numeric(),
+  covariate_threshold = numeric(),
+  age_spline = logical(),
+  analysis = character(),
+  stringsAsFactors = FALSE
+)
+
+# Generate analyses ----
+for (i in preex_groups) {
+  for (j in cohorts) {
+    # Retrieve outcomes  preex group ----
+    out <- get(paste0("outcomes", i))
+    
+    for (k in out) {
+      
+      # Add main analysis ----
+      df[nrow(df) + 1, ] <- add_analysis(
+        cohort = j,
+        outcome = k,
+        analysis_name = paste0("main", i),
+        covariate_other = covariate_other,
+        age_spline = TRUE
+      )
+      
+      # Add subgroup analyses ----
+      for (sub in subgroups) {
+        # Skip sub_covidhistory if cohort is "prevax"
+        if (sub == "sub_covidhistory" && j == "prevax") {
+          next
+        }
+        
+        # Adjust covariate_other for ethnicity and smoking subgroups
+        adjusted_covariate_other <- covariate_other
+        if (grepl("sub_ethnicity", sub)) {
+          adjusted_covariate_other <- paste0(
+            setdiff(strsplit(covariate_other, ";")[[1]], "cov_cat_ethnicity"),
+            collapse = ";"
+          )
+        } 
+        
+        # Add analysis for the subgroup
+        df[nrow(df) + 1, ] <- add_analysis(
+          cohort = j,
+          outcome = k,
+          analysis_name = paste0(sub, i),
+          covariate_other = adjusted_covariate_other,
+          age_spline = ifelse(grepl("sub_age", sub), FALSE, TRUE)
+        )
+      }
+    }
+  }
+}
+
+# Add name for each analysis ----
+df$name <- paste0(
+  "cohort_",
+  df$cohort,
+  "-",
+  df$analysis,
+  "-",
+  gsub("out_date_", "", df$outcome)
+)
+
+# ESRD requires removal of history of AKI
+df$covariate_other <- ifelse(
+  df$outcome == "out_date_esrd",
+  gsub(";cov_bin_aki", "", df$covariate_other),
+  df$covariate_other
+)
+
+# Check names are unique and save active analyses list ----
+if (!dir.exists("lib")) {
+  dir.create("lib")
+}
+
+if (length(unique(df$name)) == nrow(df)) {
+  saveRDS(df, file = "lib/active_analyses.rds", compress = "gzip")
+} else {
+  stop("ERROR: names must be unique in active analyses table")
+}
