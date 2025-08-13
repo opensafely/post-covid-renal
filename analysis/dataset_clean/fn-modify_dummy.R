@@ -399,6 +399,9 @@ modify_dummy <- function(df, cohort) {
     ## Registered for a minimum of 6 months prior to index date
     mutate(inex_bin_6m_reg = rbernoulli(nrow(.), p = 0.99)) %>%
     
+    ## Has history of ESRD prior to index date
+    mutate(inex_ever_esrd = rbernoulli(nrow(.), p = 0.005)) %>%
+    
     ## Age distribution
     mutate(
       cov_num_age = sample(

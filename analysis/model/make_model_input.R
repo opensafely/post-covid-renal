@@ -20,7 +20,7 @@ print("Specify arguments")
 args <- commandArgs(trailingOnly = TRUE)
 
 if (length(args) == 0) {
-  name <- "cohort_prevax-sub_covidhospital_FALSE_preex_FALSE-asthma"
+  name <- "cohort_prevax-sub_covidhospital_FALSE_preex_FALSE-aki"
 } else {
   name <- args[[1]]
 }
@@ -65,7 +65,7 @@ if (grepl("preex", name)) {
     "",
     analysis
   )
-  df <- pmi$input[pmi$input$sup_bin_preex == preex, ]
+  df <- pmi$input[pmi$input$sub_bin_ckd == TRUE, ]
 } else {
   df <- pmi$input
 }

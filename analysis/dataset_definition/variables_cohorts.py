@@ -53,10 +53,10 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     inex_bin_alive = (((patients.date_of_death.is_null()) | (patients.date_of_death.is_after(index_date))) & 
     ((ons_deaths.date.is_null()) | (ons_deaths.date.is_after(index_date))))
 
-    ### Project specific: No history of ESRD
+    ### Project specific criterion: No history of ESRD
     # Based on no history of kidney transplant, no history of dialysis, no coded ESRD
-    # OPCS codes will likely need a new helper function
-
+    # Variable finds any history of the above
+    
     inex_ever_esrd = (
         (last_matching_event_clinical_snomed_before(
             esrd_snomed, index_date
