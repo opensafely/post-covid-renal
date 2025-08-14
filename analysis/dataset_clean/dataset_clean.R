@@ -69,7 +69,7 @@ input_preprocess <- preprocess(cohort, describe)
 
 saveRDS(
   input_preprocess$venn,
-  file = paste0(dataclean_dir, "venn_", cohort, ".rds"),
+  file = paste0(dataclean_dir, "venn-cohort_", cohort, ".rds"),
   compress = TRUE
 )
 message("Venn diagram data saved successfully")

@@ -49,7 +49,7 @@ names <- unique(
 print('Load Venn data')
 
 venn <- readr::read_rds(paste0(
-  "output/dataset_clean/venn_",
+  "output/dataset_clean/venn-cohort_",
   cohort,
   ".rds"
 ))

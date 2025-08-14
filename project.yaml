@@ -75,7 +75,7 @@ actions:
         flow: output/dataset_clean/flow_prevax.csv
         flow_midpoint6: output/dataset_clean/flow_prevax_midpoint6.csv
       highly_sensitive:
-        venn: output/dataset_clean/venn_prevax.rds
+        venn: output/dataset_clean/venn-cohort_prevax.rds
         cohort_clean: output/dataset_clean/input_prevax_clean.rds
 
   ## Generate input_unvax_clean, with describe = FALSE 
@@ -90,7 +90,7 @@ actions:
         flow: output/dataset_clean/flow_unvax.csv
         flow_midpoint6: output/dataset_clean/flow_unvax_midpoint6.csv
       highly_sensitive:
-        venn: output/dataset_clean/venn_unvax.rds
+        venn: output/dataset_clean/venn-cohort_unvax.rds
         cohort_clean: output/dataset_clean/input_unvax_clean.rds
 
   ## Generate input_vax_clean, with describe = FALSE 
@@ -105,7 +105,7 @@ actions:
         flow: output/dataset_clean/flow_vax.csv
         flow_midpoint6: output/dataset_clean/flow_vax_midpoint6.csv
       highly_sensitive:
-        venn: output/dataset_clean/venn_vax.rds
+        venn: output/dataset_clean/venn-cohort_vax.rds
         cohort_clean: output/dataset_clean/input_vax_clean.rds
 
   ## Generate table1_cohort_prevax-preex_TRUE 
