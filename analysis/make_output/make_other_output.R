@@ -60,9 +60,9 @@ for (i in cohorts) {
   # load input
   if (output == "flow") {
     tmp <- readr::read_csv(paste0(
-      "output/dataset_clean/flow-cohort_",
+      "output/dataset_clean/flow_",
       i,
-      "-midpoint6.csv"
+      "_midpoint6.csv"
     ))
     tmp$flow <- 1:nrow(tmp)
   } else {
