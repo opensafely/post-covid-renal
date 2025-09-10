@@ -382,10 +382,13 @@ make_other_output <- function(action_name, cohort, subgroup = "") {
       run = "r:v2 analysis/make_output/make_other_output.R",
       arguments = c(c(action_name), c(cohort), c(subgroup)),
       needs = c(as.list(paste0(
-        action_name,
-        "-cohort_",
+        ifelse(
+          action_name == "flow",
+          "generate_input_",
+          paste0(action_name, "-cohort_")
+        ),
         cohort_names,
-        sub_str
+        ifelse(action_name == "flow", "_clean", sub_str)
       ))),
       moderately_sensitive = setNames(
         list(glue(
@@ -517,6 +520,16 @@ actions_list <- splice(
           )
       ),
       recursive = FALSE
+    )
+  ),
+  
+  
+  ## Flow ----------------------------------------------------------------------
+  
+  splice(
+    make_other_output(
+      action_name = "flow",
+      cohort = paste0(cohorts, collapse = ";")
     )
   ),
   
