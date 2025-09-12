@@ -1,4 +1,4 @@
-# ${GITHUB_REPOSITORY_NAME}
+# post-covid-renal
 
 [View on OpenSAFELY](https://jobs.opensafely.org/repo/https%253A%252F%252Fgithub.com%252Fopensafely%252F${GITHUB_REPOSITORY_NAME})
 
@@ -97,7 +97,7 @@ Afterwards, proceed to run the scripts as normal (on the OpenSAFELY server, or l
 
 ## Outcomes
 
-4 outcomes are investigated, using the following shorthand in the code:
+3 outcomes are investigated, using the following shorthand in the code:
   -  AKI - acute kidney injury
   -  CKD - chronic kidney disease
   -  ESRD - end stage renal disease
