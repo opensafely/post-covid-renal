@@ -27,17 +27,17 @@ covid_primary_care_sequalae = codelist_from_csv(
 # Common covariate(s)
 
 # Ethnicity
-opensafely_ethnicity_codes_6 = codelist_from_csv(
-    "codelists/opensafely-ethnicity.csv",
-    column="Code",
+ethnicity_snomed = codelist_from_csv(
+    "codelists/opensafely-ethnicity-snomed-0removed.csv",
+    column="code",
     category_column="Grouping_6"
 )
 
-primis_covid19_vacc_update_ethnicity = codelist_from_csv(
-    "codelists/primis-covid19-vacc-uptake-eth2001.csv",
-    column="code",
-    category_column="grouping_6_id"
-)
+#primis_covid19_vacc_update_ethnicity = codelist_from_csv(
+#    "codelists/primis-covid19-vacc-uptake-eth2001.csv",
+#    column="code",
+#    category_column="grouping_6_id"
+#)
 
 # Smoking
 smoking_clear = codelist_from_csv(

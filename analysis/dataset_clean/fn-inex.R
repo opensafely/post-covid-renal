@@ -1,42 +1,42 @@
 # Function to apply inclusion criteria
 
 inex <- function(
-  input,
-  flow,
-  cohort,
-  vax1_earliest,
-  mixed_vax_threshold,
-  delta_date,
-  lcd_date
+    input,
+    flow,
+    cohort,
+    vax1_earliest,
+    mixed_vax_threshold,
+    delta_date,
+    lcd_date
 ) {
   ## Apply inclusion criteria to all cohorts --------------------------------------
   print('Apply inclusion criteria to all cohorts')
-
+  
   input <- subset(input, inex_bin_alive == TRUE) # Subset input if alive at index.
   flow[nrow(flow) + 1, ] <- c("Inclusion criteria: Alive at index", nrow(input))
   print(flow[nrow(flow), ])
-
+  
   input <- subset(input, cov_num_age >= 18) # Subset input if age between 18 and 110 at index.
   flow[nrow(flow) + 1, ] <- c(
     "Inclusion criteria: Known age 18 or over at index",
     nrow(input)
   )
   print(flow[nrow(flow), ])
-
+  
   input <- subset(input, cov_num_age <= 110) # Subset input if age between 18 and 110 on 01/06/2021.
   flow[nrow(flow) + 1, ] <- c(
     "Inclusion criteria: Known age 110 or under at index",
     nrow(input)
   )
   print(flow[nrow(flow), ])
-
+  
   input <- subset(input, cov_cat_sex %in% c("female", "male"))
   flow[nrow(flow) + 1, ] <- c(
     "Inclusion criteria: Known sex, recorded as male or female, at index",
     nrow(input)
   )
   print(flow[nrow(flow), ])
-
+  
   input <- subset(
     input,
     cov_cat_imd %in% c("1 (most deprived)", "2", "3", "4", "5 (least deprived)")
@@ -46,7 +46,7 @@ inex <- function(
     nrow(input)
   )
   print(flow[nrow(flow), ])
-
+  
   input <- subset(
     input,
     strat_cat_region %in%
@@ -67,14 +67,14 @@ inex <- function(
     nrow(input)
   )
   print(flow[nrow(flow), ])
-
+  
   input <- subset(input, inex_bin_6m_reg == TRUE)
   flow[nrow(flow) + 1, ] <- c(
     "Inclusion criteria: Continuous registration with the same practice for at least six months up to and including the index date",
     nrow(input)
   )
   print(flow[nrow(flow), ])
-
+  
   input <- subset(
     input,
     index_date <= end_date_exposure
@@ -86,7 +86,7 @@ inex <- function(
   print(flow[nrow(flow), ])
   ## Apply cohort specific inclusion criteria -------------------------------------
   print('Apply cohort specific inclusion criteria')
-
+  
   if (cohort == "vax") {
     input <- subset(
       input,
@@ -99,7 +99,7 @@ inex <- function(
       nrow(input)
     )
     print(flow[nrow(flow), ])
-
+    
     input <- subset(
       input,
       (is.na(vax_date_covid_1) | vax_date_covid_1 >= vax1_earliest) &
@@ -111,14 +111,14 @@ inex <- function(
       nrow(input)
     )
     print(flow[nrow(flow), ])
-
+    
     input <- subset(input, vax_date_covid_2 >= vax_date_covid_1)
     flow[nrow(flow) + 1, ] <- c(
       "Inclusion criteria: Did not receive a second dose vaccination before their first dose vaccination",
       nrow(input)
     )
     print(flow[nrow(flow), ])
-
+    
     input <- subset(
       input,
       (vax_date_covid_2 - vax_date_covid_1) >= 21
@@ -128,7 +128,7 @@ inex <- function(
       nrow(input)
     )
     print(flow[nrow(flow), ])
-
+    
     input <- input %>%
       mutate(
         AZ_date = case_when(
@@ -160,7 +160,7 @@ inex <- function(
       ungroup() %>%
       dplyr::filter(vax_mixed < 2) %>%
       select(-AZ_date, -Moderna_date, -Pfizer_date, -vax_mixed)
-
+    
     flow[nrow(flow) + 1, ] <- c(
       "Inclusion criteria: Did not receive a mixed vaccine products before 07-05-2021",
       nrow(input)
@@ -178,7 +178,7 @@ inex <- function(
       nrow(input)
     )
     print(flow[nrow(flow), ])
-
+    
     input <- subset(
       input,
       vax_cat_jcvi_group %in%
@@ -203,6 +203,6 @@ inex <- function(
     )
     print(flow[nrow(flow), ])
   }
-
+  
   return(list(input = input, flow = flow))
 }

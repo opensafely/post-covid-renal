@@ -69,7 +69,7 @@ input_preprocess <- preprocess(cohort, describe)
 
 saveRDS(
   input_preprocess$venn,
-  file = paste0(dataclean_dir, "venn_", cohort, ".rds"),
+  file = paste0(dataclean_dir, "venn-cohort_", cohort, ".rds"),
   compress = TRUE
 )
 message("Venn diagram data saved successfully")
@@ -102,10 +102,21 @@ inex_results <- inex(
   lcd_date
 )
 
+# Inclusion criteria -----------------------------------------------------------
+print('Call inclusion criteria function')
+
+inex_results_ps <- inex_ps(
+  inex_results$input,
+  inex_results$flow,
+  cohort,
+  inex_results$inex_ever_esrd
+)
+
+
 # Quality assurance ------------------------------------------------------------
 print('Call quality assurance function')
 
-qa_results <- qa(inex_results$input, inex_results$flow, lcd_date)
+qa_results <- qa(inex_results_ps$input, inex_results_ps$flow, lcd_date)
 
 # Set reference levels for factors----------------------------------------------
 print('Call reference function')
@@ -115,7 +126,7 @@ input <- ref(qa_results$input)
 # Save flow data after Inclusion criteria---------------------------------------
 print('Saving flow data after Inclusion criteria')
 
-flow <- qa_results$flow
+flow <- qa_results$flow 
 flow$N <- as.numeric(flow$N)
 flow$removed <- dplyr::lag(flow$N, default = dplyr::first(flow$N)) - flow$N
 
@@ -157,6 +168,7 @@ input <- input %>%
     index_date,
     starts_with("end_date_"),
     starts_with("sub_"), # Subgroups
+    starts_with("sup_"), # Supporting Variable
     starts_with("exp_"), # Exposures
     starts_with("out_"), # Outcomes
     starts_with("cov_"), # Covariates

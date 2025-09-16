@@ -53,10 +53,10 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     inex_bin_alive = (((patients.date_of_death.is_null()) | (patients.date_of_death.is_after(index_date))) & 
     ((ons_deaths.date.is_null()) | (ons_deaths.date.is_after(index_date))))
 
-    ### Project specific: No history of ESRD
+    ### Project specific criterion: No history of ESRD
     # Based on no history of kidney transplant, no history of dialysis, no coded ESRD
-    # OPCS codes will likely need a new helper function
-
+    # Variable finds any history of the above
+    
     inex_ever_esrd = (
         (last_matching_event_clinical_snomed_before(
             esrd_snomed, index_date
@@ -265,13 +265,16 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     cov_cat_sex = patients.sex
 
     ### Ethnicity
-    cov_cat_ethnicity = (
-        clinical_events.where(
-            clinical_events.ctv3_code.is_in(opensafely_ethnicity_codes_6)
-        )
+    tmp_cov_cat_ethnicity = (
+        clinical_events.where(clinical_events.snomedct_code.is_in(ethnicity_snomed))
+        .where(clinical_events.date.is_on_or_before(index_date))
         .sort_by(clinical_events.date)
         .last_for_patient()
-        .ctv3_code.to_category(opensafely_ethnicity_codes_6)
+        .snomedct_code
+    )
+
+    cov_cat_ethnicity = tmp_cov_cat_ethnicity.to_category(
+        ethnicity_snomed
     )
 
     ### Deprivation
@@ -449,13 +452,23 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     ## Project specific covariates-------------------------------------------------------------------------
 
     ### History of CKD (any stage)
-    cov_bin_ckd = (
+    sub_bin_ckd = (
         (last_matching_event_clinical_snomed_before(
             ckd_snomed, index_date
         ).exists_for_patient()) |
         (last_matching_event_apc_before(
             ckd_icd10, index_date
         ).exists_for_patient())
+    )
+
+    ### History of AKI
+    cov_bin_aki = (
+        (last_matching_event_clinical_snomed_before(
+            aki_snomed, index_date
+            ).exists_for_patient()) |
+        (last_matching_event_apc_before(
+            aki_icd10, index_date
+            ).exists_for_patient())
     )
 
     ## Subgroups-------------------------------------------------------------------------------------------
@@ -587,7 +600,8 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         cov_bin_stroke_isch   = cov_bin_stroke_isch,
 
 ### Project specific covariates----------------------------------------------------------------------------------
-        cov_bin_ckd            = cov_bin_ckd,
+        sub_bin_ckd            = sub_bin_ckd,
+        cov_bin_aki            = cov_bin_aki, 
         
 ### Subgroups-----------------------------------------------------------------------------------------------------
         sub_bin_covidhistory  = sub_bin_covidhistory,
