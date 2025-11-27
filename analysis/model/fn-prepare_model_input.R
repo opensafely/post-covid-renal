@@ -38,7 +38,7 @@ prepare_model_input <- function(name) {
     "cov_cat_ethnicity",
     unlist(strsplit(active_analyses$covariate_other, split = ";")),
     c(grep("sub_", colnames(input), value = TRUE)), #sub_cat_covidhospital, sub_cat_covidhistory, and other subgroups
-    "sup_bin_preex"
+    "sub_bin_ckd"
   ))
 
   input <- input[, intersect(reqvars, colnames(input))]
