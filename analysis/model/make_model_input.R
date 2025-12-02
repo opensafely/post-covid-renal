@@ -65,7 +65,7 @@ if (grepl("preex", name)) {
     "",
     analysis
   )
-  df <- pmi$input[pmi$input$sub_bin_ckd == TRUE, ]
+  df <- pmi$input[pmi$input$sub_bin_ckd == preex, ]
 } else {
   df <- pmi$input
 }
