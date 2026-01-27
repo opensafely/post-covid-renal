@@ -114,6 +114,10 @@ df$outcome_label <- factor(
 # Order the rows
 df <- df[order(df$analysis, df$outcome_label, df$weeks), ]
 
+# Remove duplicates
+df <- df %>%
+  dplyr::distinct(subgroup, analysis, outcome_label, weeks, cohort, .keep_all = TRUE)
+
 # Pivot table ------------------------------------------------------------------
 print("Pivot table")
 
