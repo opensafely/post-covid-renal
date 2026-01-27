@@ -51,10 +51,9 @@ if (length(unique(df$analysis)) > 1) {
 df$outcome_label <- factor(
   df$outcome_label,
   levels = c(
-    "Pneumonia",
-    "Asthma",
-    "Chronic obstructive pulmonary disease",
-    "Interstitial lung disease"
+    "Acute Kidney Injury",
+    "Chronic Kidney Disease",
+    "End Stage Renal Disease"
   )
 )
 

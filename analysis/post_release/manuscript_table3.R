@@ -105,9 +105,9 @@ df$analysis <- factor(df$analysis, levels = c("preex_FALSE", "preex_TRUE"))
 df$outcome_label <- factor(
   df$outcome_label,
   levels = c(
-    "AKI",
-    "CKD",
-    "ESRD"
+    "Acute Kidney Injury",
+    "Chronic Kidney Disease",
+    "End Stage Renal Disease"
   )
 )
 
