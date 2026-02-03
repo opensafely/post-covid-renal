@@ -1,5 +1,5 @@
 # Define the plotting function --------------------------------------------------
-plot_aer <- function(outcomes, outcome_group) {
+plot_aer <- function(outcomes) {
   # Load data --------------------------------------------------------------------
   print('Load data')
 
@@ -104,11 +104,11 @@ plot_aer <- function(outcomes, outcome_group) {
     # Determine whether to include preex_label
     preex_part <- if (
       facet_info$outcome_label[j] %in%
-        c("Asthma", "Chronic obstructive pulmonary disease")
+        c("Acute Kidney Injury", "Chronic Kidney Disease", "End Stage Renal Disease")
     ) {
-      ""
-    } else {
       paste0("\n\n", facet_info$preex_label[j])
+    } else {
+      ""
     }
 
     # Set the facet_label
@@ -213,17 +213,11 @@ plot_aer <- function(outcomes, outcome_group) {
     ) +
     ggplot2::facet_wrap(~ factor(facet_label), ncol = 3, scales = "free_x")
 
-  # Save plot --------------------------------------------------------------------
-  #print("Save plot")
-
-  #ggplot2::ggsave("output/post_release/figureAER.eps",
-  #                height = 210, width = 297, unit = "mm", dpi = 600, scale = 1)
-
   # Save plot ------------------------------------------------------------------
   print("Save plot")
 
   ggplot2::ggsave(
-    paste0("output/post_release/figureAER_", outcome_group, ".png"),
+    paste0("output/post_release/figureAER_", outcomes, ".png"),
     height = 210,
     width = 297,
     unit = "mm",
@@ -231,6 +225,7 @@ plot_aer <- function(outcomes, outcome_group) {
     scale = 1
   )
 }
-plot_aer("pneumonia", "pneumonia")
-plot_aer(c("asthma", "copd"), "asthma_copd")
-plot_aer("ild", "ild")
+
+plot_aer("aki")
+plot_aer("esrd")
+plot_aer("ckd")
