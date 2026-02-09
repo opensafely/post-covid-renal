@@ -11,3 +11,15 @@ venv/
 .Rproj.user/
 specify_paths.R
 /release/*
+analysis/specify_paths.R
+release/20251215/aer_input-main-midpoint6.csv
+release/20251215/flow_output_midpoint6.csv
+release/20251215/model_output-main-midpoint6.csv
+release/20251215/model_output-sub_age-midpoint6.csv
+release/20251215/model_output-sub_covidhistory-midpoint6.csv
+release/20251215/model_output-sub_covidhospital-midpoint6.csv
+release/20251215/model_output-sub_ethnicity-midpoint6.csv
+release/20251215/model_output-sub_sex-midpoint6.csv
+release/20251215/table1_output_midpoint6.csv
+release/20251215/table2-sub_covidhospital_output_midpoint6.csv
+release/20251215/venn_output_midpoint6.csv
