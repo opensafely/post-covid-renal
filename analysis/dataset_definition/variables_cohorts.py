@@ -290,7 +290,6 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     )
 
     ### Deprivation
-        when(addresses.for_patient_on(index_date).imd_rounded < int(32844 * 2 / 5)).then("2"),
     cov_cat_imd = cov_cat_imd = get_imd(index_date, groups=10, max_imd=32844)
 
     ### Smoking status
