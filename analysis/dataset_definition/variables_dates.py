@@ -102,7 +102,7 @@ cev_group = (
 # asthma_group
     ## Derived variables for asthma_group
     ## Asthma Diagnosis codes
-ast dx = last_matching_event_clinical_snomed_before(
+astdx = last_matching_event_clinical_snomed_before(
     ast_primis, ref_ar
 ).exists_for_patient()
 
