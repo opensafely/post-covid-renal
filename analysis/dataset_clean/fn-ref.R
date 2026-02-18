@@ -156,7 +156,6 @@ ref <- function(input) {
     
     input$cov_cat_imd <- ordered(
       input$cov_cat_imd,
-      levels = c("1 (most deprived)", "2", "3", "4", "5 (least deprived)")
       levels = imd_levels
     )
   }
