@@ -278,8 +278,10 @@ def generate_variables(index_date, end_date_exp, end_date_out):
         last_matching_event_clinical_ctv3_before(smoking_clear, index_date)
         .ctv3_code.to_category(smoking_clear)
     )
+    
     tmp_ever_smoked = ever_matching_event_clinical_ctv3_before(
-        (filter_codes_by_category(smoking_clear, include=["S", "E"])), index_date)
+        (filter_codes_by_category(smoking_clear, include=["S", "E"])), index_date
+        ).exists_for_patient()
 
     cov_cat_smoking = case(
         when(tmp_most_recent_smoking_cat == "S").then("S"),
