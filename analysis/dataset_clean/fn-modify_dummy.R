@@ -432,7 +432,7 @@ modify_dummy <- function(df, cohort) {
     ## Ethnicity distribution
     mutate(
       cov_cat_ethnicity = sample(
-        x = c("1", "2", "3", "4", "5", "0"), 
+        x = c("White", "Asian", "Black", "Mixed", "Other", "Missing"), 
         size = nrow(.),
         replace = TRUE,
         prob = c(rep(0.19, 5),0.05)
