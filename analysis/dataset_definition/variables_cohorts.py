@@ -271,7 +271,7 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     cov_cat_ethnicity = get_latest_ethnicity(index_date,ethnicity_snomed, grouping=6)
 
     ### Deprivation
-    cov_cat_imd = cov_cat_imd = get_imd(index_date, groups=10, max_imd=32844)
+    cov_cat_imd = get_imd(index_date, groups=10, max_imd=32844)
 
     ### Smoking status
     tmp_most_recent_smoking_cat = (
