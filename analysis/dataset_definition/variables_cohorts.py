@@ -2,10 +2,9 @@ from ehrql import (
     days,
     case,
     when,
+    claim_permissions,
     minimum_of,
 )
-
-from ehrql import claim_permissions
 
 claim_permissions("sgss_covid_all_tests", "occupation_on_covid_vaccine_record")
 
