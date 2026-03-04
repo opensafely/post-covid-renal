@@ -2,8 +2,12 @@ from ehrql import (
     days,
     case,
     when,
+    claim_permissions,
     minimum_of,
 )
+
+claim_permissions("sgss_covid_all_tests", "occupation_on_covid_vaccine_record")
+
 # Bring table definitions from the TPP backend 
 from ehrql.tables.tpp import ( 
     patients, 
@@ -12,6 +16,7 @@ from ehrql.tables.tpp import (
     appointments, 
     occupation_on_covid_vaccine_record,
     sgss_covid_all_tests,
+    ethnicity_from_sus,
     apcs, 
     clinical_events, 
     ons_deaths,
@@ -34,6 +39,8 @@ from variable_helper_functions import (
     last_matching_procedure_apc_before,
     last_matching_procedure_opa_before,
     filter_codes_by_category,
+    get_latest_ethnicity,
+    get_imd,
 )
 
 
@@ -265,36 +272,20 @@ def generate_variables(index_date, end_date_exp, end_date_out):
     cov_cat_sex = patients.sex
 
     ### Ethnicity
-    tmp_cov_cat_ethnicity = (
-        clinical_events.where(clinical_events.snomedct_code.is_in(ethnicity_snomed))
-        .where(clinical_events.date.is_on_or_before(index_date))
-        .sort_by(clinical_events.date)
-        .last_for_patient()
-        .snomedct_code
-    )
-
-    cov_cat_ethnicity = tmp_cov_cat_ethnicity.to_category(
-        ethnicity_snomed
-    )
+    cov_cat_ethnicity = get_latest_ethnicity(index_date,ethnicity_snomed, grouping=6)
 
     ### Deprivation
-    cov_cat_imd = case(
-        when((addresses.for_patient_on(index_date).imd_rounded >= 0) & 
-                (addresses.for_patient_on(index_date).imd_rounded < int(32844 * 1 / 5))).then("1 (most deprived)"),
-        when(addresses.for_patient_on(index_date).imd_rounded < int(32844 * 2 / 5)).then("2"),
-        when(addresses.for_patient_on(index_date).imd_rounded < int(32844 * 3 / 5)).then("3"),
-        when(addresses.for_patient_on(index_date).imd_rounded < int(32844 * 4 / 5)).then("4"),
-        when(addresses.for_patient_on(index_date).imd_rounded < int(32844 * 5 / 5)).then("5 (least deprived)"),
-        otherwise="unknown",
-    )
+    cov_cat_imd = get_imd(index_date, groups=10, max_imd=32844)
 
     ### Smoking status
     tmp_most_recent_smoking_cat = (
         last_matching_event_clinical_ctv3_before(smoking_clear, index_date)
         .ctv3_code.to_category(smoking_clear)
     )
+
     tmp_ever_smoked = ever_matching_event_clinical_ctv3_before(
-        (filter_codes_by_category(smoking_clear, include=["S", "E"])), index_date)
+        (filter_codes_by_category(smoking_clear, include=["S", "E"])), index_date
+        ).exists_for_patient()
 
     cov_cat_smoking = case(
         when(tmp_most_recent_smoking_cat == "S").then("S"),
