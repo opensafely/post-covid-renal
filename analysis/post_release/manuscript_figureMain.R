@@ -375,6 +375,6 @@ plot_hr <- function(outcomes) {
   }
 }
 
-plot_hr("esrd")
+plot_hr("aki")
 plot_hr("esrd")
 plot_hr("ckd")
