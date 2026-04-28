@@ -160,7 +160,7 @@ plot_aer <- function(outcomes) {
       y = cumulative_difference_absolute_excess_risk * 100,
       color = aer_age,
       linetype = aer_sex,
-      size = aer_sex
+      linewidth = aer_sex
     )
   ) +
     ggplot2::geom_line() +
