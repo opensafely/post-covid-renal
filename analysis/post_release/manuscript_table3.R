@@ -73,7 +73,7 @@ df <- df %>%
       term == "days0_1" ~ "Day 0",
       term == "days1_28" ~ "Weeks 1-4, without day 0",
       term == "days28_183" ~ "Weeks 5-28",
-      term == "days183_365" ~ "Weeks 29-52"
+      term == "days183_365" ~ "Weeks 29-52",
       term == "days365_730" ~ "Years 1-2",
       term == "days730_1095" ~ "Years 2-3",
       term == "days1095_1460" ~ "Years 3-4",
