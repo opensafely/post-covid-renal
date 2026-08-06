@@ -11,7 +11,7 @@ local study_start "`3'"
 /*
 * Specify parameters locally
 
-local name "cohort_prevax-main_preex_FALSE-asthma"
+local name "cohort_prevax-main_preex_FALSE-aki"
 local cutpoints "1;28;183;365;730;1095;1460;1825;1979"
 local study_start "2020-01-01"
 */
