@@ -41,12 +41,47 @@ age_str <- paste0(
 describe <- FALSE # This prints descriptive files for each dataset in the pipeline
 
 # List of models excluded from model output generation
-# Test first to see which models will be excluded
 
-excluded_models <- c(
-  "cohort_vax-main_preex_FALSE-pneumonia",
-  "cohort_prevax-sub_age_18_39_preex_TRUE-pf"
+#excluded_models <- c()
+
+# List of models that should run in Stata due to convergence issue
+
+stata_models <- unique(c(
+  active_analyses$name[
+    grepl("aki", active_analyses$name) 
+  ],
+  active_analyses$name[
+    grepl("sub_covidhistory", active_analyses$name) 
+  ],
+  active_analyses$name[
+    grepl("sub_covidhospital_TRUE", active_analyses$name) &
+      active_analyses$name !=
+      "cohort_vax-sub_covidhospital_TRUE_preex_FALSE-ckd"
+  ],
+    #selected by code
+    "cohort_unvax-main_preex_FALSE-ckd",
+    "cohort_prevax-sub_age_18_39_preex_FALSE-ckd",
+    "cohort_prevax-sub_age_18_39_preex_TRUE-esrd",
+    "cohort_prevax-sub_age_40_59_preex_TRUE-esrd",
+    "cohort_unvax-sub_age_80_110_preex_FALSE-ckd",
+    "cohort_vax-sub_age_40_59_preex_TRUE-esrd",
+    "cohort_unvax-sub_covidhospital_FALSE_preex_FALSE-ckd",
+    "cohort_prevax-sub_ethnicity_black_preex_FALSE-ckd",
+    "cohort_prevax-sub_ethnicity_black_preex_TRUE-esrd",
+    "cohort_prevax-sub_ethnicity_mixed_preex_FALSE-ckd",
+    "cohort_unvax-sub_ethnicity_asian_preex_FALSE-ckd",
+    "cohort_unvax-sub_ethnicity_black_preex_FALSE-ckd",
+    "cohort_vax-sub_ethnicity_black_preex_FALSE-ckd",
+    "cohort_vax-sub_ethnicity_mixed_preex_FALSE-ckd",
+    "cohort_unvax-sub_sex_male_preex_FALSE-ckd",
+    #selected by examination of outputs
+    "cohort_unvax-main_preex_TRUE-esrd",
+    "cohort_unvax-sub_age_18_39_preex_FALSE-ckd",
+    "cohort_unvax-sub_age_40_59_preex_FALSE-ckd",
+    "cohort_prevax-sub_ethnicity_white_preex_FALSE-ckd"
+  )
 )
+
 
 # Create generic action function -----------------------------------------------
 
