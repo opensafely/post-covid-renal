@@ -1,9 +1,5 @@
 version: '5.0'
 
-expectations:
-
-  population_size: 5000
-
 actions:
 
   ## # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
@@ -7079,7 +7075,6 @@ actions:
   make_model_output-sub_covidhistory:
     run: r:v2 analysis/make_output/make_model_output.R sub_covidhistory
     needs:
-    - cox_ipw-
     - stata_cox_ipw-cohort_unvax-sub_covidhistory_preex_FALSE-aki
     - stata_cox_ipw-cohort_unvax-sub_covidhistory_preex_FALSE-ckd
     - stata_cox_ipw-cohort_vax-sub_covidhistory_preex_FALSE-aki

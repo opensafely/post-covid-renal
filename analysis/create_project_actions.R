@@ -10,8 +10,7 @@ library(dplyr)
 # Specify defaults -------------------------------------------------------------
 
 defaults_list <- list(
-  version = "5.0",
-  expectations = list(population_size = 5000L)
+  version = "5.0"
 )
 
 active_analyses <- read_rds("lib/active_analyses.rds")
@@ -84,6 +83,8 @@ stata_models <- unique(c(
 
 stata <- active_analyses[active_analyses$name %in% stata_models, ]
 
+not_stata_models <- setdiff(active_analyses$name, stata_models)
+not_stata <- active_analyses[!active_analyses$name %in% stata_models, ]
 
 # Create generic action function -----------------------------------------------
 
@@ -424,7 +425,11 @@ make_model_output <- function(subgroup) {
       run = "r:v2 analysis/make_output/make_model_output.R",
       arguments = c(subgroup),
       needs = as.list(c(
-        paste0(
+        if(
+          length(not_stata_models) > 0 &&
+                 any(str_detect(not_stata$analysis, subgroup))
+                 ){
+          paste0(
           "cox_ipw-",
           setdiff(
             active_analyses$name[str_detect(
@@ -433,7 +438,11 @@ make_model_output <- function(subgroup) {
             )],
             c(stata$name, excluded_models)
           )
-        ),
+          )
+          } else {
+          character(0)
+        }
+        ,
         if (
           length(stata_models) > 0 &&
           any(str_detect(stata$analysis, subgroup))
