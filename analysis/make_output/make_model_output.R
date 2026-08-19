@@ -74,9 +74,12 @@ for (i in files_R) {
   } else {
     tmp$error <- ""
   }
-
+  
   ## Add source file name
-  tmp$name <- gsub("model_output-", "", gsub(".csv", "", i))
+  tmp$name <- gsub("^(stata_)?model_output-", "", gsub("\\.csv", "", i))
+  
+  ## Add source column (R vs Stata)
+  tmp$source <- ifelse(grepl("^stata_model_output", i), "Stata", "R")
 
   ## Append to master dataframe
   df <- plyr::rbind.fill(df, tmp)
@@ -95,8 +98,6 @@ df <- merge(
 )
 
 df$outcome <- gsub("out_date_", "", df$outcome)
-
-df$source <- "R"
 
 # Save model output ------------------------------------------------------------
 print('Save model output')
