@@ -75,18 +75,22 @@ excluded_models <- c(
   "cohort_vax-sub_age_18_39_preex_TRUE-esrd"
 )
 
+included_analyses <- active_analyses[
+  !active_analyses$name %in% excluded_models,
+]
+
 # List of models that should run in Stata due to convergence issue
 
 stata_models <- unique(c(
-  active_analyses$name[
-    grepl("aki", active_analyses$name) 
+  included_analyses$name[
+    grepl("aki", included_analyses$name) 
   ],
-  active_analyses$name[
-    grepl("sub_covidhistory", active_analyses$name) 
+  included_analyses$name[
+    grepl("sub_covidhistory", included_analyses$name) 
   ],
-  active_analyses$name[
-    grepl("sub_covidhospital_TRUE", active_analyses$name) &
-      active_analyses$name !=
+  included_analyses$name[
+    grepl("sub_covidhospital_TRUE", included_analyses$name) &
+      included_analyses$name !=
       "cohort_vax-sub_covidhospital_TRUE_preex_FALSE-ckd"
   ],
     #selected by code
@@ -113,14 +117,11 @@ stata_models <- unique(c(
   )
 )
 
-# Remove any excluded models
-stata_models <- stata_models[!stata_models %in% excluded_models]
-
-stata <- active_analyses[active_analyses$name %in% stata_models, ]
+stata <- included_analyses[included_analyses$name %in% stata_models, ]
 
 # This step is necessary in case you have a set of models that are only stata models
-not_stata_models <- setdiff(active_analyses$name, stata_models)
-not_stata <- active_analyses[!active_analyses$name %in% stata_models, ]
+not_stata_models <- setdiff(included_analyses$name, stata_models)
+not_stata <- included_analyses[!included_analyses$name %in% stata_models, ]
 
 # Create generic action function -----------------------------------------------
 
