@@ -61,6 +61,8 @@ excluded_models <- c(
   "cohort_unvax-sub_ethnicity_other_preex_TRUE-esrd",
   "cohort_unvax-sub_ethnicity_white_preex_TRUE-esrd",
   "cohort_vax-sub_ethnicity_black_preex_TRUE-esrd",
+  "cohort_unvax-sub_ethnicity_black_preex_FALSE-ckd",
+  "cohort_prevax-sub_ethnicity_black_preex_FALSE-ckd",
   "cohort_vax-sub_ethnicity_mixed_preex_TRUE-aki",
   "cohort_vax-sub_ethnicity_mixed_preex_TRUE-esrd",
   "cohort_vax-sub_ethnicity_other_preex_TRUE-aki",
