@@ -40,7 +40,7 @@ plot_hr <- function(outcomes) {
 
   ## Create wide table of N_events_midpoint6 to identify models with any interval having <=6 events
   df_wide <- df %>%
-    select(cohort, analysis, outcome, term, N_events_midpoint6) %>%
+    dplyr::select(cohort, analysis, outcome, term, N_events_midpoint6) %>%
     tidyr::pivot_wider(
       names_from = term,
       values_from = N_events_midpoint6
@@ -49,12 +49,12 @@ plot_hr <- function(outcomes) {
   models_low_events <- df_wide %>%
     mutate(has_low_events = if_any(where(is.numeric), ~ .x <= 6)) %>%
     filter(has_low_events) %>%
-    select(cohort, analysis, outcome)
+    dplyr::select(cohort, analysis, outcome)
 
   df <- df %>%
     anti_join(models_low_events, by = c("cohort", "analysis", "outcome"))
 
-  df <- df %>% select(-N_events_midpoint6)
+  df <- df %>% dplyr::select(-N_events_midpoint6)
 
   df$preex <- sub(".*?(?=preex_)", "", df$analysis, perl = TRUE)
   df$analysis <- sub("_preex_.*", "", df$analysis, perl = TRUE)
