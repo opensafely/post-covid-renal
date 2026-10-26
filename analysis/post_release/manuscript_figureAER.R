@@ -187,7 +187,7 @@ plot_aer <- function(outcomes) {
       labels = levels(df$aer_sex),
       breaks = levels(df$aer_sex)
     ) +
-    ggplot2::scale_size_manual(
+    ggplot2::scale_linewidth_manual(
       values = c(0.7, 0.8, 1.5), # Make the third element (dotted) thicker
       labels = levels(df$aer_sex),
       breaks = levels(df$aer_sex)
