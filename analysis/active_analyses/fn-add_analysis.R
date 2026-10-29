@@ -30,6 +30,17 @@ add_analysis <- function(
     cut_points$prevax,
     cut_points$vax_unvax
   )
+  
+  cut_points_ethn <- list(
+    prevax = "1;365;730;1095;1460;1979",
+    vax_unvax = "1;365;730;1095;1460"
+  )
+  
+  cut_points_used_ethn <- ifelse(
+    cohort == "prevax",
+    cut_points_ethn$prevax,
+    cut_points_ethn$vax_unvax
+  )
 
   new_analysis <- c(
     cohort = cohort,
@@ -48,7 +59,11 @@ add_analysis <- function(
     cox_stop = "end_date_outcome",
     study_start = study_start,
     study_stop = dates$study_stop,
-    cut_points = cut_points_used,
+    cut_points = ifelse(
+      grepl("ethnicity", analysis_name), 
+      cut_points_used_ethn,
+      cut_points_used
+    ),
     controls_per_case = 20L,
     total_event_threshold = 50L,
     episode_event_threshold = 5L,

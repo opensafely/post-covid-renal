@@ -124,7 +124,7 @@ for (i in preex_groups) {
           next
         }
         
-        # Adjust covariate_other for ethnicity and smoking subgroups
+        # Adjust covariate_other for ethnicity 
         adjusted_covariate_other <- covariate_other
         if (grepl("sub_ethnicity", sub)) {
           adjusted_covariate_other <- paste0(
