@@ -32,8 +32,8 @@ add_analysis <- function(
   )
   
   cut_points_ethn <- list(
-    prevax = "365;730;1095;1460;1979",
-    vax_unvax = "365;730;1095;1460"
+    prevax = "1;365;730;1095;1460;1979",
+    vax_unvax = "1;365;730;1095;1460"
   )
   
   cut_points_used_ethn <- ifelse(
